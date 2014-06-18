@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cama</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<h1>Cama Coffee</h1>
+<p><%= link_to("admin", admin_root_path) %></p>
+<p><%= link_to("產品頁", "#") %>|<%= link_to("購物車", "#") %></p>
+
+<%= yield %>
+
+</body>
+</html>
