@@ -2,7 +2,7 @@
 module ProductsHelper
 	def show_product_cate(active_cate, product_cate)
 		if product_cate == active_cate
-			"<li class ='active'>#{ product_cate.name }</li>".html_safe
+			"<li class ='active'>#{ link_to( product_cate.name, product_cate_path(product_cate.id) ) }</li>".html_safe
 		else
 			"<li>#{ link_to( product_cate.name, product_cate_path(product_cate.id) ) }</li>".html_safe
 		end

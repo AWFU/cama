@@ -4,6 +4,7 @@ class CreateProductStocks < ActiveRecord::Migration
       t.integer :product_id
       t.string :name
       t.integer :amount
+      t.boolean :assign_amount
 
       t.timestamps
     end

@@ -1,0 +1,10 @@
+<% if(stocks.length > 1) %>
+<div>
+	<select>
+		<% stocks.each do |stock| %>
+	  <option><%= show_stock(stock) %></option>
+	  <%# stocks_helper %>
+	  <% end %>
+	</select>
+</div>
+<% end %>

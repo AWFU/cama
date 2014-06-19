@@ -1,0 +1,35 @@
+<div>
+	<%= link_to "詳細內容", "../#{params[:product_id]}" %>
+	<%= link_to "庫存管理", "javascript:void(0);" %>
+</div>
+
+<% @stocks.each do |stock| %>
+<% end %>
+
+<table border="0" cellspacing="0" cellpadding="3">
+	<% @stocks.each do |stock| %>
+	<tr>
+		<td>
+			<%= stock.name %>
+		</td>
+		<td>
+			<a href="#" class="edit" title="編輯">編輯</a>
+			<a href="#" class="delete" title="刪除">刪除</a>
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr class="list-edit">
+		<%#= form_for(@product_cate, :url => admin_product_cates_path) do |f| %>
+		<td>
+			<%#= f.text_field :name, :placeholder => "分類名稱" %>
+		</td>
+		<td align="right">
+			<%#= f.submit "儲存" %>
+			<a title="取消" href="#">取消</a>
+		</td>
+		<%# end %>
+	</tr>
+</table>
+
+<%= link_to("返回", admin_product_cate_path(params[:product_cate_id])) %>

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Admin::ProductsController < AdminController
   before_action :set_product_with_cate, only: [:show, :edit]
   before_action :set_product, only: [:update, :change_status, :destroy]
@@ -7,7 +8,12 @@ class Admin::ProductsController < AdminController
 		@product = @product_cate.products.create
 
 		respond_to do |format|
-      format.html { redirect_to edit_admin_product_cate_product_path(@product_cate, @product) }
+			if( @product.errors.any? )
+				format.html { redirect_to :back, alert: "新增失敗" }
+			else
+				@product.product_stocks.create
+				format.html { redirect_to edit_admin_product_cate_product_path(@product_cate, @product) }
+			end
     end
 	end
 
@@ -33,7 +39,7 @@ class Admin::ProductsController < AdminController
 	end
 
 	def destroy
-		@product.destroy
+		@product.destroy if @product
 		
 		respond_to do |format|
 			format.html { redirect_to admin_product_cate_path(@product.product_cate_id) }

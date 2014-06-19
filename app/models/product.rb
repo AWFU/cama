@@ -1,7 +1,7 @@
 #encoding: utf-8
 class Product < ActiveRecord::Base
 	belongs_to :product_cate
-	has_many :product_stocks
+	has_many :product_stocks, dependent: :destroy
 
 	scope :front_show_by_cate, ->(product_cate_id) { where("product_cate_id = ? AND status = ?", product_cate_id, "enable") }
 

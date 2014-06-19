@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618105412) do
+ActiveRecord::Schema.define(version: 20140619095221) do
 
   create_table "product_cates", force: true do |t|
     t.integer  "parent_id"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140618105412) do
     t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "assign_amount"
   end
 
   create_table "products", force: true do |t|

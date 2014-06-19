@@ -5,10 +5,14 @@
 <% end %>
 </ul>
 
-名稱：<%= @product.name %><br>
-價格：<%= @product.price %><br>
-<%= show_price_for_sale(@product.price_for_sale) %>
-<%# products_helper %>
+<div>
+	名稱：<%= @product.name %><br>
+	價格：<%= @product.price %><br>
+	<%= show_price_for_sale(@product.price_for_sale) %>
+	<%# products_helper %>
+</div>
 
-<%= link_to "加入購物車", "#" %>
+<%= render partial: "show_stocks", :locals => { stocks: @product.product_stocks } %>
+
+<%= link_to "加入購物車", add_cart_path(@product.product_stocks.first), :method => :post %>
 <%= link_to "返回", product_cate_path(@product_cate) %>
