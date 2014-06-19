@@ -6,10 +6,10 @@
 </ul>
 
 <div>
-	名稱：<%= @product.name %><br>
-	價格：<%= @product.price %><br>
-	<%= show_price_for_sale(@product.price_for_sale) %>
-	<%# products_helper %>
+  名稱：<%= @product.name %><br>
+  價格：<%= @product.price %><br>
+  <%= show_price_for_sale(@product.price_for_sale) %>
+  <%# products_helper %>
 </div>
 
 <%= render partial: "show_stocks", :locals => { stocks: @product.product_stocks } %>
