@@ -1,13 +1,19 @@
 Cama::Application.routes.draw do
   root 'statics#index'
 
-  resources :products, :only => [:index, :show]
+  resources :product_cates, :only => [:index, :show] do
+    resources :products, :only => [:show]
+  end
 
   namespace :admin do
-    # Directs /admin/products/* to Admin::ProductsController
-    # (app/controllers/admin/products_controller.rb)
-    resources :products
+    resources :product_cates, :except => [:new, :edit] do
+      resources :products, :except => [:index, :new] do
+        member do
+          match :change_status, :via => :post
+        end
+      end
+    end
 
-    root 'products#index'
+    root 'product_cates#index'
   end
 end

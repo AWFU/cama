@@ -1,0 +1,14 @@
+<ul>
+<% @product_cates.each do |product_cate| %>
+<%# products_helper %>
+<%= show_product_cate(@product_cate, product_cate) %>
+<% end %>
+</ul>
+
+名稱：<%= @product.name %><br>
+價格：<%= @product.price %><br>
+<%= show_price_for_sale(@product.price_for_sale) %>
+<%# products_helper %>
+
+<%= link_to "加入購物車", "#" %>
+<%= link_to "返回", product_cate_path(@product_cate) %>

@@ -1,0 +1,28 @@
+<h3>分類列表</h3>
+<a href="#">新增分類</a>
+
+<table border="0" cellspacing="0" cellpadding="3">
+	<% @product_cates.each do |product_cate| %>
+	<tr>
+		<td>
+			<%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
+		</td>
+		<td>
+			<a href="#" class="edit" title="編輯">編輯</a>
+			<a href="#" class="delete" title="刪除">刪除</a>
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr class="list-edit">
+		<%= form_for(@product_cate, :url => admin_product_cates_path) do |f| %>
+		<td>
+			<%= f.text_field :name, :placeholder => "分類名稱" %>
+		</td>
+		<td align="right">
+			<%= f.submit "儲存" %>
+			<a title="取消" href="#">取消</a>
+		</td>
+		<% end %>
+	</tr>
+</table>

@@ -1,0 +1,20 @@
+<h3>商品列表<span>/ <%= @product_cate.name %></span></h3>
+
+<%= link_to("新增商品", admin_product_cate_products_path(@product_cate), :method => :post) %>
+
+<table border="0" cellspacing="0" cellpadding="3">
+	<% @product_cate.products.each do |product| %>
+	<tr>
+		<td><%= product.get_status %></td>
+		<td><%= link_to(product.name, admin_product_cate_product_path(@product_cate, product)) %></td>
+		<td>
+			<%= link_to(get_change_status_name(product), change_status_admin_product_cate_product_path(@product_cate, product), :method => :post) %>
+			<%# products_helper %>
+			<%= link_to("編輯", edit_admin_product_cate_product_path(@product_cate, product)) %>
+			<%= link_to("刪除", admin_product_cate_product_path(@product_cate, product), :method => :delete, :data => {:confirm => "確定刪除？"}) %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to( "返回", admin_product_cates_path ) %>

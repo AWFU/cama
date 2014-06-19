@@ -9,9 +9,16 @@
 <body>
 <h1>Cama Coffee</h1>
 <p><%= link_to("admin", admin_root_path) %></p>
-<p><%= link_to("產品頁", "#") %>|<%= link_to("購物車", "#") %></p>
+<p><%= link_to("產品頁", product_cates_path) %>|<%= link_to("購物車", "#") %></p>
 
 <%= yield %>
 
+<script type="text/javascript">
+$(document).ready(function(){
+  if("<%= alert || notice %>"){
+    alert("<%= alert || notice %>");
+  }
+});
+</script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+<%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product)) do |f| %>
+名稱：<%= f.text_field :name %>
+價格：<%= f.text_field :price %>
+折扣價：<%= f.text_field :price_for_sale %>
+<%= f.submit("儲存") %>
+<% end %>
+
+<%= link_to "返回", admin_product_cate_path(@product.product_cate) %>

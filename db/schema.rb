@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618081921) do
+ActiveRecord::Schema.define(version: 20140618105412) do
 
   create_table "product_cates", force: true do |t|
     t.integer  "parent_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140618081921) do
   end
 
   create_table "products", force: true do |t|
-    t.integer  "productCate_id"
+    t.integer  "product_cate_id"
     t.string   "name"
     t.integer  "price"
     t.integer  "price_for_sale"
