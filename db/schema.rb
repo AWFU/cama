@@ -13,33 +13,33 @@
 
 ActiveRecord::Schema.define(version: 20140619095221) do
 
-	create_table "product_cates", force: true do |t|
-		t.integer  "parent_id"
-		t.string   "name"
-		t.integer  "lft"
-		t.integer  "rgt"
-		t.integer  "depth"
-		t.datetime "created_at"
-		t.datetime "updated_at"
-	end
+  create_table "product_cates", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-	create_table "product_stocks", force: true do |t|
-		t.integer  "product_id"
-		t.string   "name"
-		t.integer  "amount"
-		t.datetime "created_at"
-		t.datetime "updated_at"
-		t.boolean  "assign_amount"
-	end
+  create_table "product_stocks", force: true do |t|
+    t.integer  "product_id"
+    t.string   "name"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "assign_amount"
+  end
 
-	create_table "products", force: true do |t|
-		t.integer  "product_cate_id"
-		t.string   "name"
-		t.integer  "price"
-		t.integer  "price_for_sale"
-		t.string   "status"
-		t.datetime "created_at"
-		t.datetime "updated_at"
-	end
+  create_table "products", force: true do |t|
+    t.integer  "product_cate_id"
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "price_for_sale"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
