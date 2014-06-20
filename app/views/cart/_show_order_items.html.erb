@@ -1,0 +1,27 @@
+<% order_items.each do |item| %>
+<tr>
+  <td align="center">
+    <%= "#{ item[:name] }（#{ item[:stock_name] }）" %>
+  </td>
+
+  <td align="center" class="count">
+    <%= link_to "-", minus_cart_path(item[:id]), :method => :post, :class => "minor" %>
+    <%= text_field_tag :amount, item[:amount], :disabled => true %>
+    <%= link_to "+", plus_cart_path(item[:id]), :method => :post, :class => "plus" %>
+  </td>
+
+  <td align="center"><%= item[:price] %></td>
+
+  <td align="center">
+    <%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %>
+  </td>
+
+  <td align="center"><%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
+
+  <td align="center">有</td>
+
+  <td align="center" class="delete">
+    <%= link_to "刪除", delete_cart_path(item[:id]), :method => :delete, :data => {:confirm => "確定刪除？"} %>
+  </td>
+</tr>
+<% end %>

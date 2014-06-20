@@ -23,6 +23,30 @@ class Cart
     return { cart_items: @cart_items.to_json, cart_message: @cart_message }
   end
 
+  def self.check_items_in_cart(cookies_cart)
+    @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
+    @stocks = ProductStock.includes(:product).where(:id => @cart_items.keys)
+
+    @order_items = Array.new
+
+    @stocks.each do |stock|
+      if(stock.assign_amount)
+        if(stock.amount > @cart_items[stock.id.to_s].to_i)
+          @product_amount = { :amount => @cart_items[stock.id.to_s].to_i }
+        else
+          @product_amount = { :amount => stock.amount.to_i }
+        end
+      else
+        @product_amount = { :amount => @cart_items[stock.id.to_s].to_i }
+      end
+
+      @product_attrs = { :id => stock.id, :name => stock.product.name, :stock_name => stock.name, :image => nil, :price => stock.product.price.to_i, :price_for_sale => stock.product.price_for_sale.to_i }
+      @order_items.push( @product_attrs.merge(@product_amount) )
+    end
+
+    return @order_items
+  end
+
   private
 
 end

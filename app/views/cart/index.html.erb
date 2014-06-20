@@ -1,0 +1,43 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="32%" align="center">明細</th>
+    <th width="22%" align="center">數量</th>
+    <th width="10%" align="center">單價</th>
+    <th width="10%" align="center">折扣價</th>
+    <th width="10%" align="center">小計</th>
+    <th width="8%" align="center">庫存</th>
+    <th width="8%" align="center">刪除</th>
+  </tr>
+
+  <%= render partial: "show_order_items", :locals => { order_items: @order_items } %>
+
+  <%= no_order_items_msg(@order_items.length) %>
+  <%# cart_helper  %>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%">&nbsp;</td>
+    <td width="10%">購物小計</td>
+    <td width="10%" align="right">NT$ <%= get_order_price(@order_items) %><%# cart_helper  %></td>
+  </tr>        
+  <tr>
+    <td width="80%">&nbsp;</td>
+    <td width="10%">訂單總計</td>
+    <td width="10%" align="right">NT$ <%= get_order_price(@order_items) %><%# cart_helper  %></td>
+  </tr>      
+</table>
+
+<%= link_to("繼續購物", product_cates_path, :id => "back") %>
+<%= link_to("下一步", check_cart_index_path, :id => "next") %>
+
+<script type="text/javascript">
+$("#next").click(function(e){
+  <% if @order_items.length > 0 %>
+  return true;
+  <% else %>
+  alert("請先將商品放入購物車。");
+  return false;
+  <% end %>
+});
+</script>

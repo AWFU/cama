@@ -1,9 +1,10 @@
 #encoding: utf-8
 class CartController < ApplicationController
-  require 'cart'
+  require "cart"
+  layout "cart"
 
   def index
-    
+    @order_items = Cart.check_items_in_cart(cookies[:cart_cama])
   end
 
   def check
