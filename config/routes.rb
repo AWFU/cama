@@ -8,10 +8,10 @@ Cama::Application.routes.draw do
   resources :cart, :only => [:index, :create] do
     collection do
       get "check", "finish"
+      match "add" => "cart#add" , :via => :post
     end
 
     member do
-      match "add" => "cart#add" , :via => :post
       match "plus" => "cart#plus" , :via => :post
       match "minus" => "cart#minus" , :via => :post
       match "delete" => "cart#delete" , :via => :delete

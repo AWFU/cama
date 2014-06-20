@@ -21,3 +21,15 @@ module Cama
     # config.i18n.default_locale = :de
   end
 end
+
+module JSON
+  def self.parse_if_json(foo)
+    begin
+      return false unless foo.is_a?(String)
+      #JSON.parse(foo).all?
+      JSON.parse(foo)
+    rescue JSON::ParserError
+      false
+    end 
+  end
+end

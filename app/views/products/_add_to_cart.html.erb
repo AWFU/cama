@@ -1,0 +1,6 @@
+<%= form_tag(add_cart_index_path) do %>
+<%= show_stocks(stocks) %><br>
+<%# stocks_helper %>
+數量：<%= text_field_tag "cart[amount]" %><br>
+<%= submit_tag "加入購物車" %>
+<% end %>

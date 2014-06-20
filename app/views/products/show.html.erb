@@ -12,7 +12,4 @@
   <%# products_helper %>
 </div>
 
-<%= render partial: "show_stocks", :locals => { stocks: @product.product_stocks } %>
-
-<%= link_to "加入購物車", add_cart_path(@product.product_stocks.first), :method => :post %>
-<%= link_to "返回", product_cate_path(@product_cate) %>
+<%= render partial: "add_to_cart", :locals => { stocks: @product.product_stocks } %>
