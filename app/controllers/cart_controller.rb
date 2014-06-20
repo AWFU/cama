@@ -37,14 +37,32 @@ class CartController < ApplicationController
   end
 
   def plus
-    
+    @result = Cart.plus_stock(cookies[:cart_cama], params[:id])
+    cookies[:cart_cama] = @result[:cart_items]
+    @cart_message = @result[:cart_message]
+
+    respond_to do |format|
+      format.html { redirect_to cart_index_path }
+    end
   end
 
   def minus
-    
+    @result = Cart.minus_stock(cookies[:cart_cama], params[:id])
+    cookies[:cart_cama] = @result[:cart_items]
+    @cart_message = @result[:cart_message]
+
+    respond_to do |format|
+      format.html { redirect_to cart_index_path }
+    end
   end
 
   def delete
-    
+    @result = Cart.delete_stock(cookies[:cart_cama], params[:id])
+    cookies[:cart_cama] = @result[:cart_items]
+    @cart_message = @result[:cart_message]
+
+    respond_to do |format|
+      format.html { redirect_to cart_index_path }
+    end
   end
 end

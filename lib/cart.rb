@@ -2,8 +2,8 @@
 class Cart
   def self.check_cookies(cart_items)
     cart_items.each do | key, num |
-      @stock = ProductStock.find_by_id(key)
-      cart_items.delete(key) unless @stock
+      @stock = ProductStock.includes(:product).find_by_id(key)
+      cart_items.delete(key) unless(@stock && @stock.product.is_available?)
     end
 
     cart_items.to_json
@@ -45,6 +45,36 @@ class Cart
     end
 
     return @order_items
+  end
+
+  def self.plus_stock(cookies_cart, stock_id)
+    @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
+    @stock = ProductStock.find_by_id(stock_id)
+
+    if(!@stock.assign_amount || @cart_items[stock_id] < @stock.amount)
+      @cart_items[stock_id] += 1
+    else
+      @cart_message = "訂購數量到達庫存上限"
+    end
+
+    return { cart_items: @cart_items.to_json, cart_message: @cart_message }
+  end
+
+  def self.minus_stock(cookies_cart, stock_id)
+    @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
+
+    if(@cart_items[stock_id].to_i > 1)
+      @cart_items[stock_id] -= 1
+    end
+
+    return { cart_items: @cart_items.to_json, cart_message: @cart_message }
+  end
+
+  def self.delete_stock(cookies_cart, stock_id)
+    @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
+    @cart_items.delete(stock_id)
+
+    return { cart_items: @cart_items.to_json, cart_message: @cart_message }
   end
 
   private

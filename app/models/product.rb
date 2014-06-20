@@ -24,4 +24,8 @@ class Product < ActiveRecord::Base
       "上架"
     end   
   end
+
+  def is_available?
+    self.status == "enable" ? true : false
+  end
 end
