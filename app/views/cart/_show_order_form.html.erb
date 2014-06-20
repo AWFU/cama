@@ -1,0 +1,62 @@
+<%= form_for(order, :url => cart_index_path) do |f| %>
+<h3>填寫您的資料</h3>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="9%" align="left">中文姓名</th>
+    <td width="24%"><%= f.text_field :buyer_name, :value => current_user.username, :class => 'text' %></td>
+    <td width="67%">&nbsp;</td>
+  </tr>
+  <tr>
+    <th align="left">電子郵件</th>
+    <td><%= current_user.email %></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th align="left">手機號碼</th>
+    <td><%= f.text_field :buyer_tel, :value => current_user.tel, :class => 'text' %></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<input id="update_member_info" name="update_member_info" class="checkbox" type="checkbox"><label for="update_member_info">更新為會員資料</label>
+
+<h4>收件人資訊</h4>
+<input id="info_as_buyer" class="checkbox" type="checkbox"><label for="info_as_buyer">同訂購人</label>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="9%" align="left">中文姓名</th>
+    <td width="24%"><%= f.text_field :receiver_name, :class => 'text' %></td>
+    <td width="67%">&nbsp;</td>
+  </tr>
+  <tr>
+    <th align="left">手機號碼</th>
+    <td><%= f.text_field :receiver_tel, :class => 'text' %></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="9%" align="left">送貨地址</th>
+    <td width="58%"><%= f.text_field :receiver_address, :class => 'text' %></td>
+    <td width="33%">&nbsp;</td>
+  </tr>
+
+  <tr>
+    <td colspan="3">
+      <input type="checkbox" id="add_to_addressbook" name="add_to_addressbook" class="checkbox"><label for="add_to_addressbook">加入常用地址</label>
+      
+      <input type="checkbox" id="set_as_default_address" name="set_as_default_address" class="checkbox"><label for="set_as_default_address">設為預設地址</label>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <input type="checkbox" id="agree_privacy" class="checkbox">
+      <label for="agree_privacy">
+        我已仔細閱讀並明瞭「網站使用條款」、「隱私權政策」、「免責聲明」等所載內容及其意義，<br>
+        茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
+      </label>
+    </td>
+   </tr>
+ </table>
+ <% end %>

@@ -23,7 +23,7 @@ class Cart
     return { cart_items: @cart_items.to_json, cart_message: @cart_message }
   end
 
-  def self.check_items_in_cart(cookies_cart)
+  def self.check_items_in_cart(cookies_cart, for_cart_or_order)
     @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
     @stocks = ProductStock.includes(:product).where(:id => @cart_items.keys)
 
@@ -40,7 +40,26 @@ class Cart
         @product_amount = { :amount => @cart_items[stock.id.to_s].to_i }
       end
 
-      @product_attrs = { :id => stock.id, :name => stock.product.name, :stock_name => stock.name, :image => nil, :price => stock.product.price.to_i, :price_for_sale => stock.product.price_for_sale.to_i }
+      case for_cart_or_order
+      when "for_cart"
+        @product_attrs = { 
+          :id => stock.id, 
+          :name => stock.product.name, 
+          :stock_name => stock.name, 
+          :image => nil, 
+          :price => stock.product.price.to_i, 
+          :price_for_sale => stock.product.price_for_sale.to_i 
+        }
+      when "for_order"
+        @product_attrs = { 
+          :product_stock_id => stock.id, 
+          :item_name => stock.product.name, 
+          :item_stockname => stock.name, 
+          :item_price => 
+          (stock.product.price_for_sale > 0) ? stock.product.price_for_sale.to_i : stock.product.price.to_i
+        }
+      end
+
       @order_items.push( @product_attrs.merge(@product_amount) )
     end
 
@@ -50,11 +69,12 @@ class Cart
   def self.plus_stock(cookies_cart, stock_id)
     @cart_items = JSON.parse_if_json(cookies_cart) || Hash.new
     @stock = ProductStock.find_by_id(stock_id)
+    @cart_message = String.new
 
     if(!@stock.assign_amount || @cart_items[stock_id] < @stock.amount)
       @cart_items[stock_id] += 1
     else
-      @cart_message = "訂購數量到達庫存上限"
+      @cart_message = "放入購物車的商品數量超過商品庫存！"
     end
 
     return { cart_items: @cart_items.to_json, cart_message: @cart_message }

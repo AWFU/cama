@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619095221) do
+ActiveRecord::Schema.define(version: 20140620070400) do
+
+  create_table "orderitems", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "product_stock_id"
+    t.string   "item_name"
+    t.string   "item_stockname"
+    t.integer  "item_price"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.string   "ordernum"
+    t.string   "buyer_name"
+    t.string   "buyer_tel"
+    t.string   "receiver_name"
+    t.string   "receiver_tel"
+    t.string   "receiver_address"
+    t.string   "payment_type"
+    t.string   "payment_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_cates", force: true do |t|
     t.integer  "parent_id"
@@ -41,5 +66,26 @@ ActiveRecord::Schema.define(version: 20140619095221) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "username"
+    t.string   "address"
+    t.string   "tel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

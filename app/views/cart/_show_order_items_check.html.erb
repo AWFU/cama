@@ -1,0 +1,21 @@
+<% order_items.each do |item| %>
+<tr>
+  <td align="center">
+    <%= "#{ item[:name] }（#{ item[:stock_name] }）" %>
+  </td>
+
+  <td align="center" class="count">
+    <%= item[:amount] %>
+  </td>
+
+  <td align="center"><%= item[:price] %></td>
+
+  <td align="center">
+    <%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %>
+  </td>
+
+  <td align="center"><%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
+
+  <td align="center">有</td>
+</tr>
+<% end %>

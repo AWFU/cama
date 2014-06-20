@@ -6,13 +6,9 @@
     <th width="10%" align="center">折扣價</th>
     <th width="10%" align="center">小計</th>
     <th width="8%" align="center">庫存</th>
-    <th width="8%" align="center">刪除</th>
   </tr>
 
-  <%= render partial: "show_order_items", :locals => { order_items: @order_items } %>
-
-  <%= no_order_items_msg(@order_items.length) %>
-  <%# cart_helper  %>
+  <%= render partial: "show_order_items_check", :locals => { order_items: @order_items } %>
 </table>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -28,16 +24,14 @@
   </tr>      
 </table>
 
+<%= render partial: "show_order_form", :locals => { order: @order, order_items: @order_items } %>
+
 <%= link_to("繼續購物", product_cates_path, :id => "back") %>
-<%= link_to("下一步", check_cart_index_path, :id => "next") %>
+<%= link_to("上一步", cart_index_path, :id => "prev") %>
+<%= link_to("下一步", "javascript:void(0)", :id => "next") %>
 
 <script type="text/javascript">
-$("#next").click(function(e){
-  <% if @order_items.length > 0 %>
-  return true;
-  <% else %>
-  alert("購物車內沒有商品");
-  return false;
-  <% end %>
+$("#next").click(function(){
+  $("#new_order").submit();
 });
 </script>

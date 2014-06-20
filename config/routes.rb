@@ -1,4 +1,5 @@
 Cama::Application.routes.draw do
+  devise_for :users
   root 'statics#index'
 
   resources :product_cates, :only => [:index, :show] do
