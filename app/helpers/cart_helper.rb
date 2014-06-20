@@ -1,7 +1,7 @@
 #encoding: utf-8
 module CartHelper
   require 'cart'
-  def cart_product_count
+  def products_in_cart_count
     @cart_items = JSON.parse_if_json(cookies[:cart_cama]) || Hash.new
     cookies[:cart_cama] = Cart.check_cookies(@cart_items)
 
@@ -9,7 +9,7 @@ module CartHelper
   end
 
   def get_order_price(order_items)
-    return @order_items.inject(0) { | sum, i | sum += ( i[:price_for_sale] > 0 ? i[:price_for_sale] : i[:price] ) * i[:amount] }
+    return order_items.inject(0) { | sum, i | sum += ( i[:price_for_sale] > 0 ? i[:price_for_sale] : i[:price] ) * i[:amount] }
   end
 
   def no_order_items_msg(count)
