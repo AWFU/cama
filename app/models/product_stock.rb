@@ -3,6 +3,7 @@ class ProductStock < ActiveRecord::Base
   belongs_to :product
 
   scope :by_product, ->(product_id) { where("product_id = ?", product_id) }
+  scope :assigned_amount, -> { where("assign_amount = ?", true) }
 
   validates_presence_of :name, :amount, :product_id
 

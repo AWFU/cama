@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
         
         format.html
       else
-        format.html { redirect_to :back, alert: "找不到商品" }
+        format.html { redirect_to product_cate_path(params[:product_cate_id]), alert: "找不到商品" }
       end
     end
   end

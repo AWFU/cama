@@ -2,6 +2,7 @@
 class CartController < ApplicationController
   require "cart"
   layout "cart"
+  
   before_action :record_login_redirect_path, :only => [:check]
   before_action :authenticate_user!, :only => [:check, :create]
 
@@ -34,7 +35,7 @@ class CartController < ApplicationController
         end
 
         if(params[:add_to_addressbook])
-          # @addressbook = current_member.addressbooks.new
+          # @addressbook = current_user.addressbooks.new
           # @addressbook.address = params[:order][:receiveraddress]
           # @addressbook.save
         end

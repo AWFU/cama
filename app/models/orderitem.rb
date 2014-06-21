@@ -3,6 +3,18 @@ class Orderitem < ActiveRecord::Base
   belongs_to :order
 
   def self.record_orderitems(order, cookies_cart)
-    order.orderitems.create( Cart.check_items_in_cart(cookies_cart, "for_order") )
+    @order_items = order.orderitems.create( Cart.check_items_in_cart(cookies_cart, "for_order") )
+
+    #substract stock of order items
+    @product_stocks = ProductStock.assigned_amount.where(:id => @order_items.map{ |item| item.product_stock_id })
+
+    @product_stocks.each do |stock|
+      stock.amount -= @order_items.detect{ |item| item.product_stock_id == stock.id }.amount
+      stock.save
+
+      if(stock.amount <= 0)
+        #mail to admin
+      end
+    end
   end
 end

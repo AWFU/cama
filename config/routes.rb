@@ -1,6 +1,6 @@
 Cama::Application.routes.draw do
   devise_for :users
-  root 'statics#index'
+  root "statics#index"
 
   resources :product_cates, :only => [:index, :show] do
     resources :products, :only => [:show]
@@ -19,6 +19,12 @@ Cama::Application.routes.draw do
     end
   end
 
+  namespace :user do
+    resources :orders, :only => [:index, :show]
+
+    root "orders#index"
+  end
+
   namespace :admin do
     resources :product_cates, :except => [:new, :edit] do
       resources :products, :except => [:index, :new] do
@@ -30,6 +36,8 @@ Cama::Application.routes.draw do
       end
     end
 
-    root 'product_cates#index'
+    resources :orders, :only => [:index, :show]
+
+    root "product_cates#index"
   end
 end
