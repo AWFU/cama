@@ -19,7 +19,7 @@ Cama::Application.routes.draw do
     end
   end
 
-  namespace :user do
+  namespace :useradmin do
     resources :orders, :only => [:index, :show]
 
     root "orders#index"
