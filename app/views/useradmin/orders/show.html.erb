@@ -21,11 +21,9 @@
 
     <tr>
       <th style="padding: 24px 0px; border-bottom: 1px solid; border-top: 1px dashed;" colspan="5" align="left">
-        購物小計: <%= sum_order_items(@order.orderitems) %>
-        <%# orders_helper %><br>
-        運費小計: <br>
-        訂單總計: <%= sum_order_items(@order.orderitems) %>
-        <%# orders_helper %>
+        購物小計: <%= @sum = sum_order_items(@order.orderitems) %><%# orders_helper %><br>
+        運費小計: <%= @shipping_fee = get_shipping_fee  %><%# orders_helper %><br>
+        訂單總計: <%= @sum + @shipping_fee %><%# orders_helper %>
       </th>
     </tr>
   </table>

@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   def check_attrs
     self.ordernum = self.generate_ordernum if self.ordernum.blank?
     self.payment_type = "credit_card" if self.payment_type.blank?
-    self.payment_status = "new" if self.payment_status.blank?
+    self.payment_status = self.order_progress.first if self.payment_status.blank?
   end
 
   def generate_ordernum
@@ -31,30 +31,30 @@ class Order < ActiveRecord::Base
     case(self.payment_status)
     when "new"
       "新訂單"
+    when "check_paid"
+      "待確認收款"
     when "wait_to_deliver"
       "待寄送"
-    when "paid"
-      "已收款"
-    when "delivered"
-      "已寄出"
+    when "finished"
+      "已完成"
     end
   end
 
   def order_progress
     case(self.payment_type)
-    when "atm_transfer", "credit_card"
-      ["new", "wait_to_deliver", "delivered"]
-    when "pay_while_received"
-      ["new", "wait_to_deliver", "paid", "delivered"]
+    when "atm_transfer" #匯款
+      ["check_paid", "wait_to_deliver", "finished"]
+    when "credit_card" #信用卡轉帳
+      ["new", "wait_to_deliver", "finished"]
+    when "third_part" #第三方支付
+      ["new", "wait_to_deliver", "check_paid", "finished"]
+    when "pay_while_received" #郵局貨到付款
+      ["wait_to_deliver", "check_paid", "finished"]
+    when "virtual_account" #虛擬帳號
+      ["check_paid", "wait_to_deliver", "finished"]
     end
   end
 
   def deliver_order_notice
-    case(self.payment_status)
-    when "new"  
-    when "paid"
-    when "wait_to_deliver"
-    when "delivered"
-    end
   end
 end

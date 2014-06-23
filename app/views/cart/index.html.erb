@@ -19,12 +19,17 @@
   <tr>
     <td width="80%">&nbsp;</td>
     <td width="10%">購物小計</td>
-    <td width="10%" align="right">NT$ <%= sum_cart_items(@order_items) %><%# cart_helper  %></td>
-  </tr>        
+    <td width="10%" align="right">NT$ <%= @sum = sum_cart_items(@order_items) %><%# cart_helper  %></td>
+  </tr>
+  <tr>
+    <td width="80%">&nbsp;</td>
+    <td width="10%">運費小計</td>
+    <td width="10%" align="right">NT$ <%= @shipping_fee = get_shipping_fee  %><%# orders_helper %></td>
+  </tr>
   <tr>
     <td width="80%">&nbsp;</td>
     <td width="10%">訂單總計</td>
-    <td width="10%" align="right">NT$ <%= sum_cart_items(@order_items) %><%# cart_helper  %></td>
+    <td width="10%" align="right">NT$ <%= @sum + @shipping_fee %><%# cart_helper  %></td>
   </tr>      
 </table>
 

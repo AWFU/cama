@@ -5,6 +5,7 @@ class Orderask < ActiveRecord::Base
   validates_presence_of :description
 
   before_validation :check_attrs
+  after_create :deliver_notice
 
   def check_attrs
     self.status = "new" if self.status.blank?
@@ -17,5 +18,9 @@ class Orderask < ActiveRecord::Base
     when "done"
       "已處理"
     end
+  end
+
+  def deliver_notice
+    
   end
 end
