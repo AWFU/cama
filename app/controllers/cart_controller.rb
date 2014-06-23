@@ -23,15 +23,15 @@ class CartController < ApplicationController
     respond_to do |format|
       if(@order.save)
         if(params[:update_member_info] || params[:set_as_default_address])
-          if(params[:update_member_info])
-            current_user.username = params[:order][:buyer_name]
-            current_user.tel = params[:order][:buyer_tel]
-          end
+          # if(params[:update_member_info])
+          #   current_user.username = params[:order][:buyer_name]
+          #   current_user.tel = params[:order][:buyer_tel]
+          # end
 
           # if(params[:set_as_default_address])
           #   current_user.receiveaddress = params[:order][:receiveraddress]
           # end
-          current_user.save
+          # current_user.save
         end
 
         if(params[:add_to_addressbook])

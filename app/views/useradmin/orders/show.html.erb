@@ -1,2 +1,53 @@
-<%= @order.to_json %>
-<%= @order.orderitems.to_json %>
+<h4>訂單明細：<%= @order.ordernum %></h4>
+<h4>付款方式：<%= @order.get_payment_type %>｜訂單狀態：<%= @order.get_payment_status %></h4>
+
+<div>
+  <table style="margin-bottom: 24px;" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="64%"><h4>商品名稱</h4></td>
+      <td width="12%"><h4>單價</h4></td>
+      <td width="12%"><h4>數量</h4></td>
+      <td width="12%"><h4>訂單金額</h4></td>
+    </tr>
+
+    <% @order.orderitems.each do |item| %>
+    <tr>
+      <td><%= "#{ item.item_name }（#{ item.item_stockname }）" %></td>
+      <td><%= item.item_price %></td>
+      <td><%= item.amount %></td>
+      <td><%= item.item_price * item.amount %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th style="padding: 24px 0px; border-bottom: 1px solid; border-top: 1px dashed;" colspan="5" align="left">
+        購物小計: <%= sum_order_items(@order.orderitems) %>
+        <%# orders_helper %><br>
+        運費小計: <br>
+        訂單總計: <%= sum_order_items(@order.orderitems) %>
+        <%# orders_helper %>
+      </th>
+    </tr>
+  </table>
+</div>
+
+<%= render(partial: "/useradmin/orders/#{@order.payment_type}/#{@order.payment_status}", locals: { order: @order }) %>
+
+<%= show_orderlogs(@order.orderlogs) %>
+<%# orderlogs_helper %>
+
+<%= show_orderasks(@orderasks) %>
+<%# orderasks_helper %>
+
+<%= form_for(@orderask, :url => useradmin_orderasks_path) do |f| %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <%= f.text_area :description, :placeholder => "填寫您的問題，我們將進快與您連絡", :cols=>"40", :rows => "5" %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= f.submit "確認送出" %></td>
+  </tr>
+</table>
+<% end %>

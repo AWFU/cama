@@ -1,0 +1,18 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <th width="35%" align="left">記錄時間</th>
+  <th width="25%" align="left">訂單編號</th>
+  <th width="20%" align="center">內容</th>
+  <th width="20%" align="center">處理狀態</th>
+  </tr>
+    
+  <% @orderasks.each do |orderask| %>
+  <tr>
+    <td align="left"><%= orderask.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    <td align="left"><%= link_to orderask.order.ordernum, admin_order_path(orderask.order), :target => "_blank" %></td>
+    <td align="center"><%= orderask.description %></td>
+    <td align="center"><%= get_orderask_status(orderask) %><%# orderasks_helper %></td>
+  </tr>
+  <% end %>
+  
+</table>

@@ -19,12 +19,12 @@
   <tr>
     <td width="80%">&nbsp;</td>
     <td width="10%">購物小計</td>
-    <td width="10%" align="right">NT$ <%= get_order_price(@order_items) %><%# cart_helper  %></td>
+    <td width="10%" align="right">NT$ <%= sum_cart_items(@order_items) %><%# cart_helper  %></td>
   </tr>        
   <tr>
     <td width="80%">&nbsp;</td>
     <td width="10%">訂單總計</td>
-    <td width="10%" align="right">NT$ <%= get_order_price(@order_items) %><%# cart_helper  %></td>
+    <td width="10%" align="right">NT$ <%= sum_cart_items(@order_items) %><%# cart_helper  %></td>
   </tr>      
 </table>
 

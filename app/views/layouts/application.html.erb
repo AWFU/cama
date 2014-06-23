@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Cama Coffee</h1>
-<p><%= link_to("admin", admin_root_path) %>|<%= link_to("帳戶", user_orders_path) %></p>
+<p><%= link_to("admin", admin_root_path) %>|<%= link_to("帳戶", useradmin_orders_path) %></p>
 <p><%= link_to("產品頁", product_cates_path) %>|<%= link_to("購物車 #{ products_in_cart_count } 件", cart_index_path) %></p>
 
 <%= yield %>

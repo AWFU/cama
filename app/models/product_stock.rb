@@ -12,7 +12,7 @@ class ProductStock < ActiveRecord::Base
   def check_attrs
     self.name = "預設庫存" if self.name.blank?
     self.amount = 0 if self.amount.blank?
-    self.assign_amount = false
+    self.assign_amount = false if self.assign_amount.nil?
     return true
   end
 end

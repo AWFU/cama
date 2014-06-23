@@ -20,7 +20,11 @@ Cama::Application.routes.draw do
   end
 
   namespace :useradmin do
-    resources :orders, :only => [:index, :show]
+    resources :orders, :only => [:index, :show] do
+      member do
+        resources :orderasks, :only => [:create]
+      end
+    end
 
     root "orders#index"
   end
@@ -37,6 +41,7 @@ Cama::Application.routes.draw do
     end
 
     resources :orders, :only => [:index, :show]
+    resources :orderasks, :only => [:index, :update]
 
     root "product_cates#index"
   end

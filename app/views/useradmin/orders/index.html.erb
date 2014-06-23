@@ -3,15 +3,15 @@
   <th width="25%" align="left">訂單編號</th>
   <th width="35%" align="left">訂單時間</th>
   <th width="20%" align="center">付款方式</th>
-  <th width="20%" align="center">處理狀態</th>
+  <th width="20%" align="center">訂單狀態</th>
   </tr>
     
   <% @orders.each do |order| %>
   <tr>
-    <td align="left"><%= link_to order.ordernum, user_order_path(order) %></td>
+    <td align="left"><%= link_to order.ordernum, useradmin_order_path(order) %></td>
     <td align="left"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-    <td align="center"><%= order.payment_type %></td>
-    <td align="center"><%= order.payment_status %></td>
+    <td align="center"><%= order.get_payment_type %></td>
+    <td align="center"><%= order.get_payment_status %></td>
   </tr>
   <% end %>
   

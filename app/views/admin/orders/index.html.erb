@@ -8,10 +8,10 @@
     
   <% @orders.each do |order| %>
   <tr>
-    <td align="left"><%= link_to order.ordernum, user_order_path(order) %></td>
+    <td align="left"><%= link_to order.ordernum, admin_order_path(order) %></td>
     <td align="left"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-    <td align="center"><%= order.payment_type %></td>
-    <td align="center"><%= order.payment_status %></td>
+    <td align="center"><%= order.get_payment_type %></td>
+    <td align="center"><%= order.get_payment_status %></td>
   </tr>
   <% end %>
   
