@@ -1,4 +1,31 @@
 <%= form_for(order, :url => cart_index_path) do |f| %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td width="10%" valign="top" class="way">
+      <label for="order_payment_type_credit_card">線上信用卡轉帳</label>
+    </td>
+    <td width="5%" align="center" valign="top">
+      <%= f.radio_button :payment_type, "credit_card", :class => "radio", :checked => true %>
+    </td>
+    <td width="85%" valign="top">
+      <label for="order_payment_type_credit_card">將酌收 120 元物流費。</label>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" class="way">
+      <label for="order_payment_type_atm_transfer">匯款</label>
+    </td>
+    <td align="center" valign="top">
+      <%= f.radio_button :payment_type, "atm_transfer", :class => "radio" %>
+    </td>
+    <td valign="top" style="line-height:1.7em">
+      <label for="order_payment_type_atm_transfer">宅配一般付款，請至先匯款，將酌收 120 元物流費。<br>
+      ※ 匯款戶名：XXXXXXXX　　XX銀行-XX分行(代碼 XXX-XX)　　帳號：XXX-XXX-XXXXXXXX</label>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
 <h3>填寫您的資料</h3>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -19,6 +46,34 @@
 </table>
 <input id="update_member_info" name="update_member_info" class="checkbox" type="checkbox"><label for="update_member_info">更新為會員資料</label>
 
+<h4>發票資訊</h4>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <th width="7%" align="left">發票資訊</th>
+      <td><span>※ 依統一發票使用辦法規定：個人戶（二聯式）發票一經開立，不得任意更改為公司戶（三聯式）發票。</span></td>
+    </tr>
+    <tr>
+      <th width="7%" align="left">發票</th>
+      <td>
+        <%= f.select :invoice_type, [["二聯式", "two-copies"], ["三聯式", "three-copies"]] %>
+      </td>
+    </tr>
+    <tr class="invoice_block">
+      <th width="7%" align="left">統一編號</th>
+      <td><%= f.text_field :invoice_companynum %></td>
+    </tr>
+    <tr class="invoice_block">
+      <th width="7%" align="left">發票抬頭</th>
+      <td><%= f.text_field :invoice_title %></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="5" align="left"><span><a href="javascript:void(0);">電子發票說明</a> ，核准文號：XXXXXXXX</span></td>
+    </tr>
+  </tbody>
+</table>
+
 <h4>收件人資訊</h4>
 <input id="info_as_buyer" class="checkbox" type="checkbox"><label for="info_as_buyer">同訂購人</label>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -32,12 +87,10 @@
     <td><%= f.text_field :receiver_tel, :class => 'text' %></td>
     <td>&nbsp;</td>
   </tr>
-</table>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <th width="9%" align="left">送貨地址</th>
-    <td width="58%"><%= f.text_field :receiver_address, :class => 'text' %></td>
+    <th align="left">送貨地址</th>
+    <td><%= f.text_field :receiver_address, :class => 'text' %></td>
     <td width="33%">&nbsp;</td>
   </tr>
 
@@ -49,6 +102,7 @@
     </td>
     <td>&nbsp;</td>
   </tr>
+
   <tr>
     <td colspan="3">
       <input type="checkbox" id="agree_privacy" class="checkbox">
@@ -57,6 +111,25 @@
         茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
       </label>
     </td>
-   </tr>
- </table>
- <% end %>
+  </tr>
+</table>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#order_invoice_type").change(function(){
+    ($(this).val() == "three-copies") ? $(".invoice_block").show() : $(".invoice_block").hide();
+  });
+
+  $("#info_as_buyer").change(function(){
+    if($(this).prop('checked')){
+      $("#order_receiver_name").val($("#order_buyer_name").val());
+      $("#order_receiver_tel").val($("#order_buyer_tel").val());
+    }
+    else{
+      $("#order_receiver_name").val("");
+      $("#order_receiver_tel").val("");
+    }
+  });
+});
+</script>

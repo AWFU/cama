@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623082328) do
+ActiveRecord::Schema.define(version: 20140624044729) do
 
   create_table "orderasks", force: true do |t|
     t.integer  "order_id"
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20140623082328) do
     t.string   "payment_status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "invoice_type"
+    t.string   "invoice_companynum"
+    t.string   "invoice_title"
   end
 
   create_table "product_cates", force: true do |t|

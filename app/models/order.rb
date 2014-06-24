@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   def get_payment_type
     case(self.payment_type)
     when "atm_transfer"
-      "atm 轉帳匯款"
+      "匯款（atm 轉帳）"
     when "credit_card"
       "線上信用卡轉帳"
     end
@@ -43,7 +43,7 @@ class Order < ActiveRecord::Base
   def order_progress
     case(self.payment_type)
     when "atm_transfer" #匯款
-      ["check_paid", "wait_to_deliver", "finished"]
+      ["new", "check_paid", "wait_to_deliver", "finished"]
     when "credit_card" #信用卡轉帳
       ["new", "wait_to_deliver", "finished"]
     when "third_part" #第三方支付
