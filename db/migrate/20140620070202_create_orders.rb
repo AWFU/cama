@@ -5,11 +5,17 @@ class CreateOrders < ActiveRecord::Migration
       t.string :ordernum
       t.string :buyer_name
       t.string :buyer_tel
+
       t.string :receiver_name
       t.string :receiver_tel
       t.string :receiver_address
+
       t.string :payment_type
       t.string :payment_status
+
+      t.string :invoice_type
+      t.string :invoice_companynum
+      t.string :invoice_title
 
       t.timestamps
     end
