@@ -1,5 +1,5 @@
 class Admin::ProductCatesController < AdminController
-  before_action :set_product_cate, only: [:destroy]
+  before_action :set_product_cate, only: [:update ,:destroy]
 
   def index
     @product_cate = ProductCate.new
@@ -17,6 +17,18 @@ class Admin::ProductCatesController < AdminController
     respond_to do |format|
       format.html { redirect_to :back }
     end
+  end
+
+  def update
+    @product_cate.update_attributes(product_cate_params) if @product_cate
+
+    redirect_to :back
+  end
+
+  def destroy
+    @product_cate.destroy if @product_cate
+
+    redirect_to :back
   end
 
   private

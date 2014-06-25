@@ -1,28 +1,67 @@
 <h3>分類列表</h3>
-<a href="#">新增分類</a>
+<a href="javascript:void(0);" class="toggle_new_product_cate">新增分類</a>
 
-<table border="0" cellspacing="0" cellpadding="3">
+<table border="0" cellspacing="0" cellpadding="3" width="100%">
   <% @product_cates.each do |product_cate| %>
-  <tr>
-    <td>
+  <tr class="show_product_cate_<%= product_cate.id %>">
+    <td width="10%">
       <%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
     </td>
     <td>
-      <a href="#" class="edit" title="編輯">編輯</a>
-      <a href="#" class="delete" title="刪除">刪除</a>
+      <%= link_to "編輯", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit" %>
+      <%= link_to "刪除", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete" %>
     </td>
+  </tr>
+  <tr class="edit_product_cate_<%= product_cate.id %>" style="display:none;">
+    <%= form_for(product_cate, :url => admin_product_cate_path(product_cate) ) do |f| %>
+    <td width="10%">
+      <%= f.text_field(:name) %>
+    </td>
+    <td>
+      <%= f.submit "儲存" %>
+      <%= link_to "取消", :data => { :id => product_cate.id }, :class => "cancel" %>
+    </td>
+    <% end %>
   </tr>
   <% end %>
   
-  <tr class="list-edit">
+  <tr class="list-new" style="display:none;">
     <%= form_for(@product_cate, :url => admin_product_cates_path) do |f| %>
     <td>
       <%= f.text_field :name, :placeholder => "分類名稱" %>
     </td>
-    <td align="right">
+    <td>
       <%= f.submit "儲存" %>
-      <a title="取消" href="#">取消</a>
+      <%= link_to("取消", "javascript:void(0);", :class => "toggle_new_product_cate") %>
     </td>
     <% end %>
   </tr>
 </table>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".toggle_new_product_cate").click(function(){
+    $(".list-new").toggle();
+  });
+
+  $(".edit").click(function(){
+    $active_id = $(this).data("id");
+    if($("tr[class^=edit_product_cate]:visible").length > 0){
+      alert("請先完成編輯中的產品分類");
+    }
+    else{
+      toggle_edit_area($active_id);
+    }
+  });
+
+  $(".cancel").click(function(){
+    $active_id = $(this).data("id");
+    toggle_edit_area($active_id);
+  });
+
+  function toggle_edit_area(active_id){
+    $("tr.edit_product_cate_" + active_id).toggle();
+    $("tr.show_product_cate_" + active_id).toggle();
+  }
+});
+</script>
