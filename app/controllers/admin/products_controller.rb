@@ -18,11 +18,11 @@ class Admin::ProductsController < AdminController
   end
 
   def edit
-    
+    @product.update_attributes({:status => "disable"})
   end
 
   def update
-    @product.update(product_params)
+    @product.update(product_params.merge({:status => "enable"}))
     
     respond_to do |format|
       format.html { redirect_to admin_product_cate_product_path(@product.product_cate_id, @product) }
