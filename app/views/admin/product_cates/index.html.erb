@@ -25,7 +25,7 @@
   </tr>
   <% end %>
   
-  <tr class="list-new" style="display:none;">
+  <tr class="list-new edit_product_cate" style="display:none;">
     <%= form_for(@product_cate, :url => admin_product_cates_path) do |f| %>
     <td>
       <%= f.text_field :name, :placeholder => "分類名稱" %>
@@ -41,12 +41,18 @@
 <script type="text/javascript">
 $(document).ready(function(){
   $(".toggle_new_product_cate").click(function(){
-    $(".list-new").toggle();
+    $active_id = $(this).data("id");
+    if($("tr[class*=edit_product_cate]:visible").length > 0){
+      alert("請先完成編輯中的產品分類");
+    }
+    else{
+      $(".list-new").toggle();
+    }
   });
 
   $(".edit").click(function(){
     $active_id = $(this).data("id");
-    if($("tr[class^=edit_product_cate]:visible").length > 0){
+    if($("tr[class*=edit_product_cate]:visible").length > 0){
       alert("請先完成編輯中的產品分類");
     }
     else{

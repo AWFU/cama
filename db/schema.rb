@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624044729) do
+ActiveRecord::Schema.define(version: 20140630030725) do
+
+  create_table "addressbooks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "orderasks", force: true do |t|
     t.integer  "order_id"
@@ -101,6 +109,7 @@ ActiveRecord::Schema.define(version: 20140624044729) do
     t.string   "tel"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address_to_receive"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

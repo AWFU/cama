@@ -1,0 +1,22 @@
+<h3>send order info</h3>
+<%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale42.htm", :id => "send_to_esun") do %>
+特店代碼：<%= text_field_tag :MID, get_esun_MID %><br>
+
+子特店代碼：<%= text_field_tag :CID, "" %> 空白<br>
+
+終端機代號：<%= text_field_tag :TID, "EC000001" %> EC000001(一般交易)、EC000002(分期)<br>
+
+訂單編號：<%= text_field_tag :ONO, @order.ordernum %>由特約商店產生,不可重複,不可包含【_】字元,且英數限用大寫<br>
+
+交易金額：<%= text_field_tag :TA, ( @order_total = sum_order_items(@order.orderitems)+get_shipping_fee) %><br>
+
+回傳 URL：<%= text_field_tag :U, receive_result_cart_index_url %> 由特約商店提供銀行端回傳授權結果 所需使用的 URL, 不可包含【#】、 【?】及【&】字元<br>
+
+押碼：<%= text_field_tag :M, get_esun_key(@order.ordernum, @order_total) %> 押碼<br>
+<% end %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#send_to_esun").submit();
+});
+</script>

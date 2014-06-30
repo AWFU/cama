@@ -18,4 +18,10 @@ module StocksHelper
 
     return @stock_options.html_safe
   end
+
+  def show_stock_amount(stock)
+    if(stock.assign_amount)
+      return " / 庫存數量：#{stock.amount}"
+    end    
+  end
 end

@@ -1,10 +1,13 @@
 #encoding: utf-8
 class CartController < ApplicationController
   require "cart"
+  include CartHelper
+  include OrdersHelper
+
   layout "cart"
   
   before_action :record_login_redirect_path, :only => [:check]
-  before_action :authenticate_user!, :only => [:check, :create]
+  before_action :authenticate_user!, :only => [:check, :create, :post_order]
 
   def index
     @order_items = Cart.check_items_in_cart(cookies[:cart_cama], "for_cart")
@@ -22,31 +25,33 @@ class CartController < ApplicationController
 
     respond_to do |format|
       if(@order.save)
-        if(params[:update_member_info] || params[:set_as_default_address])
-          # if(params[:update_member_info])
-          #   current_user.username = params[:order][:buyer_name]
-          #   current_user.tel = params[:order][:buyer_tel]
-          # end
-
-          # if(params[:set_as_default_address])
-          #   current_user.receiveaddress = params[:order][:receiveraddress]
-          # end
-          # current_user.save
-        end
-
-        if(params[:add_to_addressbook])
-          # @addressbook = current_user.addressbooks.new
-          # @addressbook.address = params[:order][:receiveraddress]
-          # @addressbook.save
-        end
-
+        User.update_info_on_order_create(current_user, params)
         Orderitem.record_orderitems(@order, cookies[:cart_cama])
 
-        format.html { redirect_to finish_cart_index_path }
+        if(params[:order][:payment_type] == "credit_card")
+          format.html { redirect_to post_order_cart_index_path(@order) }
+        else
+          format.html { redirect_to finish_cart_index_path }
+        end
       else
         format.html { render action: "check"}
       end
     end
+  end
+
+  def post_order
+    @order = current_user.orders.includes(:orderitems).find_by_id(params[:id])
+  end
+
+  def receive_result
+    @order = Order.includes(:orderitems).find_by_ordernum(params[:ONO])
+    @ordersum = sum_order_items(@order.orderitems) + get_shipping_fee
+
+    if(params[:RC] == "00" && params[:M] == get_esun_key(@order.ordernum, @ordersum))
+      @order.update_progress
+    end
+
+    redirect_to finish_cart_index_path
   end
 
   def finish

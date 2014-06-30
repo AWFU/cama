@@ -9,6 +9,11 @@ Cama::Application.routes.draw do
   resources :cart, :only => [:index, :create] do
     collection do
       get "check", "finish"
+      
+      #金流串接
+      get "post_order/:id" => "cart#post_order", :as => "post_order"
+      get "receive_result" => "cart#receive_result"
+
       match "add" => "cart#add" , :via => :post
     end
 
@@ -42,6 +47,7 @@ Cama::Application.routes.draw do
 
     resources :orders, :only => [:index, :show]
     resources :orderasks, :only => [:index, :update]
+    resources :users, :only => [:index]
 
     root "product_cates#index"
   end

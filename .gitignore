@@ -20,3 +20,5 @@
 
 /public/uploads
 /public/assets/*
+
+/app/helpers/esun_helper.rb

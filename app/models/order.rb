@@ -55,6 +55,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def update_progress
+    @new_status_index = self.order_progress.index(self.payment_status) + 1
+    self.payment_status = self.order_progress.at(@new_status_index)
+    self.save
+  end
+
   def deliver_order_notice
   end
 end
