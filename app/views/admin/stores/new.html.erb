@@ -1,0 +1,78 @@
+<header>
+  <h2 class="left">門市資訊<span>/ 分店管理</span></h2>
+  <nav class="left">
+    <a href="javascript:void(0);" class="active">簡介</a>
+    <%# link_to "照片", storephoto_upload_admin_store_path(@store)%>
+  </nav>
+</header>
+<article>
+  <div class="form">
+    <%= form_for @store, :url => admin_stores_path(@store), html: { id: "create_this_store",method: "post"} do |f| %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7%">門市：</td>
+        <td width="42%"><%= f.text_field :name , class: "text" %></td>
+        <td width="2%"></td>
+        <td width="7%">電話：</td>
+        <td width="42%"><%= f.text_field :phone , class: "text" %></td>
+      </tr>
+      <tr>
+        <td valign="top" style="padding:13px 0 0 0">地址：</td>
+        <td colspan="4">
+            <%= f.select :country, options_for_select(@countries.collect { |country|
+        [country.name, country.id] }, 1), {}, { id: 'countries_select', style: "width:14%" } %>
+            <%= f.select :city, options_for_select(@cities.collect { |city|
+              [city.name, city.id] }, 1), {}, { id: 'cities_select', style: "width:14%" } %>
+            <%= f.select :district, options_for_select(@districts.collect { |district|
+              [district.name, district.id] }, 0), {}, { id: 'districts_select' , style: "width:14%"} %>
+
+          <%# f.hidden_field :country , value: 1 %>   
+
+          <%# f.select :city, options_for_select(@cities.collect { |city|
+            [city.name, city.id] }, @store.city), {}, { id: 'cities_select', style: "width:14%" } %>
+          <%# f.select :district, options_for_select(@districts.collect { |district|
+            [district.name, district.id] }, @store.district), {}, { id: 'districts_select', style: "width:14%" } %><br>
+            <%= f.text_field :address ,class: "text", placeholder:"請輸入完整地址"%>
+          </td>
+      </tr>
+      <tr>
+        <td>時間：</td>
+        <td colspan="4"><%= f.text_field :ophour,class: "text" %></td>
+      </tr>
+      <tr>
+        <td>標籤：</td>
+        <td colspan="4">
+          <%= f.text_field :service_list, id: "service_item_field" , class: "text" %>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">簡介：</td>
+        <td colspan="4"><%= f.text_area :intro, name: "", cols: "", rows:"" %> </td>
+      </tr>
+      <tr>
+        <td>地圖：</td>
+        <td colspan="4"><%= f.text_field :latlng,class: "text" %> </td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+  <!--form-->
+
+  <div class="button"> 
+    <%= link_to image_tag("/images/admin/left.png")+"返回", admin_stores_path(), class: "left" %>
+    <a href="javascript: document.getElementById('create_this_store').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+  </div>
+  
+</article>
+
+<script type="text/javascript">
+
+$("#service_item_field").select2({
+
+    tags: <%= Service.all.map { |service|
+    service.name }.to_s.html_safe %>,
+    tokenSeparators: [",", " "]
+});
+
+</script>
+

@@ -54,3 +54,36 @@ gem 'mini_magick'
 gem 'carrierwave'
 
 gem 'devise'
+#after bundle: rails g rails_admin:install
+gem 'rails_admin'
+gem 'acts-as-taggable-on'
+gem 'haml'
+gem "select2-rails"
+
+gem "aasm"
+
+gem "rails-alertify"
+gem 'kaminari'
+gem 'wisper'
+
+gem 'recaptcha', :require => "recaptcha/rails"
+
+gem 'friendly_id', '~> 5.0.0'
+gem 'babosa'
+
+gem 'mailgun_rails'
+#work with devise
+gem 'cancan'
+gem 'rolify'
+
+gem 'whenever', :require => false
+
+group :development do
+  gem 'thin'
+  gem 'meta_request'
+  gem 'faker'
+  gem 'populator'
+  gem 'brakeman', :require => false
+end
+
+

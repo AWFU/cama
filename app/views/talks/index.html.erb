@@ -1,0 +1,59 @@
+<link href="/css/talk.css" rel="stylesheet">
+
+<% content_for :header do %>
+  <div id="banner">
+    <div class="container row">
+      <div class="col-md-3 col-md-offset-9 col-sm-12">談咖啡</div>
+    </div>
+  </div>
+<% end %>
+
+<article class="container-fluid">
+  <section class="row container" id="talk-list">
+    <div class="col-md-10 col-md-offset-1 col-sm-12 row">
+      <div id="left-content" class="col-sm-9">
+        <% @talks.each do |talk| %>
+          <div class="content">
+            <div class="title">
+              <h3><%= talk.title %></h3>
+              <span>作者 cama 著 ‧ <%= talk.created_at.strftime("%Y/%m/%d")%></span> </div>
+            <div class="cover"> 
+              <% if talk.galleries.first %>
+              
+                <image src=<%= "#{talk.galleries.first.attachment.url}" %> class="img-responsive" /> 
+                
+              <% end %>
+            </div>
+            <div class="text">
+              <div class="tags">
+              
+                <% talk.camatalks.each do |tag| %>
+                  <%= link_to tag.name , about_talks_path(tag.name)%><span>/</span>
+                <% end %>
+                
+              </div>
+              <h4><%= talk.subtitle %></h4>
+              <article>
+              <p><%= talk.article.get_meta.first(60) if talk.article.get_meta.length > 0 %></p>
+              </article>
+                <%= link_to "看更多", talk_path(talk), class: "more" %>
+            </div>
+          </div><!--content-->
+        <% end %>
+
+        <div class="page">
+          <%= paginate @talks ,:window => 2, :theme => 'announcement_index' %>
+        </div>
+        <!--page--> 
+      </div>
+      <!--left-content-->
+      <div id="right-tag" class="col-sm-3 col-sm-offset-0">
+        <h5>cama 記事分類</h5>
+        <% Talk.tag_counts_on(:camatalks).each do |tag| %>
+          <%= link_to tag.name, about_talks_path(tag.name) %>
+        <% end %>
+      </div>
+      <!--right-tag--> 
+    </div>
+  </section>
+</article>

@@ -1,0 +1,144 @@
+<header>
+<h2 class="left">商品管理</h2>
+
+<nav class="left">
+    <%= link_to "簡介", basic_info_admin_product_cate_product_path(@product_cate, @product), class: "active"%>
+    <%= link_to "照片", productphoto_upload_admin_product_cate_product_path(@product_cate, @product)%>
+    <%= link_to "風味", taste_attributes_admin_product_cate_product_path(@product_cate, @product)%>
+    <%= link_to "其他", free_paragraph_admin_product_cate_product_path(@product_cate, @product)%>
+    <%= link_to "庫存", admin_product_cate_product_stocks_path(@product_cate, @product) %>
+</nav>
+
+</header>
+<article>
+<div class="hgroup">
+<%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product), html: { id: "patchthisproduct" } ) do |f| %>
+        <div class="right">
+        <!-- 顯示  --><%# f.check_box :status, { class: 'checkbox'  }, "enable", "disable" %>
+        &nbsp;&nbsp;磨豆 <%= f.check_box :grindable, { class: 'checkbox'  }, 1, 0 %>
+        <!-- id=product_grindable -->
+        </div>
+
+        </div>        
+        <div class="form">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="7%">名稱：</td>
+              <td width="93%">
+                <%= f.text_field :name, class:"text", placeholder:"輸入商品名稱" %>
+              </td>
+            </tr>            
+          </table>
+        </div><!--form-->
+        <div class="form">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="7%">特色1：</td>
+              <td width="41%">
+                <%= f.text_field :kp_1, class: "text" %>
+              </td>
+              <td width="2%"></td>
+              <td width="7%">特色2：</td>
+              <td width="41%">
+                <%= f.text_field :kp_2, class: "text" %>
+              </td>
+            </tr>  
+            <tr>
+              <td>特色3：</td>
+              <td>
+                <%= f.text_field :kp_3, class: "text" %>
+              </td>
+              <td></td>
+              <td>特色4：</td>
+              <td>
+                <%= f.text_field :kp_4, class: "text" %>
+              </td>
+            </tr>
+            <tr>
+              <td>特色5：</td>
+              <td>
+                <%= f.text_field :kp_5, class: "text" %>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>            
+          </table>
+        </div><!--form-->
+        <div class="form">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="7%">售價：</td>
+              <td width="41%"><%= f.text_field :price, class: 'text' %></td>
+              <td width="2%"></td>
+              <td width="7%">促銷：</td>
+              <td width="41%"><%= f.text_field :price_for_sale, class: 'text' %></td>           
+            </tr>  
+            <tr>
+              <td>單位：</td>
+              <td><%= f.text_field :unit, class: 'text' %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>            
+          </table>
+        </div><!--form-->       
+        <div class="form" id="grind_level_container">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="7%">磨豆1：</td>
+              <td width="41%"><%= f.text_field :gl_1, class: "text" %></td>
+              <td width="2%"></td>
+              <td width="7%">磨豆2：</td>
+              <td width="41%"><%= f.text_field :gl_2, class: "text" %></td>           
+            </tr>  
+            <tr>
+                <td>磨豆3：</td>
+              <td><%= f.text_field :gl_3, class: "text" %></td>
+              <td></td>
+              <td>磨豆4：</td>
+              <td><%= f.text_field :gl_4, class: "text" %></td>
+            </tr>
+            <tr>
+                <td>磨豆5：</td>
+              <td><%= f.text_field :gl_5, class: "text" %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>            
+          </table>
+        </div><!--form-->
+        <div class="form">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="7%" valign="top">簡介：</td>
+              <td width="93%"><%= f.text_area :intro %></td>
+              <%= fields_for @product.article do | a | %>
+                <%= a.hidden_field :content, {:id => 'product_content'} %>
+              <% end %>
+            </tr>            
+          </table>
+        </div><!--form-->
+    <% end %>
+
+    <div class="button"> 
+        <%= link_to image_tag("/images/admin/left.png")+"返回", admin_product_cate_path(@product.product_cate), class: "left" %>
+        <a href="javascript: document.getElementById('patchthisproduct').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+    </div>
+
+</article>
+
+
+
+<script type="text/javascript">
+ $( document ).ready(function() {
+    
+    $("#product_grindable").change(function(){
+      if($(this).is(':checked')){
+        $('#grind_level_container').show();
+      } else {
+        $('#grind_level_container').hide();
+    }
+});
+ });
+</script>

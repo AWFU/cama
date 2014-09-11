@@ -1,0 +1,63 @@
+<link href="/css/store.css" rel="stylesheet">
+
+<% content_for :header do %>
+  <div id="banner">
+    <div class="container row">
+      <div class="col-md-8 col-md-offset-2 col-sm-12">分店查詢</div>
+    </div>
+  </div>
+<% end %>
+
+<article class="container-fluid" id="store-list">
+  <div class="container row">
+    <div class="col-md-8 col-md-offset-2 col-sm-12" id="content">
+      <%= form_tag({controller: "stores", action: "search"}, method: "get", remote: true) do %>
+        <div id="search" class="row">
+            <div class="col-sm-3 hidden-xs"><img src="images/sto-02.png"> 搜尋條件：</div>
+            <div class="col-sm-3">
+              <%= select_tag :country, options_from_collection_for_select(@countries ,
+              "id", "name" ) , id: 'countries_select', class: "form-control" %>
+            </div>
+            <div class="col-sm-3">
+               <%= select_tag :city, options_from_collection_for_select(@cities ,
+          "id", "name" ) , id: 'cities_select', class: "form-control" %>
+            </div>
+            <div class="col-sm-3">
+               <%= select_tag :district, options_from_collection_for_select(@districts ,
+          "id", "name" ) , id: 'districts_select', class: "form-control" %>
+            </div>
+        </div>
+        <!--search-->
+        <div class="tag">
+          <ul class="clearfix">
+            <% @services.each do |service| %>
+              <li class="clearfix pull-left">
+                <% if service.galleries.where("type='ServiceIconGallery'").count > 0 %>
+                  <%= image_tag service.galleries.where("type = 'ServiceIconGallery'").first.attachment.url, class: "pull-left" %>
+                <% else %>
+                  <img class="pull-left" src="/images/admin/explain.png">
+                <% end %>
+                <!-- <img src="sample/sample8.jpg" > -->
+                <span class="pull-left">
+                  <%= label_tag "service_#{service.id}" , service.name %>
+                </span>
+                <%= check_box_tag "look_for_services[]", service.id, false, :id => "service_#{service.id}", class: "pull-right" %>   
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!--tag-->
+        <div id="submit" class="row">
+          <div class="col-sm-4 col-sm-offset-4"> 
+            <%= submit_tag("查詢",class: "btn btn-block btn-lg" )  %>
+            <!-- <a class="btn btn-block btn-lg" role="button">查詢</a>  -->
+          </div>          
+        </div><!--submit-->
+       <% end %>     
+
+
+       <div id="result"></div>
+       <!--result--> 
+    </div>
+  </div>
+</article>

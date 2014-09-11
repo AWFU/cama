@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <p>親愛的會員 <%= @order.buyer_name%>，您好：</p>
+
+  <p>感謝您對cama的支持，您的訂單已取消，訂單編號：<%= @order.ordernum%>。</p>
+
+  <%= render "cama_mailer/footer" %>
+</body>
+</html>

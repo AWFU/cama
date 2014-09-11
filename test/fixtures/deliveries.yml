@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  tracking_url: MyString
+  fee_per_item: 1
+
+two:
+  name: MyString
+  tracking_url: MyString
+  fee_per_item: 1

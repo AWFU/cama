@@ -1,0 +1,14 @@
+Store show<br>
+
+
+<%= @store.name %><br>
+<%= @store.intro %><br>
+<%= @store.phone %><br>
+<%= @store.address %><br>
+<%= @store.country %> <%= @store.city %> <%= @store.district %><br>
+<%= @store.ophour %><br>
+<%= @store.latlng.html_safe %><br>
+<%= @store.location_list %><br>
+
+<br><br><br><br>
+<%= link_to "GO BACK", admin_stores_path %>

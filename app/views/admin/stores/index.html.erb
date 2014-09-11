@@ -1,0 +1,32 @@
+<header>
+  <h2 class="left">門市資訊<span>/ 分店管理</span></h2>
+</header>
+<article>
+  <div class="button">
+    <%= link_to new_admin_store_path(), :method => :get,class: "right highlight"  do %>
+      新增門市<img src="/images/admin/add.png">
+    <% end %>
+  </div>
+  <div class="list">
+  <%#sortable "name", "店名" %>  <%# sortable "city" , "城市" %>  <%# sortable "address" , "地址" %>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <% @stores.each do |store| %>
+      <tr>
+        <td width="70%">
+          <%= link_to "#{store.name}", store_path(store), target: '_blank' %>
+        </td>
+        <td width="18%"><%= City.find(store.city).name %> / <%= District.find(store.district).name %></td>
+        <td width="12%">
+          <div class="tool">
+            <%= link_to "", edit_admin_store_path(store), class: "edit" %>
+            <%= link_to "", admin_store_path(store), :data => { :confirm => "將會刪除此門市，確定繼續？" }, :method => :delete, :class => "delete", title: "刪除" %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class= "page">
+    <%= paginate @stores ,:window => 2 %>
+  </div>
+</article>

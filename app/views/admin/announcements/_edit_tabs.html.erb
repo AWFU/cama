@@ -1,0 +1,7 @@
+<%= link_to "封面上傳", announcementphoto_upload_admin_announcement_path(@announcement)%>|
+
+<% if @announcement.type == "PeditorAnnouncement" %>
+  <%= link_to "文章編輯", edit_admin_announcement_path(@announcement)%>
+<% elsif @announcement.type == "CustomizedAnnouncement" %>
+  <%= link_to "文章編輯", custom_edit_admin_announcement_path(@announcement)%>
+<% end %>

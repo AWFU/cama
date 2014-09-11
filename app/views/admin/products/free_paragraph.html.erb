@@ -1,0 +1,66 @@
+<script src="/js_plugins/colorbox/jquery.colorbox-min.js"></script>
+
+<script src="/js_plugins/peditor/js/editor.js"></script>
+<script src="/js_plugins/peditor/js/editor_p.js"></script>
+<script src="/js_plugins/peditor/js/editor_img.js"></script>
+<script src="/js_plugins/peditor/js/editor_list.js"></script>
+<script src="/js_plugins/peditor/js/editor_video.js"></script>
+<script src="/js_plugins/peditor/js/jquery.imgareaselect.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/js_plugins/peditor/css/imgareaselect-default.css" />
+<link rel="stylesheet" type="text/css" href="/js_plugins/colorbox/colorbox.css" />      
+
+<header>
+  <h2 class="left">商品管理</h2>
+  <nav class="left">
+    <%= link_to "簡介", basic_info_admin_product_cate_product_path(@product_cate, @product) %>
+    <%= link_to "照片", productphoto_upload_admin_product_cate_product_path(@product_cate, @product) %>
+    <%= link_to "風味", taste_attributes_admin_product_cate_product_path(@product_cate, @product)%>
+    <%= link_to "其他", free_paragraph_admin_product_cate_product_path(@product_cate, @product), class: "active"%>
+    <%= link_to "庫存", admin_product_cate_product_stocks_path(@product_cate, @product) %>
+  </nav>
+</header>
+<article data-no-turbolink>
+
+  <%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product), html: { id: "patchthisproduct" } ) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= fields_for @product.article do | a | %>
+      <%= a.hidden_field :content, {:id => 'product_content'} %>
+    <% end %>
+  <% end %>
+
+  <%= render  'admin/peditor/editor' %>
+
+  <div class="button"> 
+    <%= link_to image_tag("/images/admin/left.png")+"返回", admin_product_cate_path(@product.product_cate), class: "left" %>
+    <a href="javascript: document.getElementById('patchthisproduct').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+  </div>
+
+</article>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    editor.init({articleModel: "product", photoUpload: 'peditor/<%= @product.article.id %>/createPhoto', p_selectList: ["paragraphFontClass"],linkedp: true});
+
+    $("#submit").click(function(e){
+      e.preventDefault();
+
+      if(!editor.isPostNotSent()){
+        $("#edit_article_<%= @product.article.id %>").submit();
+        $('.file').removeClass('success');  
+      }
+      else{
+        editor.alert("段落編輯尚未完成。", "error");
+      }
+    
+      // $('#articleContent').bind('peditor_updated', function() {
+      //   $('#main').height('inherit')
+      //   console.log('a')
+      // });
+    
+    });
+
+});
+
+</script>

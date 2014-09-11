@@ -1,0 +1,17 @@
+<% if stores.length > 0 %>
+ 查詢結果：
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="30%" align="center">店名</td>
+      <td width="70%" align="center">資訊</td>
+    </tr>
+    <% stores.each do |store|%>
+      <tr>
+        <td align="center"><%= link_to store.name , store_path(store), target: "_blank" %></td>
+        <td><%= store.address %>  <%= store.phone %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  利用此條件 查無分店 請重新查詢
+<% end %>

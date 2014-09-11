@@ -1,15 +1,180 @@
-<ul>
-<% @product_cates.each do |product_cate| %>
+<link href="/css/product.css" rel="stylesheet">
+
+<!-- bxSlider CSS file -->
+<!-- <link href="/js_plugins/bxslider/jquery.bxslider.css" rel="stylesheet" /> -->
+<!-- <ul> -->
+<%# @product_cates.each do |product_cate| %>
 <%# products_helper %>
-<%= show_product_cate(@product_cate, product_cate) %>
-<% end %>
-</ul>
+<%# show_product_cate(@product_cate, product_cate) %>
+<%# end %>
+<!-- </ul> -->
 
-<div>
-  名稱：<%= @product.name %><br>
-  價格：<%= @product.price %><br>
-  <%= show_price_for_sale(@product.price_for_sale) %>
-  <%# products_helper %>
-</div>
+<article class="container-fluid">
+  
+  <div class="container">
+    <section class="row" id="product-show">
+      
+      <%= render 'aside_desktop' %>
+      
+      <article class="col-sm-9 col-xs-12">
 
-<%= render partial: "add_to_cart", :locals => { stocks: @product.product_stocks } %>
+        <%= render 'aside_mobile' %>
+
+        <%= cookies[:cart_cama] %><br>
+        <%= cookies[:cart_cafe_attrs] %><br>
+        
+        <div class="row">
+          <div class="sliderContainer col-sm-4">
+            <!-- <span id="slider-prev"></span>  Product slider  <span id="slider-next"></span> -->
+            <div id="photo" class="text-center">
+              <ul class="bxslider-1">
+                <% @product.galleries.each do |attach| %>
+                    <li>
+                      <image src=<%= "#{attach.attachment.url}" %> class="img-responsive"/>
+                   </li>
+                <% end %>
+              </ul>
+            </div>
+              
+            <ul id="bx-pager" class="bxslider-2" id="thumb">
+            <% @product.galleries.each_with_index do |attach, index| %>
+              <li>
+                <a data-slide-index="<%= "#{index}" %>" href="">
+                  <image height="auto" src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
+                </a>
+              </li>
+            <% end %>
+            </ul>
+           
+          </div>
+
+          <div class="col-sm-8">
+            <h3><%= @product.name %></h3>
+            
+            <% unless @product.keypoints.to_hash.length == 0 %>
+              <ul id="features">
+                <%= show_keypoints(@product.keypoints) %>
+              </ul>
+            <% end %>
+          
+            
+            <% if @product.product_stocks.first.amount - @amount_in_cart > 0 && @product.product_stocks.first.assign_amount == true %>
+              <%= render partial: "add_to_cart", :locals => { stocks: @product.product_stocks, amount_in_cart: @amount_in_cart } %>
+            <% elsif @product.product_stocks.first.assign_amount == false %>
+              <%= render partial: "add_to_cart", :locals => { stocks: @product.product_stocks, amount_in_cart: @amount_in_cart } %>
+            <% else %>
+              <h3>已售完</h3>
+            <% end %>
+            
+          </div>
+        </div>
+        <div id="intro">
+          <%= simple_format( @product.intro )%>
+        </div>
+        <!--intro-->
+        <div id="chart" class="row">
+          <div class="col-sm-offset-2 col-sm-4 text-center">
+            <% @product.galleries.select{ |v| v['type'] == "TasteAttributeGallery" }.each do |attach| %>
+                <image src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
+            <% end %>
+          </div>
+          <div class="col-sm-4">
+            <% unless @product.taste_attributes.to_hash.length == 0 %>
+              <%= show_taste_sttributes(@product.taste_attributes) %>
+            <% end %>
+          </div>
+        </div>
+        <!--chart-->
+        <!-- <div id="gallery">  -->
+          
+        <!-- </div> -->
+
+        <div class="content"  id="articleContent"></div>    
+        <input id="article_content" style="display:none;" type="text" value="<%= @product.article.content %>">
+        <!--gallery-->
+        <%# unless soldout  %>
+        <!-- <div id="buy-2" class="buy row">
+          <div class="col-sm-offset-3 col-sm-6 col-xs-offset-2 col-xs-8"> 
+            <a href="javascript: document.getElementById('add_to_cart_form').submit();" class="btn btn-block btn-lg" role="button" data-no-turbolink = true >我要購買</a>
+          </div>
+        </div> -->
+        <%# end %>
+        <% if @product.product_stocks.first.amount - @amount_in_cart > 0 && @product.product_stocks.first.assign_amount == true %>
+          <%= render partial: "quick_check_out", :locals => { stocks: @product.product_stocks, amount_in_cart: @amount_in_cart } %>
+        <% elsif @product.product_stocks.first.assign_amount == false %>
+          <%= render partial: "quick_check_out", :locals => { stocks: @product.product_stocks, amount_in_cart: @amount_in_cart } %>
+        <% else %>
+          <h3>已售完</h3>
+        <% end %>
+       
+      </article>
+      
+    </section>
+  </div>
+</article>
+
+<script src="/js_plugins/peditor/js/editor.js"></script>
+<script src="/js_plugins/peditor/js/editor_p.js"></script>
+<script src="/js_plugins/peditor/js/editor_img.js"></script>
+<script src="/js_plugins/peditor/js/editor_list.js"></script>
+<script src="/js_plugins/peditor/js/editor_video.js"></script>
+<script src="/js_plugins/peditor/js/jquery.imgareaselect.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="/js_plugins/bxslider/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/js_plugins/peditor/css/imgareaselect-default.css" />
+<script type="text/javascript">
+
+    editor.output();
+
+    $('.bxslider-1').bxSlider({
+      slideWidth: $('.sliderContainer').width(),
+      pagerCustom: '#bx-pager',
+      nextSelector: '#slider-next',
+      prevSelector: '#slider-prev',
+      nextText: 'Onward →',
+      prevText: '← Go back'
+    });  
+
+    $('.bxslider-2').bxSlider({
+      // randomStart:true,
+      // pager:false,
+      // slideWidth: 85,   
+      // minSlides: 3,
+      // maxSlides: 3,
+      // slideMargin: 5
+
+      pager: false,
+      minSlides: 1,
+      maxSlides: 3,
+      slideWidth: $('.sliderContainer').width()/3,
+      slideMargin: 10
+    });  
+    
+    $(function(){ 
+      var _showTab = 0;
+      var $defaultLi = $('.tab li').eq(_showTab).addClass('active');
+      $($defaultLi.find('a').attr('href')).siblings().hide();
+      $('.tab li').click(function() {   
+        var $this = $(this),
+          _clickTab = $this.find('a').attr('href');   
+        $this.addClass('active').siblings('.active').removeClass('active');   
+        $(_clickTab).stop(false, true).fadeIn().siblings().hide(); 
+        return false;
+        }).find('a').focus(function(){
+          this.blur();
+      });
+    });
+
+    $(function(){ 
+      $("#grind select").hide()
+      $("#grind input").click(function(){
+        if( $(this).is(":checked") ){
+          $("#grind select").show()
+        }
+        else{
+          $("#grind select").hide()
+        }
+      });
+    })    
+
+</script>

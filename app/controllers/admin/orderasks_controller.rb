@@ -1,6 +1,12 @@
 class Admin::OrderasksController < AdminController
+  authorize_resource
+  
   def index
-    @orderasks = Orderask.includes(:order).all
+    @orderasks = Orderask.new_asks.includes(:order).page(params[:page])
+  end
+
+  def history
+    @orderasks = Orderask.history_asks.includes(:order).page(params[:page])
   end
 
   def update

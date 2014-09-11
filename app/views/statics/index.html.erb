@@ -1,1 +1,153 @@
-<p>Find me in app/views/statics/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="專業、親切，享受。精心挑選高品質咖啡豆，每日現烘，以平易的價格，提供顧客最新鮮香醇的好味道。cama代表的不僅是理念，也是我們一向以來的堅持與準則。">
+  <meta name="keywords" content="咖啡,coffee,cafe,cama,咖啡豆,精品咖啡,新鮮,烘培,單品,產地,加盟,耳掛,拿鐵,fresh,specialty coffee,green bean,roaster,daily,latte,franchise">
+
+  <title>cama 現烘咖啡專門店 -[cama café]</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <!-- Bootstrap -->
+  <link href="/css/reset.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/jquery.bxslider.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+   <script>
+    window.onload= function() {
+    <% if !flash[:notice].nil? %>
+     alertify['success']('<%= flash[:notice] %>', 2000);
+    <% end %>
+    
+    <% if !flash[:warning].nil? %>
+    alertify['error']("<%= flash[:warning].html_safe %>", 2000); 
+    <% end %>
+  }
+  </script>
+  
+</head>
+<body>
+
+  <%= render 'layouts/index_header' %>
+  
+  <article class="container-fluid">
+    <div class="container">
+      <section id="news">
+        <header class="row">
+          <div class="col-sm-6">
+            <h3>最新消息</h3>
+          </div>
+          <div class="col-sm-3 hidden-xs more text-right">
+            <%= link_to announcements_path do %>
+              <img src="images/idx-04.png">
+            <% end %>
+          </div>
+        </header>
+
+        <article class="row">
+          <% @announcements.each do |announcement| %>
+            <div class="col-sm-3"> 
+              <%= link_to announcement_path(announcement) do %>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+                  <tr>
+                    <td colspan="2" class="hidden-xs">
+                      <% announcement_cover_url = announcement.galleries.first.attachment.url %>
+                      <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="date hidden-xs">
+                      <b><%= announcement.created_at.strftime("%d")%></b><br>
+                      <%= announcement.created_at.strftime("%-m月")%>
+                    </td>
+                    <td class="title"><%= announcement.title %></td>
+                  </tr>
+                </table>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="col-sm-3 hidden-xs link">
+            <%= link_to stores_path do %>
+            <% end %>
+          </div>
+          
+        </article>
+      </section>
+      
+      <section id="rcm">
+        <h3>cama 經典推薦</h3>
+        <article class="row">
+          <% @recommended_products.each do | selected_product | %>
+            <div class="col-sm-4 clearfix">
+              <div class="pull-right">
+              <% rcm_product = Product.find(selected_product.related_product_id) %>
+                <p><span>●</span><b><%= rcm_product.name %></b><span>●</span><br><%= selected_product.description%>
+                </p>
+              </div>
+              <div class="pull-left"> 
+                <%= link_to( image_tag(rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.attachment.url, class: "img-responsive"), category_product_path(rcm_product.product_cate, rcm_product) ) unless selected_product.related_product_id == 0 || rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.nil? %>
+              </div>
+            </div>
+          <% end %>
+        </article>
+      </section>
+
+      <section id="link" class="visible-xs"><a href="javascript:void(0)"></a></section>
+
+      <section id="talk">
+        <div class="row">
+          <div class=" col-sm-4 col-sm-offset-7 col-xs-10 col-xs-offset-1">
+            
+            <h4><%= @talk.title %></h4>
+            <p><%= @talk.subtitle %></p>
+            <%= link_to talk_path(@talk) do %>
+              看更多
+              <%# image_tag(@talk.galleries.select{ |v| v['type'] == 'TalkCoverGallery' }.first.attachment.url ) %>
+            <% end %>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="recruit">
+        <h3>想加入cama嗎？</h3>
+        <% @jobs.each do |job| %>
+          <%= link_to "#{job.name}", job.websiteurl , target: "_blank" %> 
+        <% end %>
+      </section>
+
+    </div>
+  </article>
+  <p><%= link_to("Admin登入", new_admin_session_path) %></p>
+  
+  <%= render 'layouts/front_shared_footer' %>
+  
+  <script src="/js/bootstrap.min.js"></script> 
+  <script src="/js/jquery.bxslider.min.js"></script> 
+  <script type="text/javascript">
+    $('.bxslider').bxSlider({
+        auto: true,
+        controls:false
+        //autoControls: true
+        //slideWidth: $('.sliderContainer').width()
+        //pagerCustom: '#bx-pager',
+        //nextSelector: '#slider-next',
+        //prevSelector: '#slider-prev',
+        //nextText: 'Onward →',
+        //prevText: '← Go back'
+      });  
+  </script>
+</body>
+
+</html>

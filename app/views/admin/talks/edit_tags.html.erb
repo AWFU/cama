@@ -1,0 +1,17 @@
+<%= render 'edit_tabs' %>
+
+<%= form_for @talk, :url => edit_tags_admin_talk_path(@talk), html: {method: "patch"} do |f| %>
+  <%= f.text_field :camatalk_list, id: "talk_camatalk_field" , style: "width:250px;" %>
+  <%= f.submit "Go!" %>
+<% end %>
+
+<script type="text/javascript">
+
+$("#talk_camatalk_field").select2({
+
+    tags: <%= Talk.tag_counts_on(:camatalks).map { |talk|
+    talk.name }.to_s.html_safe %>,    
+    tokenSeparators: [",", " "]
+});
+
+</script>

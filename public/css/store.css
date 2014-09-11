@@ -1,0 +1,56 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/sto-01.jpg) 440px center no-repeat}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+#search img{position:relative;top:-5px;margin:0 10px 0 0}
+
+/*標籤*/
+#store-list .tag{border-top:1px solid #C5AF9C;border-bottom:1px solid #C5AF9C;padding:2.5% 0;margin:5% 0}
+#store-list .tag li{width:45%;margin:2.5%}
+#store-show .tag{padding:1.5% 0}
+#store-show .tag li{width:50%;margin:2.5% 0;background:url(../images/sto-04.png) 95% center no-repeat #fff}
+
+.tag li{font-size:.9em;background:#fff;height:33px;padding:0 10px 0 0}
+.tag li span{padding:4px 0 0 10px}
+.tag input{position:relative;top:6px}
+
+/*送出*/
+#submit .btn{background:#FFCE54;box-shadow:0 3px 0 #CAA23D}
+#submit .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
+
+/*結果*/
+#resualt{padding:10% 0 0 0}
+#resualt table{border-bottom:1px solid #C5AF9C;border-right:1px solid #C5AF9C}
+#resualt td{border-top:1px solid #C5AF9C;border-left:1px solid #C5AF9C;padding:1%}
+#resualt td a{color:#0f22b1}
+#resualt td a:hover{text-decoration:underline}
+
+/*封面*/
+#photo img{border:3px solid #A38F49}
+
+/*資訊*/
+#info li{padding:0 0 0 25px;background:url(../images/sto-03.png) 0 7px no-repeat}
+#info h3{font-size:2.3em}
+
+/*簡介*/
+#intro{padding:1.5% 0}
+
+/*地圖*/
+#map{padding:1.5% 0 5% 0;border-bottom:1px solid #C5AF9C;}
+#map iframe{border:0;width:100%;height:460px}
+
+/*照片*/
+#gallery{padding:5% 0}
+#gallery img{margin:0 0 5% 0}
+
+@media(max-width: 767px) {
+	#search div{margin:0 0 2.5% 0}
+	.tag li{width:100%!important;margin:2.5% 0}
+	.tag li img{display:none}
+	#resualt td,#resualt td a{font-size:.9em!important}
+	#map iframe{border:0;width:100%;height:175px}
+}

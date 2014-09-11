@@ -1,0 +1,98 @@
+<%= render 'edit_tabs' %>
+<header>
+  <h2 class="left">最新消息/封面上傳</h2>
+  <nav class="left"></nav>
+</header>
+
+<div id="attach_form_container">
+    <div id="createNewAttach" >
+        <%= form_for(@announcement,url: create_announcement_attachment_admin_announcement_path(id: params[:id]) , :html => {:id =>'NewAttachlForm' , :method => "POST", :remote => true} ) do |fattach| %>
+          <div class='errors'></div>
+            <div class="form">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="7%">檔案：</td>
+                  <td width="55%"><%= file_field_tag :attachment , class: 'file' %></td>
+                </tr>
+              </table>
+            </div>
+        </div>
+    </div>
+
+<div class='button'>
+<%= fattach.submit '上傳' , class: 'right highlight' ,style: 'width:125px' %>
+</div>
+
+<% end %>       <!--form end-->
+
+<div class="list">
+<table id="mainAttachList"  width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tbody id="listThisAttach">
+        <% @announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.each do |attach| %>
+            <tr <%= "id=createAttachcontainer_#{attach.id.to_s}" %> class="createAttachcontainer dragable" >
+              <td width="6%"></td>
+              <td width="12%"><image src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %> width="85%" height="auto"/></td>
+              <td width="64%"><%= (attach.file_size.to_i)/1000 %>KB @ [<%= attach.updated_at.in_time_zone("Taipei") %> 上傳] </td>
+              <td width="18%">
+                <div class="tool">
+                    <%= link_to '刪除', admin_gallery_path(attach.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete', title: '刪除' %>
+                </div>
+               </td>
+             </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+$(function() {
+      var prevEvent = null;
+        $( "#listThisAttach" ).sortable({
+          //connectWith: ".renamelevelcontainer",
+          items: "> .dragable" ,
+          placeholder: "ui-state-highlight",
+          update: function( event, ui ) {
+              
+          if(event.timeStamp == prevEvent){
+            return null;
+          }
+          
+          prevEvent = event.timeStamp;  
+          var newRankings_array = $('#listThisAttach').sortable('toArray');
+          var orderSet = [];
+          $.each(newRankings_array, function( index, value){
+                orderSet.push(value.replace("createAttachcontainer_",""));
+            });
+            var order2Push = JSON.stringify(orderSet);
+            
+            $.ajaxSetup({
+              headers: {
+                  'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+
+              //multiple reorder 
+              $.ajax({
+                type: "PATCH",
+                url: "/admin/galleries/"+orderSet[0]+"/multiple_reorder",
+                data: { gallerries: {  reorderset: orderSet } },
+                success: function(data){
+               //alert ("success");
+                  //console.log("================ announcements reorder PATCH successfully end =============");
+                  return false   
+                },
+                error: function(data){
+                //alert ("faild");
+                  //console.log("================ announcements reorder has some issues ==================");
+                  return false  
+                }
+              });
+
+          }
+        });
+        
+          
+        $( "#listThisAttach" ).disableSelection();
+      });  
+    //################################ attachment reorder end #######################################
+</script>

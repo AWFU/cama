@@ -1,20 +1,193 @@
-<h3>商品列表<span>/ <%= @product_cate.name %></span></h3>
+<header>
+  <h2 class="left">商品管理</h2>
+  <nav class="left"></nav>
+</header>
+<article>
 
-<%= link_to("新增商品", admin_product_cate_products_path(@product_cate), :method => :post) %>
+  <% if @product_cate.depth < 2 %>
 
-<table border="0" cellspacing="0" cellpadding="3">
-  <% @product_cate.products.each do |product| %>
-  <tr>
-    <td><%= product.get_status %></td>
-    <td><%= link_to(product.name, admin_product_cate_product_path(@product_cate, product)) %></td>
-    <td>
-      <%= link_to(get_change_status_name(product), change_status_admin_product_cate_product_path(@product_cate, product), :method => :post) %>
-      <%# products_helper %>
-      <%= link_to("編輯", edit_admin_product_cate_product_path(@product_cate, product)) %>
-      <%= link_to("刪除", admin_product_cate_product_path(@product_cate, product), :method => :delete, :data => {:confirm => "確定刪除？"}) %>
-    </td>
-  </tr>
+    <div class="hgroup">
+      <h3 class="left">
+        <% @breadcrumb.each_with_index do | bread, index | %>
+          <%= bread.name if index == 0 %>
+            <% if index >= 1  %>
+              <span>/<%= bread.name %></span>
+              <!-- link_to  ancestor.name,  admin_hqlevel_path(ancestor.id, :locale => I18n.locale) -->
+            <% end %>
+
+            <% if index == (@breadcrumb.count - 1 ) %>
+              <!-- <span>/分類列表</span> -->
+            <% end %>
+        <% end %>
+      </h3>
+      <div class="button right">
+        <a href="javascript:void(0);" class="right highlight toggle_new_product_cate">新增分類<img src="/images/admin/add_folder.png"></a>
+      </div>
+    </div>
+    <div class="list">
+    
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        
+        <% @product_cates.each do |product_cate| %>
+
+          
+          <tr class="show_product_cate_<%= product_cate.id %>" >
+            <td width="6%"><img src="/images/admin/folder.png"></td>
+            <td width="76%">
+              <%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
+            </td>
+            <td width="18%">
+              <div class="tool">
+                <%= link_to "", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit", title:"編輯" %>
+                <%= link_to "", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete", title: "刪除" %>
+              </div>
+            </td>
+          </tr>
+
+          
+          
+          <tr class="list-edit edit_product_cate_<%= product_cate.id %>" style="display:none;">
+            <%= form_for(product_cate, :url => admin_product_cate_path(product_cate) , html: { id: "patchthiscate_#{product_cate.id}"}) do |f| %>
+            
+            <td>&nbsp;</td>
+            <td>
+              <div style="position:relative">
+                <%= f.text_field :name, class:"text", placeholder: "分類名稱", style:"width:50%" %>
+              </div>
+            </td>
+            
+            <td align="right" valign="top">
+              <div class="tool">
+                <a href="javascript: document.getElementById('patchthiscate_<%= product_cate.id %>').submit();" class="uvs" data-no-turbolink = true >儲存</a>
+                <%= link_to "取消", "javascript:void(0);" ,:data => { :id => product_cate.id }, :class => "uvs" %>
+              </div>
+            </td>
+            <% end %>
+          </tr>
+
+        <% end %>
+
+      <!-- new -->
+        <tr class="list-new list-edit edit_product_cate" style="display:none;">
+          <%= form_for(@new_cate, :url => admin_product_cates_path , html: {id: "create_new_cate" }) do |f| %>
+            <td width="6%" valign="top">&nbsp;</td>
+            <td width="70%">
+              
+                <%= f.text_field :name, :placeholder => "分類名稱" , class: "text new_cate_name_input" %>
+
+                <%= f.hidden_field :parent_id, value: "#{@product_cate.id}" %>
+                <%= f.hidden_field :depth, value: "#{@product_cate.depth + 1}" %>
+              
+            </td>
+            <td width="18%" align="right">
+              <div class="tool">
+                <a href="javascript: document.getElementById('create_new_cate').submit();" class="uvs" data-no-turbolink = true >儲存</a>
+                <%= link_to("取消", "javascript:void(0);", :class => "uvs cancel_new_product_cate") %>
+              </div>
+            </td>
+          <% end %>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="button">
+      <a href="<%= admin_product_cates_path %>" class="left">
+        <img src="/images/admin/left.png">返回
+      </a>
+    </div>
+
+  <% else %>
+
+    <div class="hgroup">
+      <h3 class="left">
+        <% @breadcrumb.each_with_index do | bread, index | %>
+          <%= bread.name if index == 0 %>
+
+          <% if index >= 1  %>
+            <span>/<%= bread.name %></span>
+            <!-- link_to  ancestor.name,  admin_hqlevel_path(ancestor.id, :locale => I18n.locale) -->
+          <% end %>
+
+          <% if index == (@breadcrumb.count - 1 ) %>
+            <!-- <span>/分類列表</span> -->
+          <% end %>
+        <% end %>
+      </h3>
+      <div class="button right">
+        <%= link_to  admin_product_cate_products_path(@product_cate), :method => :post, class: "right highlight toggle_new_product_cate" do %>
+          新增產品<img src="/images/admin/add_folder.png">
+        <% end %>
+      </div>
+    </div>
+    <div class="list">      
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <% @product_cate.products.each do |product| %>
+
+        <tr <%= "class=off" if product.status == "disable" %> >
+          <td width="6%"><img src="/images/admin/file.png"></td>
+          <td width="76%">
+            <%= link_to(product.name, basic_info_admin_product_cate_product_path(@product_cate, product)) %>
+            <%= link_to(get_change_status_name(product), change_status_admin_product_cate_product_path(@product_cate, product), :method => :post) %>
+          </td>
+          <td width="18%">
+            <div class="tool">
+              <%= link_to("", basic_info_admin_product_cate_product_path(@product_cate, product), class: 'edit') %>
+              <%= link_to("", admin_product_cate_product_path(@product_cate, product), :method => :delete, :data => {:confirm => "確定刪除？"}, class: 'delete') %>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+
+    </div>
+    <div class="button">
+      <a href="<%= admin_product_cate_path(@product_cate.parent_id) %>" class="left">
+        <img src="/images/admin/left.png">返回
+      </a>
+    </div>
   <% end %>
-</table>
+    
+  </div>
+  
+</article>
 
-<%= link_to( "返回", admin_product_cates_path ) %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".toggle_new_product_cate").click(function(){
+
+    if($("tr[class*=edit_product_cate]:visible").length > 0){
+      alert("請先完成編輯中的產品分類");
+    }
+    else{
+      
+      $(".list-new").toggle();
+    }
+  });
+
+  $(".cancel_new_product_cate").click(function(){
+      $(".new_cate_name_input").val(''); //clear input
+      $(".list-new").toggle();
+  });
+
+  $(".edit").click(function(){
+    $active_id = $(this).data("id");
+    if($("tr[class*=edit_product_cate]:visible").length > 0){
+      alert("請先完成編輯中的產品分類");
+    }
+    else{
+      toggle_edit_area($active_id);
+    }
+  });
+
+  $(".uvs").click(function(){
+    $active_id = $(this).data("id");
+    toggle_edit_area($active_id);
+  });
+
+  function toggle_edit_area(active_id){
+    $("tr.edit_product_cate_" + active_id).toggle();
+    $("tr.show_product_cate_" + active_id).toggle();
+  }
+});
+</script>

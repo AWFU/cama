@@ -1,0 +1,26 @@
+  
+  <% content_for :head do %>
+    <%= @announcement.js_context.html_safe if @announcement.js_context %>    
+  <% end %>
+
+  <div class="cover">
+    <% if @announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first %>
+      <% announcement_cover_url = @announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first.attachment.url %>
+      <%= image_tag announcement_cover_url , class:"img-responsive" %>
+    <% end %>
+  </div>
+  <!--cover-->
+  <div class="title">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td class="date">
+          <div><b><%= @announcement.created_at.strftime("%d")%></b><br>
+            <%= @announcement.created_at.strftime("%-m")%>月
+          </div>
+        </td>
+        <td><h3><%= @announcement.title %></h3></td>
+      </tr>
+    </table>
+  </div>
+  <!--title-->
+  <%= @announcement.html_context.html_safe if @announcement.html_context %>

@@ -1,0 +1,148 @@
+﻿
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/ord-01.jpg) 0 center no-repeat}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+h4{color:#800a0a}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#step{border-bottom:1px solid #FABE00;overflow:hidden}
+#step li{float:left;color:#420d08;font-weight:900;font-size:1em;padding:0 5.5% 2.5% 5.5%}
+#step .active{background:url(../images/ord-02.png) center bottom no-repeat}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#order{padding:2.5% 0}
+#order th{text-align:center;background:#FDF3C4;font-weight:300}
+#order td{padding:2.5% 0;border-bottom:1px solid #FABE00}
+#order a{color:#D5A300}
+#order a:hover{color:#B28C11}
+#order td > img{border:1px solid #AAA098;border-radius:5px;width:100px;height:100px}
+#order .name{padding:0 0 0 2.5%}
+#order thead{font-size:.9em!important}
+#order thead a{font-size:1em!important;color:#134dd1}
+#order thead a:hover{text-decoration:underline;color:#134dd1}
+#order thead span{margin:0 15px 0 0}
+
+.delete{display:block;background:#D5D5D5;width:35px;height:35px;border-radius:5px;
+text-align:center;padding:4px 0 0 0}
+.delete:hover{background-color:#FABE00}
+.delete img{width:50%}
+
+.detail{position:relative;display:inline;left:10px}
+.detail a{font-size:.8em!important;color:#D5A300!important;border:1px solid #D5A300;
+display:inline-block;padding:2px 5px;border-radius:5px;background:#fff}
+.detail p{display:none;position:absolute;min-width:150px;border-radius:5px;background:#FABE00;
+font-size:.9em!important;padding:5px 15px;left:0;top:36px}
+.detail p img{position:absolute;top:-6px;left:5px}
+
+@media(min-width: 768px){
+.detail:hover a{background:#D5A300;color:#fff!important}
+.detail:hover p{display:block}	
+}
+
+@media(max-width: 767px) {
+	#order{overflow-x:scroll;padding:0 0 10% 0}
+	#order table{width:100%;min-width:450px;margin:0 5% 0 0}
+	#order td{padding:2% 0}
+	#order td > img{width:50px;height:50px}
+	
+	.detail:active a{background:#D5A300!important;color:#fff!important}
+  .detail:active p{display:block}
+	
+	.delete{width:20px;height:20px;padding:0}
+	.delete img{width:40%;position:relative;top:-3px}
+}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#loc {padding:5% 0 0 0}
+#loc > .pull-right{background:url(../images/ord-04.png) 0 0 no-repeat;width:284px;height:153px;
+padding:2.5% 5% 0 5%;background-size:contain}
+#loc > .pull-right .btn{background:#FABE00;color:#000;width:30%;margin:0 1%}
+#loc > .pull-left{width:calc(100% - 284px);padding:0 5% 0 0}
+#loc > .pull-left .btn{background:#D5D5D5;}
+
+@media(max-width: 767px) {
+#loc > .pull-right{background:none;border:2px solid #B5B1AD;border-radius:10px;padding-top:10%}
+#loc > .pull-right,#loc > .pull-left{width:100%}
+#loc > .pull-left{padding-top:5%}
+}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#pay{border-bottom:1px solid #B08703;padding:2.5% 0}
+#pay h4 span{font-size:.8em}
+#pay .col-md-3{font-weight:900}
+#pay .col-md-9{font-size:.9em}
+#pay .row div{margin:2% 0}
+
+@media(max-width: 767px) {
+	#pay .row .col-md-9{margin:0 0 10% 0}
+}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#info{border-bottom:1px solid #B08703;padding:5% 0}
+#info .column th{font-weight:300;color:#fff;width:38%;padding:1% 0 1% 5%}
+#info .column td{background:#fff}
+#info .column{border-radius:5px;margin:5% 0 0 0}
+#info .column .form-control{border:none;box-shadow:none}
+#info span{font-size:.9em}
+
+#info-people h4 span{font-size:.8em}
+#info-people .column{border:2px solid #B08600;}
+#info-people .column th{background:#B08600}
+#addr-list{padding:5%;border:1px solid #D5A300!important}
+
+#info-receipt{border-rad}
+#info-receipt .column{border:2px solid #8A8A8A}
+#info-receipt .column th{background:#8A8A8A}
+
+#info p{padding:0 0 5% 5%}
+
+.form-inline{margin:7% 0}
+
+@media(max-width: 767px) {
+	#info-people{margin-bottom:10%}
+	#info p{font-size:.9em}
+}
+
+
+#check .pull-left{width:50%;font-size:.9em}
+#check .pull-left a{color:#082faf;font-size:1em!important}
+#check .pull-left a:hover{text-decoration:underline}
+#check .pull-right{width:40%;margin:0 10% 0 0}
+#check .pull-right b{color:#9b0505}
+
+@media(max-width: 767px) {
+	#check .pull-left{width:100%;margin-top:10%}
+	#check .pull-right{width:70%;margin-top:10%}
+}
+
+
+#next{margin:10% 0 0 0}
+#next a.btn,#next input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px}
+#next a.btn{background:#D2CFC8;padding-top:7px}
+#next input.btn{background:#FABE00;color:#333}
+#next a.btn:hover{background:#B6B6B5}
+#next input.btn:hover{background:#E2AE0B}
+
+#thx{background:url(../images/cart-02.png);padding:1%;margin:10% 0 0 0;
+color:#4e2d1a}
+#thx p{background:url(../images/cart-01.jpg) 80% 20% #FABE00 no-repeat;padding:10% 5%}
+#thx span{font-size:.9em}
+#thx a{color:#0f22b1}
+#thx a:hover{text-decoration:underline}
+
+@media(max-width: 1023px) {
+	#thx p{background:url(../images/cart-01.jpg) 50% 10% #FABE00 no-repeat;padding:20% 10% 10% 10%}
+}
+
+@media(max-width: 767px) {
+	#thx p{background:url(../images/cart-01.jpg) 50% 10% #FABE00 no-repeat;padding:150px 10% 10% 10%}
+}

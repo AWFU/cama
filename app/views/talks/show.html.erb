@@ -1,0 +1,68 @@
+<link href="/css/talk.css" rel="stylesheet">
+<script src="/js_plugins/colorbox/jquery.colorbox-min.js"></script>
+
+<script src="/js_plugins/peditor/js/editor.js"></script>
+<script src="/js_plugins/peditor/js/editor_p.js"></script>
+<script src="/js_plugins/peditor/js/editor_img.js"></script>
+<script src="/js_plugins/peditor/js/editor_list.js"></script>
+<script src="/js_plugins/peditor/js/editor_video.js"></script>
+<script src="/js_plugins/peditor/js/jquery.imgareaselect.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/js_plugins/peditor/css/imgareaselect-default.css" />
+<link rel="stylesheet" type="text/css" href="/js_plugins/colorbox/colorbox.css" />      
+
+<div>
+   <table id="mainAttachList"  width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tbody id="listThisAttach">
+
+        <% @talk.galleries.select{ |v| v['type'] == "TalkCoverGallery" }.each do |attach| %>
+            <tr>
+              <td width="12%">
+                <image width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
+             </tr>
+        <% end %>
+
+    </tbody>
+  </table>
+  <div class="content"  id="articleContent"></div>    
+  <input id="article_content" style="display:none;" type="text" value="<%= @talk.article.content %>">
+</div>
+
+      <div class="page">
+        <ul class="pagination">
+          <li class="previous">
+          <% if @previous_talk %>
+            <%= link_to talk_path(@previous_talk) do%>
+              <img src="/images/nws-03.gif">
+            <% end %>
+          <% else %>
+            <%= link_to talks_path() do%>
+              <img src="/images/nws-03.gif">
+            <% end %>
+          <% end %>
+          </li>
+          <li class="menu">
+            <%= link_to talks_path do %>
+              <img src="/images/nws-05.png">
+            <% end %>
+          </li>
+          <li class="next">
+            <% if @next_talk %>
+              <%= link_to talk_path(@next_talk) do%>
+                <img src="/images/nws-04.gif">
+              <% end %>
+            <% else %>
+              <%= link_to talks_path() do%>
+                <img src="/images/nws-04.gif">
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </div><!--page-->
+
+
+<script type="text/javascript">
+
+    editor.output();  
+
+</script>

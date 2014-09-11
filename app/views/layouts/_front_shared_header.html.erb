@@ -1,0 +1,84 @@
+<header class="container-fluid">
+  <nav class="navbar-fixed-top visible-xs" id="nav-top"> <a href="javascript: void(0);" class="dropdown-toggle pull-left" data-toggle="dropdown"><img src="/images/ctrl.png"></a>
+
+    <ul class="dropdown-menu" id="nav-side">
+      <li>
+        <%= link_to "店內飲品", page_pages_path('beverages')%>
+      </li>
+      <li>
+        <%= link_to("豆類與週邊", categories_path) %>
+      </li>
+      <li>
+        <%= link_to("分店查詢", stores_path) %>
+      </li>
+      <li><%= link_to "關於 cama" , page_pages_path('about') %></li>
+      <li>
+        <%= link_to("談咖啡", talks_path) %>
+      </li>
+      <li><a class="space">&nbsp;</a></li>
+      <li>
+          <%= link_to '登入', new_user_session_path unless user_signed_in? %>
+          <%= link_to '我的帳戶', useradmin_orders_path if user_signed_in? %>
+      </li>
+      <li>
+          <%= link_to '註冊', new_user_registration_path unless user_signed_in? %>
+          <%= link_to '登出', destroy_user_session_path, :method => :delete if user_signed_in? %>
+      </li>
+    </ul>
+
+    <%= link_to cart_index_path, 'data-no-turbolink' => true, class: "cart pull-right" do %>
+      <img src="/images/cart-s.png">
+      <span class="count">
+        <%= "#{products_in_cart_count}件商品" %>
+      </span>
+    <% end %>
+
+  </nav>
+  <div class="container">
+    <h1 class="pull-left hidden-xs"><%= link_to "cama 現烘咖啡專門店", root_url%></h1>
+    
+    <nav class="hidden-xs pull-right">
+      <ul id="nav-up">
+        <li>
+          <%= link_to '登入', new_user_session_path unless user_signed_in? %>
+          <%= link_to '帳戶', useradmin_orders_path if user_signed_in? %>
+        </li>
+        <li><span>│</span></li>
+        <li>
+          <%= link_to '註冊', new_user_registration_path unless user_signed_in? %>
+          <%= link_to '登出', destroy_user_session_path, :method => :delete if user_signed_in? %>
+        </li>
+        <li><a href="http://www.facebook.com/camacafe" target="_blank" alt="facebook" ><img src="/images/fb.png"></a></li>
+      </ul>
+      <ul id="nav-down">
+        <li>
+          <%= link_to "店內飲品", page_pages_path('beverages'), id: "nav-1"%>
+        </li>
+        <li><span>│</span></li>
+        <li>
+          <%= link_to("豆類與週邊", categories_path, id: "nav-2") %>
+        </li>
+        <li><span>│</span></li>
+        <li>
+          <%= link_to("分店查詢", stores_path, id: "nav-3") %>
+        </li>
+        <li><span>│</span></li>
+        <li><%= link_to "關於 cama" , page_pages_path('about'), id: 'nav-4' %></li>
+        <li><span>│</span></li>
+        <li>
+          <%= link_to("談咖啡", talks_path, id: "nav-5") %>
+        </li>
+        <li>
+          <%= link_to cart_index_path, 'data-no-turbolink' => true, class: "cart" do %>
+            <img src="/images/cart.png">
+            <span class="count">
+              <%= "#{products_in_cart_count}件商品" %>
+            </span>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+    <div class="clearfix"></div>
+  </div>
+  <%= yield :header %>
+</header>

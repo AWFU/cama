@@ -1,0 +1,69 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#c4c4bf;}
+#banner .container{background:url(../images/tlk-01.jpg) right center no-repeat;color:#352e2e}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+#left-content .content{background:#fff;padding:2% 0;overflow:hidden;border-radius:10px;
+border:1px solid #FABE00;margin:0 0 5% 0}
+@media(max-width: 767px) {
+	#left-content .content{border:0}
+}
+
+/*-----------------------------------------------------------------------標題---*/
+
+.title {background:url(../images/tlk-02.jpg) 45px 33px no-repeat;padding:10px 2% 30px 100px;
+line-height:.1em}
+.title h3{line-height:1.3em}
+.title span{color:#5e9797;font-size:.9em;}
+@media(max-width: 767px) {
+	.title{background:none;padding:10px 5% 5% 5%}
+}
+
+/*-----------------------------------------------------------------------分類---*/
+
+.tags{padding:2px 0 0 21px;height:30px;background:url(../images/tlk-03.gif) 0 10px no-repeat;
+font-size:.9em;color:#a7b4b4}
+.tags a{font-size:.9em!important;color:#a7b4b4}
+.tags a:hover{text-decoration:underline}
+.tags span{margin:0 7px}
+
+/*-----------------------------------------------------------------------內文---*/
+
+.text{padding:0 55px}
+.text h4{margin:15px 0;	border-left:5px solid #eee;height:35px;padding:8px 0 0 15px;
+font:900 1em Arial,微軟正黑體,Microsoft JhengHei}
+.text article p{font-size:.9em;color:#666666;padding:0 0 0 20px}
+.text article img{margin:10% 0}
+.text .more{font-size:.9em!important;color:#83abab;display:inline;padding:0 15px 0 0;
+background:url(../images/tlk-04.gif) right center no-repeat;margin:0 0 0 0}
+.text .more:hover{color:#90D3D3}
+@media(max-width: 767px) {
+	.text {padding-left:5%}
+	#talk-list .text > article{display:none}	
+}
+
+/*-----------------------------------------------------------------------分類---*/
+
+#right-tag{background:#fff;padding:1% 2%;overflow:hidden;border-radius:10px}
+#right-tag h5{color:#979696;font-size:1.2em;clear:both;padding:0 0 5% 0}
+#right-tag a{display:inline;float:left;background:#EDF4F3;padding:1px 15px 1px 5px;margin:0 15px 15px 0}
+#right-tag a:hover{background:#FABE00;color:#000}
+
+@media(max-width: 767px) {
+	#right-tag{padding:5%}
+}
+
+/*-----------------------------------------------------------------------頁碼---*/
+
+.page{text-align:center;padding:5% 0 0 0}
+.pagination a{background:#FABE00!important;border:none!important;color:#fff!important}
+
+.previous a,.next a{background:#4E2D1A!important}
+.previous a img,.next a img{position:relative}
+.previous a:hover img{left:-2px}
+.next a:hover img{left:2px}
+
+.pagination a:hover,.active a{color:#000!important}

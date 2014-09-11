@@ -1,22 +1,43 @@
-<h3>send order info</h3>
-<%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale42.htm", :id => "send_to_esun") do %>
-特店代碼：<%= text_field_tag :MID, get_esun_MID %><br>
+<article class="container-fluid">
+  <section class="container row">
+    <div class="col-md-8 col-md-offset-2" >
+      <ul id="step" class="hidden-xs">
+        <li>購物步驟</li>
+        <li>1. 明細確認</li>
+        <li>2. 付款及運送資訊</li>
+        <li>3. 最後確認</li>
+      </ul>
+      <div id="thx" class="text-center">
+        <p><%= image_tag("/images/loading.gif") %> 連線中...<br>
+        <br>
+        <br>
+        <br>
+      </div>  <!--thx-->
+    </div>
+  </section>
+</article>
+<%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale42.htm", :id => "send_to_esun", style: "display:none;") do %>
+<%= text_field_tag :MID, get_esun_MID %>
 
-子特店代碼：<%= text_field_tag :CID, "" %> 空白<br>
+<%= text_field_tag :CID, "" %>
 
-終端機代號：<%= text_field_tag :TID, "EC000001" %> EC000001(一般交易)、EC000002(分期)<br>
+<%= text_field_tag :TID, "EC000001" %>
 
-訂單編號：<%= text_field_tag :ONO, @order.ordernum %>由特約商店產生,不可重複,不可包含【_】字元,且英數限用大寫<br>
+<%= text_field_tag :ONO, @order.ordernum %>
 
-交易金額：<%= text_field_tag :TA, ( @order_total = sum_order_items(@order.orderitems)+get_shipping_fee) %><br>
+<%= text_field_tag :TA, ( @order_total = sum_order_items(@order.orderitems)+get_shipping_fee_from_order(@order)) %><br>
 
-回傳 URL：<%= text_field_tag :U, receive_result_cart_index_url %> 由特約商店提供銀行端回傳授權結果 所需使用的 URL, 不可包含【#】、 【?】及【&】字元<br>
+<%= text_field_tag :U, receive_result_cart_index_url %>
 
-押碼：<%= text_field_tag :M, get_esun_key(@order.ordernum, @order_total) %> 押碼<br>
+<%= text_field_tag :M, get_esun_key(@order.ordernum, @order_total) %>
 <% end %>
 
+<!-- <a id="sendrequest">send</a> -->
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#send_to_esun").submit();
+  
+  $("#send_to_esun").submit();
+
+  setTimeout(function() { window.location.href = '<%= "#{receive_result_cart_index_url}?ONO=#{@order.ordernum}&ERR=連線逾時" %>'; }, 15000);
 });
 </script>

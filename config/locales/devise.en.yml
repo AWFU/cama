@@ -1,21 +1,22 @@
+#encoding: utf-8
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 
 en:
   devise:
     confirmations:
-      confirmed: "Your account was successfully confirmed."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      confirmed: "帳號已成功啓用，感謝你的註冊"
+      send_instructions: "已重新寄發帳號確認信，請至註冊信箱收信"
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
-      inactive: "Your account is not activated yet."
-      invalid: "Invalid email or password."
+      already_authenticated: "已成功登入"
+      inactive: "尚未啓用你的帳號"
+      invalid: "帳號或密碼不正確"
+      invalid_token: "驗證碼錯誤"
       locked: "Your account is locked."
-      last_attempt: "You have one more attempt before your account will be locked."
-      not_found_in_database: "Invalid email or password."
-      timeout: "Your session expired. Please sign in again to continue."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your account before continuing."
+      not_found_in_database: "帳號未註冊"
+      timeout: "登入過期，請重新登入"
+      unauthenticated: "請先登入"
+      unconfirmed: "請先至信箱開通帳號確認信"
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"
@@ -41,19 +42,19 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
       updated: "You updated your account successfully."
     sessions:
-      signed_in: "Signed in successfully."
-      signed_out: "Signed out successfully."
+      signed_in: "登入成功"
+      signed_out: "已登出"
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
-      already_confirmed: "was already confirmed, please try signing in"
+      already_confirmed: "已註冊成功，請重新登入"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
       not_found: "not found"
       not_locked: "was not locked"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
+        one: "有一項錯誤影響會員資料更新："
         other: "%{count} errors prohibited this %{resource} from being saved:"

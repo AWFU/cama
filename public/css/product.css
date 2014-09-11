@@ -1,0 +1,127 @@
+
+/*-----------------------------------------------------------------------頁身---*/
+
+body > header{height:244px}
+
+@media(max-width: 1024px) {
+	body > header{height:308px}
+}
+
+@media(max-width: 767px) {
+	body > header{height:45px}
+	body > article{padding:30px 0 60px 0}
+}
+
+/*-----------------------------------------------------------------------分類---*/
+
+#aside-left{text-align:center}
+#aside-left h5{background:url(../images/prd-02.png) center center no-repeat;height:23px;font-size:1.5em}
+#aside-left ul{margin:0 0 30px 0}
+#aside-left a{display:inline-block;min-width:88px;padding:8px 0 3px 0;
+background-position:center bottom;color:#555}
+#aside-left a:hover{background:url(../images/prd-01.png) center bottom no-repeat;
+color:#793003}
+
+#aside-up{margin:0 0 5% 0;border:1px solid #B9B1AA}
+#aside-up .tab{background:url(../images/prd-02.png);overflow:hidden;margin:0}
+#aside-up .tab li{float:left;width:25%;}
+#aside-up .tab li a{display:block;width:100%;text-align:center;font-size:1.3em!important}
+#aside-up .tab li a:hover{color:#780606}
+
+#aside-up .tab .active a{background:#ECB983}
+#aside-up .sub{color:#442D1E}
+#aside-up .sub ul{margin:0;background:#F5F5F3}
+#aside-up .sub li{border-top:1px solid #B9B1AA}
+#aside-up .sub li a{display:block;width:100%;padding:5px 15px}
+#aside-up .sub li a:hover{color:#780606}
+
+/*-----------------------------------------------------------------------列表---*/
+
+#product-list h3{height:45px;background:url(../images/prd-03.png) 0 center no-repeat;
+padding:8px 0 0 80px;font-size:1.8em;margin:35px 0}
+.banner{padding:15% 0;background-color:#090400;
+background-position:top left;background-repeat:no-repeat;}
+.visible-xs.banner{margin:0 0 5% 0}
+
+.list .pull-left{width:100%}
+.list .pull-left img:hover{border:1px solid #B9B1AA}
+.list .pull-right{width:100%;font-size:1.1em;padding:10% 0 0 0}
+.list .pull-right span{font-size:.8em}
+.clearfix{margin:0 0 5% 0}
+
+@media(max-width: 767px) {
+	.list .pull-left{width:33%}
+	.list .pull-right{width:62%;padding:3% 0 0 0}
+}
+
+/*-----------------------------------------------------------------------櫥窗---*/
+
+#product-show{color:#492f18}
+
+#photo{margin:0 0 25px 0}
+#photo img{display:inline}
+
+#thumb li img{border:1px solid #B9B1AA}
+#thumb li img:hover{border-color:#8D7D70}
+.bx-controls-direction a{
+	display:block;position:absolute;top:85%;width:17px;height:25px;text-indent:-7777px}
+.bx-next{background:url(../images/prd-06.png) 0 0 no-repeat;right:-5px}
+.bx-next:hover{right:-8px}
+.bx-prev{background:url(../images/prd-05.png) 0 0 no-repeat;left:-5px}
+.bx-prev:hover{left:-8px}
+
+@media(max-width: 767px) {
+.bx-next{right:15px}
+.bx-next:hover{right:12px}
+.bx-prev{left:15px}
+.bx-prev:hover{left:12px}
+}
+
+/*-----------------------------------------------------------------------資訊---*/
+
+/*標題*/
+h3{padding:3% 0}
+
+/*特色*/
+#features{padding:3% 0}
+#features li{background:url(../images/prd-04.png) 0 8px no-repeat;padding:0 0 0 20px;
+font-size:.95em}
+
+/*價格*/
+#price{padding:1.5% 0}
+#price span{font-size:.9em;margin-right:10px}
+#price b{font-size:1.5em;font-weight:300}
+
+/*磨豆*/
+#grind{padding:1.5% 0}
+
+/*按鈕*/
+#buy-1{padding:3% 0}
+.buy .btn{background:#FFCE54;box-shadow:0 3px 0 #CAA23D}
+.buy .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
+
+
+/*簡介*/
+#intro{padding:5% 0}
+#intro p{line-height:2em}
+
+/*圖表*/
+#chart{padding:5% 0;color:#231815}
+#chart li{font-weight:900;font-size:1em;letter-spacing:.2em}
+#chart img{display:inline}
+
+/*照片*/
+#gallery{padding:5% 0}
+#gallery img{margin:0 0 5% 0}
+
+/*按鈕*/
+.buy .btn{background:#FFCE54;box-shadow:0 3px 0 #CAA23D}
+.buy .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
+
+@media(max-width: 767px) {
+#features li{background:url(../images/prd-04.png) 0 6px no-repeat;}
+#chart img{margin:0 0 10% 0}
+#chart{text-align:center}
+#price,#grind{text-align:center}
+#price select,#grind select{margin:5% auto;width:50%}
+}

@@ -1,0 +1,18 @@
+  
+  <% content_for :head do %>
+    <%= @announcement.js_context.html_safe unless @announcement.js_context.nil? %>    
+  <% end %>
+
+  <%= @announcement.html_context.html_safe unless @announcement.html_context.nil? %>
+
+  <table id="mainAttachList"  width="100%" border="0" cellspacing="0" cellpadding="0" >
+    <tbody id="listThisAttach">
+
+        <% @announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.each do |attach| %>
+            <tr <%= "id=createAttachcontainer_#{attach.id.to_s}" %> class="createAttachcontainer dragable" >
+              <td width="12%"><image width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
+             </tr>
+        <% end %>
+
+    </tbody>
+  </table>

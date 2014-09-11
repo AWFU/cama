@@ -1,0 +1,63 @@
+<header>
+  <h2 class="left">標籤管理<span>/ 分店管理</span></h2>
+  <div class="explain right"><p>圖片尺寸：16px * 16px</p></div>
+</header>
+<article>
+  <% if @gallery_count > 0 %>
+
+    <div class="form">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <% @service.galleries.select{ |v| v['type'] == "ServiceIconGallery" }.each do |attach| %>
+        <tr>
+          <td width="7%">圖片：</td>
+          <td width="81%">
+            <div class="thumb">
+              <image src=<%= "#{attach.attachment.url}" %> />
+            </div>
+          </td>
+          <td width="12%" >
+            
+            <%= link_to '刪除', admin_gallery_path(attach.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+            
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="form">
+      <%= form_for(@service, :url => admin_service_path(@service), html: { id: "patchthisservice"} ) do |f| %>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="7%">命名：</td>
+            <td width="55%"><%= f.text_field :name , class: "text" %></td>
+            <td width="2%"></td>
+            <td width="7%"></td>
+            <td width="55%"></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+  <% else %>
+    <div class="form">
+      <%= form_for(@service, :url => admin_service_path(@service), html: { id: "patchthisservice", :multipart => true } ) do |f| %>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="7%">圖片：</td>
+            <td width="29%"><%= file_field_tag :attachment , class: 'file' %></td>
+            <td width="2%"></td>
+            <td width="7%">命名：</td>
+            <td width="55%"><%= f.text_field :name , class: "text" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+  <% end %>
+  <div class="button"> 
+    <%= link_to image_tag("/images/admin/left.png")+"返回", admin_services_path(), class: "left" %>
+    <a href="javascript: document.getElementById('patchthisservice').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+  </div>
+
+</article>

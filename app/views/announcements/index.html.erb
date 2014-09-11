@@ -1,0 +1,41 @@
+<link href="/css/news.css" rel="stylesheet">
+
+<% content_for :header do %>
+    <div id="banner">
+    <div class="container row">
+      <div class="col-md-3 col-md-offset-2 col-sm-12">最新消息</div>
+    </div>
+  </div>
+<% end %>
+
+
+<article class="container-fluid">
+  <section class="row container" id="news-list">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12" >
+      <% @announcements.each do |announcement| %>
+        <div class="content row">
+          <div class="col-md-4 cover">
+            <% if announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first %>
+              <% announcement_cover_url = announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first.attachment.url %>
+              <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
+            <% end %>
+            <div class="date">
+              <b><%= announcement.created_at.strftime("%d")%></b><br>
+              <%= announcement.created_at.strftime("%-m")%>月
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h3><%= announcement.title %></h3>
+            <p><%= announcement.subtitle %></p>
+            <%= link_to("看更多", announcement_path(announcement), class: "more") %>          
+          </div>
+        </div>
+      <% end %>
+
+      <div class="page">
+        <%= paginate @announcements ,:window => 2, :theme => 'announcement_index' %>
+      </div>
+
+    </div>
+  </section>
+</article>

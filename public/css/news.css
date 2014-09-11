@@ -1,0 +1,59 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/nws-01.jpg) 200px center no-repeat}
+
+/*-----------------------------------------------------------------------列表---*/
+
+#news-list .content{border-bottom:1px solid #8E8A85;padding:2.5% 0}
+#news-list .content:first-child{padding-top:0}
+#news-list .content:hover .date{background:url(../images/idx-10.png) center center no-repeat #FABE00}
+
+#news-list .cover{position:relative;}
+#news-list .date{position:absolute;top:27%;left:15px;width:50px;height:50px;text-align:center;
+background:url(../images/idx-10.png) center center no-repeat #979797;color:#fff}
+#news-list h3{margin:0 0 2.5% 0;color:#5b2407}
+#news-list .more{display:inline-block;color:#9c3f0d;padding:0 20px 0 0;cursor:pointer;
+background:url(../images/nws-02.png) right center no-repeat}
+#news-list .more:hover{color:#BC5B27}
+
+@media(max-width: 1023px) {
+	#news-list .content{padding:5% 0}
+	#news-list h3{margin:5% 0 2.5% 0}	
+}
+
+@media(max-width: 767px) {
+	#news-list .date{padding:0.5% 0 0 0}
+}
+
+/*-----------------------------------------------------------------------內頁---*/
+
+#news-show .title{margin:5% 0}
+#news-show .date{width:75px}
+#news-show .date > div{width:75px;height:75px;text-align:center;color:#fff;padding:3px 0 0 0;
+background:url(../images/idx-10.png) center center no-repeat #FABE00}
+#news-show .date b{font:300 25px "Arial Black", Gadget, sans-serif}
+#news-show h3{color:#5b2407;padding:0 0 0 25px;line-height:1.3em}
+
+#news-show .content{padding:0 0 0 100px}
+
+@media(max-width: 767px) {
+	#news-show .date{width:45px}
+	#news-show .date > div{width:45px;height:45px;padding:0;font-size:12px;line-height:1.7em}
+	#news-show .date b{font:300 16px "Arial Black", Gadget, sans-serif}
+	#news-show h3{font-size:1.5em}
+	#news-show .content{padding:0}
+}
+
+/*-----------------------------------------------------------------------頁碼---*/
+
+.page{text-align:center;padding:5% 0 0 0}
+.pagination a{background:#FABE00!important;border:none!important;color:#fff!important}
+
+.previous a,.next a{background:#4E2D1A!important}
+.previous a img,.next a img{position:relative}
+.previous a:hover img{left:-2px}
+.next a:hover img{left:2px}
+
+.pagination a:hover,.active a{color:#000!important}

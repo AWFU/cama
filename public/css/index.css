@@ -1,0 +1,184 @@
+
+/*-----------------------------------------------------------------------全域---*/
+
+body{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;line-height:1.7em!important;
+background:url(../images/bg.jpg)}
+a{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;-webkit-transition:all ease .3s;
+-moz-transition:all ease .3s;line-height:1.7em!important;color:#000}
+a:hover{text-decoration:none}
+
+.container-fluid{padding-left:0;padding-right:0}
+.container{width:100%;max-width:1250px;margin:0 auto}
+
+@media(max-width: 767px) {
+	body,a{font-size:11pt!important}
+}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+body > header{background:#FABF00;height:525px}
+body > header h1{width:35%;text-align:center}
+body > header h1 a{display:inline-block;width:225px;height:184px;
+background:url(../images/logo.png) center 0 no-repeat;text-indent:-7777px}
+body > header nav{width:65%;padding:105px 0 0 0}
+body > header nav ul li{float:left}
+body > header nav ul{overflow:hidden}
+
+/*桌面版導航*/
+#nav-up {width:125px;float:right;margin:0 0 25px 0}
+#nav-up li{margin:0 0 0 5px;color:#333331}
+#nav-up a{color:#333331;font-size:.9em!important}
+#nav-up a:hover{text-decoration:underline}
+#nav-up img{margin:0 0 0 5px}
+
+#nav-down {width:720px;float:right}
+#nav-down li > span{position:relative;top:37px}
+#nav-down a{display:block;padding:38px 20px 0 20px;background-position:center 0;}
+#nav-down a:hover{color:#780606;background-position:center 0;background-repeat:no-repeat}
+#nav-down .cart{position:relative;top:-20px}
+#nav-down .count{position:absolute;top:25px;right:-45px;background:url(../images/count.png) 0 0 no-repeat;
+width:68px;height:28px;font-size:.8em;text-align:center;line-height:1em;padding:6px 0 0 0}
+
+#nav-1:hover{background:url(../images/nav-1.png)}
+#nav-2:hover{background:url(../images/nav-2.png)}
+#nav-3:hover{background:url(../images/nav-3.png)}
+#nav-4:hover{background:url(../images/nav-4.png)}
+#nav-5:hover{background:url(../images/nav-5.png)}
+
+/*手機版導航*/
+#nav-top{height:47px;border-bottom:1px solid #E8B203;background:#FABF00;box-shadow:0 1px 0 #FACE47;
+padding:10px 10px 0 10px}
+#nav-top .cart{position:relative;top:0px;right:70px;}
+#nav-top .count{position:absolute;top:0;right:-69px;background:url(../images/count.png) 0 0 no-repeat;
+width:68px;height:28px;font-size:.8em;text-align:center;line-height:1em;padding:6px 0 0 0}
+
+#nav-side{width:100%;padding:0 0 0 155px;top:45px;left:0px;border-radius:0 0 5px 5px;
+background:url(../images/side.png) 5% center no-repeat #252932}
+#nav-side li{width:33%}
+#nav-side a{color:#9DA1AA;border-top:1px solid #1C2029;border-bottom:1px solid #2F333C;
+padding:12px 0;text-align:center;font-size:.8em!important}
+#nav-side a:hover{background:#1C2127}
+#nav-side .space:hover{background:none}
+
+/*橫幅輪播*/
+.bx-wrapper .bx-viewport{box-shadow:none;border:0;left:.1%}
+.bx-wrapper .bx-pager{background:url(../images/idx-01.png) center 0 no-repeat;height:43px;
+bottom:0px;padding:12px 0 0 0}
+.bx-wrapper .bx-pager.bx-default-pager a{background:url(../images/idx-02.png) 0 0 no-repeat;width:21px;height:21px}
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active{background:url(../images/idx-02a.png) 0 0 no-repeat}
+
+@media(max-width: 1024px) {
+	body > header{height:425px;padding-top:50px}
+	body > header h1{float:none;width:100%}
+	body > header h1 a{width:169px;height:138px;background:url(../images/logo-m.png) center 0 no-repeat}
+	body > header nav{float:none;width:100%;padding:0}
+	#nav-down {width:720px;float:none;margin:0 auto}
+	#nav-up{position:absolute;top:10px;right:18px}
+}
+@media(max-width: 767px) {
+	body > header{height:190px}
+	body > header h1 a{width:105px;height:86px;background:url(../images/logo-s.png) center 0 no-repeat;
+	margin:0 0 0 30px}
+	body > header .container{padding:0px}
+	.bx-wrapper .bx-pager{background:none}	
+}
+@media(max-width: 544px){
+	#nav-side li{width:50%}
+	}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+body > article{background:url(../images/line.jpg) 0 0 repeat-x;padding-top:16%}
+@media(max-width: 1024px) {
+	body > article{padding-top:27%}
+}
+@media(max-width: 767px) {
+	body > article{padding-top:40%}
+}
+
+/*-----------------------------------------------------------------------最新消息---*/
+
+#news header h3{background:url(../images/idx-03.png) 0 0 no-repeat;height:65px;text-indent:-7777px}
+#news header .more{padding-top:60px}
+#news header a{position:relative;left:0px}
+#news header a:hover{left:3px}
+
+#news article a{background:#fff;display:block;border:1px solid #DBD3C9;color:#555}
+#news .link a{background:none;border:0;background:url(../images/idx-05.png) center 0 no-repeat;
+height:165px;position:relative;top:0px}
+#news .link a:hover{top:-3px}
+
+#news .title{padding:10px}
+#news .date{width:48px;text-align:center;color:#fff;
+background:url(../images/idx-10.png) center center no-repeat #8E8E8E}
+#news article a:hover .date{background-color:#FABE00}
+
+@media(max-width: 767px) {	
+	#news header h3{background:url(../images/idx-03m.png) 0 0 no-repeat;height:24px;background-size:contain}
+	#news article a{margin:3% 0 0 0;min-height:inherit}
+}
+
+_:-moz-tree-row(hover), #news .img-responsive{width:100%}
+
+/*-----------------------------------------------------------------------經典推薦---*/
+
+#rcm {padding:10% 0}
+#rcm h3{background:url(../images/idx-06.png) center center no-repeat;height:123px;margin:0 0 5% 0;
+text-indent:-7777px}
+#rcm article b{font-size:1.1em;font-weight:300}
+#rcm article span{margin:0 5px}
+#rcm article img{display:inline}
+#rcm article img:hover{border:1px solid #B9B1AA}
+#rcm article .pull-left{width:100%;text-align:center}
+#rcm article .pull-right{width:100%;text-align:center}
+	
+@media(max-width: 767px) {
+	#rcm {padding:10% 0 5% 0}
+	#rcm h3{margin:0 0 10% 0}
+	#rcm article .pull-left{width:33%}
+	#rcm article .pull-right{width:62%;text-align:left}
+	#rcm .clearfix{margin:5% 0 0 0!important}
+}
+
+#link{padding:2.5% 0 10% 0}
+#link a{background:url(../images/idx-05.png) center 0 no-repeat;display:block;
+height:165px}
+
+/*-----------------------------------------------------------------------談咖啡---*/
+
+#talk{background:url(../images/idx-07.jpg) right center fixed repeat-y;
+color:#fff;text-align:center;padding:5% 0 2% 0;background-size:contain}
+#talk h4{font-size:1.6em;line-height:1.4em;font-weight:300;
+background:url(../images/idx-11.png) center 90% no-repeat;padding:0 0 30px 0}
+#talk p{padding:0 0 30px 0}
+#talk a:hover{opacity:.8;filter:alpha(opacity=80)}
+@media(max-width: 767px) {
+	#talk{padding:5% 0 10% 0}
+}
+
+/*-----------------------------------------------------------------------招募夥伴---*/
+
+#recruit{text-align:center;padding:10% 0 5% 0}
+#recruit h3{background:url(../images/idx-09.png) center center no-repeat;height:169px;margin:0 0 45px 0;
+text-indent:-7777px}
+#recruit a{display:inline-block;margin:0 2%;color:#3E1F00;border-radius:5px;padding:5px 10px}
+#recruit a:hover{background:#AC797A;color:#fff}
+
+/*-----------------------------------------------------------------------頁尾---*/
+
+body > footer{background:url(../images/line.jpg) 0 0 repeat-x #FABF00;padding:55px 0 20px 0;font-size:.9em}
+body > footer p{padding-top:132px;color:#2d2929}
+body > footer a{color:#2d2929}
+body > footer a:hover{text-decoration:underline;color:#2d2929}
+body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184px;text-indent:-7777px}
+#copyright{background:#000;color:#a6a6a6;font-size:.8em;padding:10px 0}
+
+@media(max-width: 1024px) {
+	body > footer h3{background:url(../images/logo.png) left 0 no-repeat}
+}
+@media(max-width: 767px) {
+	body > footer p{padding-top:0;text-align:center}
+	body > footer h3{background:url(../images/logo-m.png) center 0 no-repeat;position:relative;left:30px;height:154px}
+	#copyright{text-align:center}
+}

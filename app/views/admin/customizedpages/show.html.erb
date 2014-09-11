@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <%= @customizedpage.js_content.html_safe %>    
+<% end %>
+
+<%= @customizedpage.html_content.html_safe %>
+
+<table id="mainAttachList"  width="100%" border="0" cellspacing="0" cellpadding="0" >
+  <tbody id="listThisAttach">
+
+      <% @customizedpage.galleries.select{ |v| v['type'] == "CustomizedpageCoverGallery" }.each do |attach| %>
+          <tr <%= "id=createAttachcontainer_#{attach.id.to_s}" %> class="createAttachcontainer dragable" >
+            <td width="12%"><image width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
+           </tr>
+      <% end %>
+
+  </tbody>
+</table>

@@ -1,0 +1,24 @@
+<%= render 'edit_tabs' %>
+<%= form_for(@customizedpage, :url => admin_customizedpage_path(@customizedpage), html: { id: "patchthiscustomizedpage" } ) do |f| %>
+  <table>
+    <tr>
+      <td>
+      NAME:<br><%= f.text_field :title %>
+      </td>
+      <td style="text-align:right;">
+      [ <%= f.submit "送出" %> ]
+      </td>
+     
+    </tr>
+    <tr>
+      <td width:45%>
+      JS(insert into head):<br><%= f.text_area(:js_content, size: '80x50') %><br>
+      </td>
+
+      <td width:45% >
+      HTML(insert into body):<br><%= f.text_area(:html_content, size: '80x50') %><br>
+      </td>
+     
+    </tr>
+
+<% end %>

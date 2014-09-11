@@ -1,53 +1,109 @@
-<h3>分類列表</h3>
-<a href="javascript:void(0);" class="toggle_new_product_cate">新增分類</a>
+<header>
+  <h2 class="left">商品管理</h2>
+  <nav class="left"></nav>
+</header>
+<article>
+  <div class="hgroup">
+    <h3 class="left">分類列表</h3>
+    <div class="button right">
+      <a href="javascript:void(0);" class="right highlight toggle_new_product_cate">新增分類<img src="/images/admin/add_folder.png"></a>
+    </div>
+  </div>
+  <div class="list">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      
+      <% @product_cates.each do |product_cate| %>
 
-<table border="0" cellspacing="0" cellpadding="3" width="100%">
-  <% @product_cates.each do |product_cate| %>
-  <tr class="show_product_cate_<%= product_cate.id %>">
-    <td width="10%">
-      <%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
-    </td>
+        
+        <tr class="show_product_cate_<%= product_cate.id %>" >
+          <td width="6%"><img src="/images/admin/folder.png"></td>
+          <td width="70%">
+            <%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
+          </td>
+          <td width="18%">
+            <div class="tool">
+              <%= link_to "", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit", title:"編輯" %>
+              <%= link_to "", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete", title: "刪除" %>
+            </div>
+          </td>
+        </tr>
+
+        
+        
+        <tr class="list-edit edit_product_cate_<%= product_cate.id %>" style="display:none;">
+          <%= form_for(product_cate, :url => admin_product_cate_path(product_cate) , html: { id: "patchthiscate_#{product_cate.id}", :multipart => true }) do |f| %>
+          
+          <td>&nbsp;</td>
+          <td>
+            <div style="position:relative">
+              <%= f.text_field :name, class:"text", placeholder: "分類名稱", style:"width:50%" %>
+              <!-- COVER UPLOAD -->
+              <%= file_field_tag :attachment, class: 'file' unless product_cate.galleries.count > 0 %>
+            </div>
+          </td>
+          
+          <td align="right" valign="top">
+            <div class="tool">
+              <a href="javascript: document.getElementById('patchthiscate_<%= product_cate.id %>').submit();" class="uvs" data-no-turbolink = true >儲存</a>
+              <%= link_to "取消", "javascript:void(0);" ,:data => { :id => product_cate.id }, :class => "uvs" %>
+            </div>
+          </td>
+          <% end %>
+        </tr>
+
+        <tr class="list-edit edit_product_cate_<%= product_cate.id %>" style="display:none;" >
+          <!-- DISPLAY COVER -->
+          <%= render 'display_category_cover', :product_cate => product_cate unless product_cate.galleries.count <= 0 %>
+        </tr>
+
+      <% end %>
+
+    <!-- new -->
+
+    <tr class="list-new list-edit edit_product_cate" style="display:none;">
+    <%= form_for(@product_cate, :url => admin_product_cates_path , html: {id: "create_new_cate", :multipart => true }) do |f| %>
+    <td>&nbsp;</td>
     <td>
-      <%= link_to "編輯", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit" %>
-      <%= link_to "刪除", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete" %>
+      <div style="position:relative">
+        <%= f.text_field :name, :placeholder => "分類名稱" , class: "text new_cate_name_input" ,placeholder:"分類名稱", style:"width:50%"%>
+        <!-- COVER UPLOAD -->
+        <%= file_field_tag :attachment, class: 'file' %>
+
+        <%= f.hidden_field :parent_id, value: 1 %>
+        <%= f.hidden_field :depth, value: 1 %>
+      </div>
     </td>
-  </tr>
-  <tr class="edit_product_cate_<%= product_cate.id %>" style="display:none;">
-    <%= form_for(product_cate, :url => admin_product_cate_path(product_cate) ) do |f| %>
-    <td width="10%">
-      <%= f.text_field(:name) %>
-    </td>
-    <td>
-      <%= f.submit "儲存" %>
-      <%= link_to "取消", :data => { :id => product_cate.id }, :class => "cancel" %>
+    <td align="right">
+      <div class="tool">
+        <a href="javascript: document.getElementById('create_new_cate').submit();" class="uvs" data-no-turbolink = true >儲存</a>
+        <%= link_to("取消", "javascript:void(0);", :class => "uvs cancel_new_product_cate") %>
+      </div>
     </td>
     <% end %>
   </tr>
-  <% end %>
-  
-  <tr class="list-new edit_product_cate" style="display:none;">
-    <%= form_for(@product_cate, :url => admin_product_cates_path) do |f| %>
-    <td>
-      <%= f.text_field :name, :placeholder => "分類名稱" %>
-    </td>
-    <td>
-      <%= f.submit "儲存" %>
-      <%= link_to("取消", "javascript:void(0);", :class => "toggle_new_product_cate") %>
-    </td>
-    <% end %>
-  </tr>
-</table>
+
+    </table>
+  </div>
+</article>
+
+
 
 <script type="text/javascript">
 $(document).ready(function(){
   $(".toggle_new_product_cate").click(function(){
-    $active_id = $(this).data("id");
+
     if($("tr[class*=edit_product_cate]:visible").length > 0){
       alert("請先完成編輯中的產品分類");
     }
     else{
+      
       $(".list-new").toggle();
     }
+  });
+
+  $(".cancel_new_product_cate").click(function(){
+      $(".new_cate_name_input").val(''); //clear input
+      $(".list-new").toggle();
   });
 
   $(".edit").click(function(){
@@ -60,7 +116,7 @@ $(document).ready(function(){
     }
   });
 
-  $(".cancel").click(function(){
+  $(".uvs").click(function(){
     $active_id = $(this).data("id");
     toggle_edit_area($active_id);
   });

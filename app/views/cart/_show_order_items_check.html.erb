@@ -1,21 +1,38 @@
 <% order_items.each do |item| %>
 <tr>
-  <td align="center">
-    <%= "#{ item[:name] }（#{ item[:stock_name] }）" %>
+  <td width="12%">
+    <% unless item[:product_id].nil? || item[:product_id].empty? %>
+       <% if Product.find_by_id(item[:product_id]).galleries.select{ |v| v['type'] == "ProductPhotoGallery" }.count > 0 %>
+          <%= image_tag Product.find_by_id(item[:product_id]).galleries.select{ |v| v['type'] == "ProductPhotoGallery" }.first.attachment.url %>
+      <% end %>
+    <% end %>
   </td>
-
-  <td align="center" class="count">
-    <%= item[:amount] %>
+  <td width="43%" class="name">
+    <%= generate_product_link(item) %>
+    <div class="detail"> <a>明細</a>
+      <p> 
+        <% if Product.find(item[:product_id]).grindable == 1 %>
+          <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
+          <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
+          <%# NEED REWRITE %>
+          <% if attr[1]["stock_id"] ==  item[:id] %>
+            
+            <%= attr[1]["amount"] %>包
+            <%= item[:name] %>
+            <%= "不" unless attr[1]["needgrind"] == "true" %>需要研磨
+            <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
+            <br>
+          <% end %>
+        
+          <% end %>
+        <% end %>
+      </p>
+    </div>
   </td>
+  <td align="center">$<%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %>元</td>
+  <td align="center"><%= label_tag :amount, item[:amount], :disabled => true %></td>
+  <td align="center">$<%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
+  <td align="center">&nbsp;</td>
 
-  <td align="center"><%= item[:price] %></td>
-
-  <td align="center">
-    <%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %>
-  </td>
-
-  <td align="center"><%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
-
-  <td align="center">有</td>
 </tr>
 <% end %>

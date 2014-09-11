@@ -1,0 +1,28 @@
+<header>
+  <h2 class="left">標籤管理<span>/ 分店管理</span></h2>
+</header>
+<article>
+  <div class="hgroup">
+    <div class="button right">
+      <%= link_to( admin_services_path(), :method => :post, class: "right highlight") do %>
+        新增標籤<img src="/images/admin/add.png">
+      <% end %>
+    </div>
+  </div>
+  <div id="tag-box">
+    <% @services.each do |service| %>
+      <div class="tag left">
+        <% if service.galleries.first %>
+          <%= image_tag service.galleries.where("type = 'ServiceIconGallery'").first.attachment.url %>
+        <% else %>
+          <img src="/images/admin/explain.png">
+        <% end %>
+          <%= service.name %>
+        <div class="tool">
+          <%= link_to("", edit_admin_service_path(service), class: "edit", title: "編輯" ) %>
+          <%= link_to("", admin_service_path(service), :method => :delete, :data => {:confirm => "確定刪除？"}, class: "delete", title: "刪除") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</article>

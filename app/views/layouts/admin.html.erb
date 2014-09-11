@@ -1,17 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cama</title>
+  <title>cama 後台管理系統</title>
+  <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+  <![endif]-->
+  <meta charset="utf-8">
+  <meta name="Robots" content="index,follow"/>
+  <meta http-equiv="content-language" content="zh-TW" />
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/css/admin/reset.css">
+  <link rel="stylesheet" href="/css/admin/style.css">
+  <link rel="stylesheet" href="/css/admin/custom.css">
+  <script src="/js/global.js"></script>
+
+  <script>
+    window.onload= function() {
+    <% if !flash[:notice].nil? %>
+     alertify['success']('<%= flash[:notice] %>', 3000);
+    <% end %>
+    
+    <% if !flash[:alert].nil? %>
+    alertify['error']("<%= flash[:alert].html_safe %>", 3000); 
+    <% end %>
+  }
+  </script>
+
 </head>
 <body>
-<h1>Cama Coffee - Admin</h1>
-<p><%= link_to("index", root_path) %></p>
-<p><%= link_to("產品模組", admin_product_cates_path) %>|<%= link_to("訂單記錄", admin_orders_path) %>|<%= link_to("客服記錄", admin_orderasks_path) %>|<%= link_to("使用者列表", admin_users_path) %></p>
+<section id="wrapper">
+  
+  <header _height="none">
+    <h1>cama 後台管理系統</h1>
+    <aside class="right"> <a href="<%= admin_product_cates_path %>" id="aside-1">index</a><% if current_admin.has_role?(:superadmin) %><%= link_to 'Edit profile', edit_admin_admin_path(current_admin), id: "aside-2" %><% end %><%= link_to 'Log out', destroy_admin_session_path, :method => :delete, id: "aside-3" %> </aside>
+  </header>
 
-<%= yield %>
+  <article>
+  <%= current_admin.email %>
+  <nav _height="auto" class="left">
+    <ul>
+      <% if @current_ability.can? :manage , ProductCate %>
+      <li>
+        <%= link_to image_tag('/images/admin/box.png')+"商品管理", admin_product_cates_path %>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , Order %>
+      <li>
+        <%= link_to image_tag('/images/admin/page.png')+"訂單管理", admin_orders_path %>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , Delivery %>
+      <li>
+        <%= link_to image_tag('/images/admin/truck.png')+"運送管理", admin_deliveries_path %>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , Orderask %>
+      <li>
+        <%= link_to image_tag('/images/admin/comments.png')+"客服管理", admin_orderasks_path %>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , User %>
+      <li>
+        <%= link_to image_tag('/images/admin/group.png')+"會員管理", admin_users_path %>
+      </li>
+      <% end %>
+    </ul>
+    
+    <ul>
+      <% if @current_ability.can? :manage , :all %>
+      <li class="menu-box">
+        <%= link_to image_tag('/images/admin/tv.png')+"首頁管理", "javascript:void(0);" %>
+        <div class="menu">
+          <%= link_to "主視覺輪播", admin_index_sliders_path %>
+          <%= link_to "明星商品", admin_selected_products_path %>
+          <%= link_to "線上徵才", admin_jobs_path %>
+        </div>
+      </li>
+      <li class="menu-box">
+        <%= link_to image_tag('/images/admin/shop.png')+"分店管理", "javascript:void(0);" %>
+        <div class="menu">
+          <%= link_to "標籤管理", admin_services_path %>
+          <%= link_to "門市資訊", admin_stores_path %>
+        </div>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , Announcement %>
+      <li>
+        <%= link_to image_tag('/images/admin/news.png')+"最新消息", admin_announcements_path %>
+      </li>
+      <% end %>
+      <% if @current_ability.can? :manage , Talk %>
+      <li>
+        <%= link_to image_tag('/images/admin/coffee.png')+"談咖啡", admin_talks_path %>
+      </li>    
+      <% end %>
+    </ul>
+
+    <% if @current_ability.can? :manage , Admin %>
+    <ul>
+      <li>
+        <%= link_to image_tag('/images/admin/manager.png')+"管理者", admin_admins_path %>
+      </li>
+    </ul>
+    <% end %>
+  </nav>
+
+  <section id="content" _height="auto" class="left">
+    <%= yield %>
+  </section>
+
+<%# link_to("自訂頁面", admin_customizedpages_path) %>
 
 </body>
 </html>

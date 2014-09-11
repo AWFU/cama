@@ -1,8 +1,78 @@
-<%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product)) do |f| %>
-名稱：<%= f.text_field :name %>
-價格：<%= f.text_field :price %>
-折扣價：<%= f.text_field :price_for_sale %>
-<%= f.submit("儲存") %>
-<% end %>
+<script src="/js_plugins/colorbox/jquery.colorbox-min.js"></script>
+
+<script src="/js_plugins/peditor/js/editor.js"></script>
+<script src="/js_plugins/peditor/js/editor_p.js"></script>
+<script src="/js_plugins/peditor/js/editor_img.js"></script>
+<script src="/js_plugins/peditor/js/editor_list.js"></script>
+<script src="/js_plugins/peditor/js/editor_video.js"></script>
+<script src="/js_plugins/peditor/js/jquery.imgareaselect.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/js_plugins/peditor/css/imgareaselect-default.css" />
+<link rel="stylesheet" type="text/css" href="/js_plugins/colorbox/colorbox.css" />      
+
+<header>
+  <h2 class="left">編輯產品</h2>
+  <nav class="left"></nav>
+</header>
+
+<article>
+  <div class="hgroup">
+      <h3>
+      </h3>
+  </div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+  <div class="form">
+  
+    <%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product), html: { id: "patchthisproduct" } ) do |f| %>
+    名稱：<%= f.text_field :name %>
+    價格：<%= f.text_field :price %>
+    折扣價：<%= f.text_field :price_for_sale %>
+
+      <%= fields_for @product.article do | a | %>
+        <%= a.text_field :content, {:id => 'product_content'} %>
+      <% end %>
+
+    <% end %>
+  
+  </div>
+
+  <%= render  'admin/peditor/editor' %>
+  
+  <div class="button"> 
+    <a href="javascript: document.getElementById('patchthisproduct').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+    
+   </div>
+
+  <div style="display:none">      
+        <div id="previewContainer">
+          <h2>請在圖片上拖拉以完成您要的截圖範圍</h2>
+        </div>
+  </div>
+
+</article>
 
 <%= link_to "返回", admin_product_cate_path(@product.product_cate) %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    editor.init({articleModel: "product", photoUpload: 'peditor/<%= @product.article.id %>/createPhoto', p_selectList: [],linkedp: true});
+
+    $("#submit").click(function(e){
+      e.preventDefault();
+
+      if(!editor.isPostNotSent()){
+        $("#edit_article_<%= @product.article.id %>").submit();
+      }
+      else{
+        editor.alert("段落編輯尚未完成。", "error");
+      }
+    
+      $('#articleContent').bind('peditor_updated', function() {
+        $('#main').height('inherit')
+      })
+    
+    });
+});
+</script>

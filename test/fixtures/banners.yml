@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  related_product_id: 1
+  ranking: 1
+  status: 1
+
+two:
+  title: MyString
+  description: MyString
+  related_product_id: 1
+  ranking: 1
+  status: 1

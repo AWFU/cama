@@ -1,0 +1,23 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/drk-01.jpg) 200px center no-repeat}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+.content{color:#4d1818;border-top:1px solid #2D2418;padding:2.5% 0}
+.content:first-child{border:none;padding:0 0 2.5% 0}
+.content .mark{background:none;color:#0f77f6}
+
+.content .pull-left,
+.content .pull-right{width:50%}
+.content .pull-left img{display:inline;margin:10% 0}
+
+@media(max-width: 767px) {
+.content{padding:5% 0}
+.content h3{text-align:center}
+.content .pull-left,
+.content .pull-right{width:100%}
+.content .pull-left img{width:45%;margin:5% 0}
+}

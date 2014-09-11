@@ -1,22 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cama</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="專業、親切，享受。精心挑選高品質咖啡豆，每日現烘，以平易的價格，提供顧客最新鮮香醇的好味道。cama代表的不僅是理念，也是我們一向以來的堅持與準則。">
+  <meta name="keywords" content="咖啡,coffee,cafe,cama,咖啡豆,精品咖啡,新鮮,烘培,單品,產地,加盟,耳掛,拿鐵,fresh,specialty coffee,green bean,roaster,daily,latte,franchise">
+
+  <title>cama 現烘咖啡專門店 -[cama café]</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+ 
+  <!-- Bootstrap -->
+  <link href="/css/reset.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/global.css" rel="stylesheet">
+  <link href="/css/cart.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+   <script>
+    window.onload= function() {
+    <% if !flash[:notice].nil? %>
+     alertify['success']('<%= flash[:notice] %>', 2000);
+    <% end %>
+    
+    <% if !flash[:alert].nil? %>
+    alertify['error']("<%= flash[:alert].html_safe %>", 2000); 
+    <% end %>
+  }
+  </script>
+  
 </head>
 <body>
-<h1>Cama Coffee - Cart</h1>
 
-<%= yield %>
+  <%= render 'layouts/front_shared_header' %>
+  
+  <%= yield %>  
 
-<script type="text/javascript">
-$(document).ready(function(){
-  if("<%= alert || notice %>"){
-    alert("<%= alert || notice %>");
-  }
-});
-</script>
+  <%= render 'layouts/front_shared_footer' %>
+
+  <script src="/js/bootstrap.min.js"></script> 
+  <!-- Bootstrap -->
+
 </body>
+
 </html>

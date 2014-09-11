@@ -1,0 +1,34 @@
+<header>
+  <h2 class="left">cama 談咖啡</h2>
+</header>
+<article>
+  <div class="button"> 
+    <%= link_to admin_talks_path() ,:method => :post, class: "right highlight" do %>
+     新增文章<%= image_tag("/images/admin/add.png") %>
+    <% end %>
+  </div>
+  <div class="list">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <% @talks.each do |talk| %>
+      <tr>
+        <td width="5%" class="icon">
+          <%= is_set_top(talk.ranking) %>
+        </td>
+        <td width="68%"><%= link_to(talk.title, edit_admin_talk_path(talk)) %></td>
+        <td width="15%" align="right"><%= talk.created_at.strftime("%Y年%m月%d日")%></td>
+        <td width="12%">
+          <div class="tool"> 
+            <%= link_to("", edit_admin_talk_path(talk), title: "編輯", class: "edit") %>
+            <%= link_to("", admin_talk_path(talk), :method => :delete, :data => {:confirm => "確定刪除？"}, title: "刪除", class: "delete") %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class= "page">
+    <%= paginate @talks ,:window => 2 %>
+  </div>
+
+</article>

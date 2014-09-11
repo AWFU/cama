@@ -1,10 +1,37 @@
 #encoding: utf-8
 module ProductsHelper
+
+  def show_keypoints(all_keypoints)
+    keypoints_detail = ""
+    all_keypoints.each do |k,v| 
+      keypoints_detail << "<li>#{v}</li>" unless v.empty?
+    end
+
+    return keypoints_detail.html_safe
+  end
+
+  def show_taste_sttributes(all_attributes)
+    attr_detail = "<ul>"
+    all_attributes.each do |k,v| 
+      attr_detail << "<li>#{v}</li>" unless v.empty?
+    end
+    attr_detail << "</ul>"
+    return attr_detail.html_safe
+  end
+
+  # content_tag(:h5) do
+  #   product_cate.name
+  # end
+      
   def show_product_cate(active_cate, product_cate)
     if product_cate == active_cate
-      "<li class ='active'>#{ link_to( product_cate.name, product_cate_path(product_cate.id) ) }</li>".html_safe
+      "<li class ='active'>#{ link_to( product_cate.name, category_path(product_cate.id) ) }</li>".html_safe
+    elsif product_cate.depth == 1
+      content_tag(:h5) do
+        product_cate.name
+      end
     else
-      "<li>#{ link_to( product_cate.name, product_cate_path(product_cate.id) ) }</li>".html_safe
+      "<li>#{ link_to( product_cate.name, category_path(product_cate.id) ) }</li>".html_safe
     end
   end
 

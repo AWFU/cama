@@ -1,0 +1,35 @@
+ <header>
+  <h2 class="left">明星商品<span> / 首頁管理</span></h2>
+  <nav class="left"></nav>
+</header>
+<article>
+  <div class="hgroup">
+    <div class="button right">
+      <%= link_to new_admin_selected_product_path(), class: "right highlight" do %>
+        新增<img src="/images/admin/add.png">
+      <% end %>
+    </div>
+  </div>
+  <div class="list">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <% @selected_products.each do |selected_product| %>
+      <tr>            
+        <td width="15%">
+          <%= link_to("#{Product.find(selected_product.related_product_id).name}", basic_info_admin_product_cate_product_path(Product.find(selected_product.related_product_id).product_cate, Product.find(selected_product.related_product_id)) ) unless selected_product.related_product_id == 0 %>
+        </td>
+        <td width="73%">
+          <p>
+            <%= selected_product.description %>
+          </p>
+        </td>
+        <td width="12%">
+          <div class="tool">
+            <%= link_to "", edit_admin_selected_product_path(selected_product), class: "edit", title: "編輯" %>
+            <%= link_to '', admin_selected_product_path(selected_product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete', title: '刪除' %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</article>

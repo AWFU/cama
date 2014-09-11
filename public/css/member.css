@@ -1,0 +1,121 @@
+﻿
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/mbr-01.jpg) 300px center no-repeat}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+section article,
+section article a{color:#595959}
+aside,
+section article{background:#fff;border:1px solid #ECE4C0;font-size:.95em!important;}
+
+/*-----------------------------------------------------------------------側欄---*/
+
+aside{padding:0}
+aside h3{font:300 1em "";padding:0 0 0 10px}
+aside li{margin:0 0 5px 0}
+aside li a{display:block;text-align:center;color:#595959}
+aside li a:hover,
+aside .active a{background:#FABF00;color:#595959}
+
+@media(max-width: 1023px) {
+	aside{border:0}
+	aside ul{overflow:hidden}
+	aside li{margin:0;float:left;width:33%}
+	aside li a{padding:2.5% 0}
+}
+
+/*-----------------------------------------------------------------------訂單---*/
+
+#order{padding:5%;}
+#order th{text-align:center;background:#FDF3C4;font-weight:300}
+#order td{padding:2.5% 0;border-bottom:1px solid #FDEBB2}
+#order a{color:#D5A300}
+#order a:hover{color:#FABF00}
+#order td > img{border:1px solid #AAA098;border-radius:5px;width:100px;height:100px}
+#order .name{padding:0 0 0 2.5%}
+#order thead a{color:#134dd1}
+#order thead a:hover{text-decoration:underline;color:#134dd1}
+#order thead span{margin:0 15px 0 0}
+
+.detail{position:relative;display:inline;left:10px}
+.detail a{font-size:.8em!important;color:#D5A300!important;border:1px solid #D5A300;
+display:inline-block;padding:2px 5px;border-radius:5px;background:#fff}
+.detail p{display:none;position:absolute;min-width:150px;border-radius:5px;background:#FABE00;
+font-size:.9em!important;padding:5px 15px;left:0;top:36px}
+.detail p img{position:absolute;top:-6px;left:5px}
+
+@media(min-width: 768px){
+.detail:hover a{background:#D5A300;color:#fff!important}
+.detail:hover p{display:block}	
+}
+
+@media(max-width: 767px) {
+	#order{overflow-x:scroll;padding:5% 5% 0 5%}
+	#order table{width:100%;min-width:450px;margin:0 5% 0 0}
+	#order td{padding:1% 0}
+	#order td > img{width:50px;height:50px}
+	
+	.detail:active a{background:#D5A300!important;color:#fff!important}
+  .detail:active p{display:block}
+}
+
+#total{padding:0 5% 5% 5%}
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#form{padding:0 5% 5% 5%;}
+#form a{font-size:1em!important;color:#0f22b1;margin:0 0 0 15px}
+#form a:hover{text-decoration:underline}
+#form h4{color:#4e2d1a;font:900 1em Arial,微軟正黑體,Microsoft JhengHei}
+#form .btn{background:#FABE00;color:#4e2d1a}
+
+@media(max-width: 767px) {
+#form{padding:5%}
+}
+
+/*-----------------------------------------------------------------------客服---*/
+
+#msg{background:#FAC10A;padding:2.5%}
+#msg a.btn,#msg input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px}
+
+#msg a.btn{background:#D2CFC8;padding-top:7px}
+#msg input.btn{background:#553319;color:#fff}
+#msg a.btn:hover{background:#B6B6B5}
+#msg input.btn:hover{background:#815432}
+
+#member-msg #order{padding:0 5%}
+#member-msg #form{padding-top:5%;text-align:right}
+
+/*-----------------------------------------------------------------------個資---*/
+
+#member-info article{background:none;border:0}
+#member-info table{margin:0 0 10px 0}
+#member-info h3{font-size:1.4em}
+#member-info th{background:#EADAB7;color:#735500;font:300 1em "";padding:10px 0 10px 5%;width:25%}
+#member-info th img{margin:0 10px 0 0}
+#member-info td{background:#fff}
+#member-info .form-control{border:0;box-shadow:none}
+#member-info input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px;background:#FABF00}
+
+#member-info article a{font-size:1em!important;color:#0f22b1}
+#member-info article a:hover{text-decoration:underline}
+
+@media(max-width: 767px) {
+	#member-info h3{margin:10% 0 5% 0}
+	#member-info th{font-size:.9em;width:40%}
+	#member-info th img{width:15px;height:auto}
+}
+#member-login .text-center img{display:inline;margin:0 0 10% 0;}
+#member-login article{background:none;border:none}
+#member-login table{background:#fff;border:1px solid #F1F1F0;margin:2.5% 0}
+#member-login th{min-width:46px;max-width:78px}
+#member-login .form-control{border:0;box-shadow:none}
+#member-login a{font-size:1em!important;color:#0f22b1;margin-left:5%}
+#member-login a:hover{text-decoration:underline}
+
+#member-login input.btn{margin:10% 0 0 0;background:#FABE00;color:#553319;
+font-size:1.3em;padding:1% 10%}
+#member-login input.btn:hover{background:#E3AD00}

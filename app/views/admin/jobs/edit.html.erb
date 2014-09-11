@@ -1,0 +1,27 @@
+<header>
+  <h2 class="left">線上徵才<span> / 首頁管理</span></h2>
+  <nav class="left"></nav>      
+</header>
+<article>
+  <div class="hgroup">
+    <%= form_for(@job, :url => admin_job_path(@job), html: { id: "patchthisjob" } ) do |f| %>
+    <div class="right">顯示 <%= f.check_box :status, { class: 'checkbox'  }, "enable", "disable" %></div>
+  </div>
+  <div class="form">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7%">平台：</td>
+        <td width="29%"><%= f.text_field :name, class: "text" %></td>
+        <td width="2%"></td>
+        <td width="7%">網址：</td>
+        <td width="55%"><%= f.text_field :websiteurl, class: "text" %></td>
+      </tr>          
+    </table>
+  </div>
+  <% end %>
+
+  <div class="button"> 
+    <%= link_to image_tag("/images/admin/left.png")+"返回", admin_jobs_path(), class: "left" %>
+    <a href="javascript: document.getElementById('patchthisjob').submit();" class="right highlight" data-no-turbolink = true >儲存<img src="<%= image_path("save.png") %>"></a>
+  </div>
+</article>  
