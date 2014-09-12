@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Article < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
@@ -23,7 +24,7 @@ class Article < ActiveRecord::Base
       return meta
     
   rescue
-    return 'Meta fetch error.'
+    return ''
   end
       
   end

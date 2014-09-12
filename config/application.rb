@@ -16,7 +16,7 @@ module Cama
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = 'Taipei'
     #test 404
-    config.exceptions_app = self.routes
+    #config.exceptions_app = self.routes
     
     config.filter_parameters += [:password, :password_confirmation]
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

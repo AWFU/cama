@@ -31,7 +31,7 @@ class TalksController < ApplicationController
 
   def show
 
-    @talks = Talk.all
+    @talks = Talk.includes(:galleries, :article)
     # Ugly but have to ... coz ranking 
     # Next talk and previous talk
     @talks.each_with_index do |talk, index|

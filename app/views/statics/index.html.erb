@@ -108,12 +108,12 @@
       <section id="talk">
         <div class="row">
           <div class=" col-sm-4 col-sm-offset-7 col-xs-10 col-xs-offset-1">
-            
-            <h4><%= @talk.title %></h4>
-            <p><%= @talk.subtitle %></p>
-            <%= link_to talk_path(@talk) do %>
-              看更多
-              <%# image_tag(@talk.galleries.select{ |v| v['type'] == 'TalkCoverGallery' }.first.attachment.url ) %>
+            <% unless @talk.nil? %>
+              <h4><%= @talk.title %></h4>
+              <p><%= @talk.subtitle %></p>
+              <%= link_to talk_path(@talk) do %>
+                看更多
+              <% end %>
             <% end %>
           </div>
 

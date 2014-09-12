@@ -11,55 +11,92 @@
 <link rel="stylesheet" type="text/css" href="/js_plugins/peditor/css/imgareaselect-default.css" />
 <link rel="stylesheet" type="text/css" href="/js_plugins/colorbox/colorbox.css" />      
 
-<div>
-   <table id="mainAttachList"  width="100%" border="0" cellspacing="0" cellpadding="0" >
-    <tbody id="listThisAttach">
+<% content_for :header do %>
+  <div id="banner">
+    <div class="container row">
+      <div class="col-md-3 col-md-offset-9 col-sm-12">談咖啡</div>
+    </div>
+  </div>
+<% end %>
 
-        <% @talk.galleries.select{ |v| v['type'] == "TalkCoverGallery" }.each do |attach| %>
-            <tr>
-              <td width="12%">
-                <image width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
-             </tr>
+<article class="container-fluid">
+  <section class="row container" id="talk-show">
+    <div class="col-md-10 col-md-offset-1 col-sm-12 row">
+      
+      <div id="left-content" class="col-sm-9">
+        
+        <div class="content">
+          <div class="title">
+            <h3><%= @talk.title %></h3>
+            <span>作者 cama 著 ‧ <%= @talk.created_at.strftime("%Y/%m/%d")%></span> 
+          </div>
+
+          <div class="cover"> 
+            <% if @talk.galleries.first %>
+              
+                <image src=<%= "#{@talk.galleries.first.attachment.url}" %> class="img-responsive" /> 
+                
+              <% end %>
+          </div>
+
+          <div class="text">
+
+            <div class="tags">
+            <% @talk.camatalks.each do |tag| %>
+              <%= link_to tag.name , about_talks_path(tag.name)%><span>/</span>
+            <% end %>
+            </div>
+
+            <h4><%= @talk.subtitle %></h4>
+            <div id="articleContent"></div> <!--content-->
+            <input id="article_content" style="display:none;" type="text" value="<%= @talk.article.content %>">
+
+            <div class="page">
+              <ul class="pagination">
+                <li class="previous">
+                <% if @previous_talk %>
+                  <%= link_to talk_path(@previous_talk) do%>
+                    <img src="/images/nws-03.gif">
+                  <% end %>
+                <% else %>
+                  <%= link_to talks_path() do%>
+                    <img src="/images/nws-03.gif">
+                  <% end %>
+                <% end %>
+                </li>
+                <li class="menu">
+                  <%= link_to talks_path do %>
+                    <img src="/images/nws-05.png">
+                  <% end %>
+                </li>
+                <li class="next">
+                  <% if @next_talk %>
+                    <%= link_to talk_path(@next_talk) do%>
+                      <img src="/images/nws-04.gif">
+                    <% end %>
+                  <% else %>
+                    <%= link_to talks_path() do%>
+                      <img src="/images/nws-04.gif">
+                    <% end %>
+                  <% end %>
+                </li>
+              </ul>
+            </div><!--page-->
+          
+          </div><!-- text -->
+        </div>
+        <!--left-content-->
+      </div>
+      <div id="right-tag" class="col-sm-3 col-sm-offset-0">
+        <h5>cama 記事分類</h5>
+        <% Talk.tag_counts_on(:camatalks).each do |tag| %>
+          <%= link_to tag.name, about_talks_path(tag.name) %>
         <% end %>
-
-    </tbody>
-  </table>
-  <div class="content"  id="articleContent"></div>    
-  <input id="article_content" style="display:none;" type="text" value="<%= @talk.article.content %>">
-</div>
-
-      <div class="page">
-        <ul class="pagination">
-          <li class="previous">
-          <% if @previous_talk %>
-            <%= link_to talk_path(@previous_talk) do%>
-              <img src="/images/nws-03.gif">
-            <% end %>
-          <% else %>
-            <%= link_to talks_path() do%>
-              <img src="/images/nws-03.gif">
-            <% end %>
-          <% end %>
-          </li>
-          <li class="menu">
-            <%= link_to talks_path do %>
-              <img src="/images/nws-05.png">
-            <% end %>
-          </li>
-          <li class="next">
-            <% if @next_talk %>
-              <%= link_to talk_path(@next_talk) do%>
-                <img src="/images/nws-04.gif">
-              <% end %>
-            <% else %>
-              <%= link_to talks_path() do%>
-                <img src="/images/nws-04.gif">
-              <% end %>
-            <% end %>
-          </li>
-        </ul>
-      </div><!--page-->
-
+      </div>
+      <!--right-tag--> 
+    </div>
+  </section>
+</article>
 
 <script type="text/javascript">
 

@@ -31,8 +31,8 @@ class Talk < ActiveRecord::Base
     [
       :title,
       [:title, :subtitle],
-      [:title , self.created_at.strftime('%Y') , :subtitle],
-      [:title ,:subtitle, self.created_at.strftime('%Y%m%d')]
+      [:title , Time.now.strftime('%Y') , :subtitle],
+      [:title ,:subtitle, Time.now.strftime('%Y%m%d')]
     ]
   end
 

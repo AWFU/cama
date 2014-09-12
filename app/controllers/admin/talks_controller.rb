@@ -6,7 +6,7 @@ class Admin::TalksController < AdminController
   def index
 
     @talks = Talk.all.page(params[:page])
-    #@new_talk = Talk.new
+
   end
     
   def create
@@ -16,7 +16,7 @@ class Admin::TalksController < AdminController
 
     respond_to do |format|
       if @talk.save
-        format.html { redirect_to talkphoto_upload_admin_talk_path(@talk), notice: 'talk was successfully created.' }
+        format.html { redirect_to edit_admin_talk_path(@talk), notice: 'talk was successfully created.' }
       else
         format.html { redirect_to :back, notice: @talk.errors.full_messages }
       end
