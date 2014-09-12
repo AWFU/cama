@@ -1,3 +1,8 @@
+if RUBY_VERSION =~ /1.9.3/ # assuming you're running Ruby ~1.9
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -7,11 +12,8 @@ group :production, :staging do
 	gem 'mysql2'
 end
 
-group :development, :test do
-	gem 'sqlite3'
-	gem 'sextant'
-	gem 'capistrano', "3.1.0", group: :development
-end
+gem 'capistrano', "3.0.1", group: :development
+gem 'capistrano-ext'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -85,6 +87,9 @@ group :development do
   gem 'faker'
   gem 'populator'
   gem 'brakeman', :require => false
+  gem 'sqlite3'
+  gem 'sextant'
+
 end
 
 
