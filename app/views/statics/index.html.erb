@@ -62,8 +62,10 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" >
                   <tr>
                     <td colspan="2" class="hidden-xs">
+                    <% if announcement.galleries.first %>
                       <% announcement_cover_url = announcement.galleries.first.attachment.url %>
                       <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
+                    <% end %>
                     </td>
                   </tr>
                   <tr>
@@ -121,15 +123,16 @@
       </section>
 
       <section id="recruit">
+      <% if @jobs.count > 0 %>
         <h3>想加入cama嗎？</h3>
         <% @jobs.each do |job| %>
           <%= link_to "#{job.name}", job.websiteurl , target: "_blank" %> 
         <% end %>
+      <% end %>
       </section>
 
     </div>
   </article>
-  <p><%= link_to("Admin登入", new_admin_session_path) %></p>
   
   <%= render 'layouts/front_shared_footer' %>
   

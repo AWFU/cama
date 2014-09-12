@@ -59,7 +59,7 @@ class StoresController < ApplicationController
     begin
       @store = Store.friendly.find(params[:id])
 
-      if request.path != store_path(@store)
+      if request.path.downcase != store_path(@store).downcase
         return redirect_to @store, :status => :moved_permanently
       end
     rescue

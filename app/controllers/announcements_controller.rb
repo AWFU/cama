@@ -38,7 +38,7 @@ class AnnouncementsController < ApplicationController
     begin
       @announcement = Announcement.friendly.find(params[:id])
 
-      if request.path != announcement_path(@announcement)
+      if request.path.downcase != announcement_path(@announcement).downcase
         return redirect_to @announcement, :status => :moved_permanently
       end
     rescue

@@ -4,7 +4,7 @@ class StaticsController < ApplicationController
   def index
     
     @index_sliders = Banner.includes(:galleries).where(type: 'IndexSlider', status: 'enable').limit(5)
-    @jobs = Job.where(" status == 'enable' ")
+    @jobs = Job.where(status: 'enable')
     @announcements = Announcement.includes(:galleries).for_index.limit(3)
     @talk = Talk.first
   

@@ -17,12 +17,12 @@ class TalksController < ApplicationController
 
   def index
     tag = params[:tag].to_param
-    allow = tag.in? Talk.includes(:galleries, :article).tag_counts_on(:camatalks).pluck(:name) unless tag.nil? || tag.empty?
+    allow = tag.in? Talk.tag_counts_on(:camatalks).pluck(:name) unless tag.nil? || tag.empty?
     if params[:tag] && allow
-      @talks = Talk.includes(:galleries, :article).tagged_with(tag, on: :camatalks, any: true).page(params[:page])
-      @talks = @talks = Talk.includes(:galleries, :article).page(params[:page]) if @talks.count == 0
+      @talks = Talk.includes(:galleries).tagged_with(tag, on: :camatalks, any: true).page(params[:page])
+      @talks = Talk.includes(:galleries).page(params[:page]) if @talks.count == 0
     else
-      @talks = Talk.includes(:galleries, :article).page(params[:page])
+      @talks = Talk.includes(:galleries).page(params[:page])
       render :index
     end
     
@@ -57,8 +57,8 @@ class TalksController < ApplicationController
   def set_talk
     begin
       @talk = Talk.find(params[:id])
-
-      if request.path != talk_path(@talk)
+      
+      if request.path.downcase != talk_path(@talk).downcase
         return redirect_to @talk, :status => :moved_permanently
       end
     rescue
