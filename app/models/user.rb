@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email, :message => 'E-Mail 已有人使用。'
   #scope :useradmin, -> { where(id: current_user.id)}
+  scope :for_export, -> { order(:email).select(:id, :email, :username) }
 
   paginates_per 20
   
@@ -39,6 +40,15 @@ class User < ActiveRecord::Base
 
     if(params[:add_to_addressbook])
       @addressbook = current_user.addressbooks.create({:address => params[:order][:receiver_address]})
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv <<  ["ID", "Name", "Email"] #column_names
+      all.each do |user|
+        csv << [user.id, user.username, user.email]#user.attributes.values_at(*column_names)
+      end
     end
   end
 

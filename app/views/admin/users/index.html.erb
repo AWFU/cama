@@ -1,6 +1,10 @@
  
     <header>
       <h2>會員管理</h2>
+      <p>
+        <%= link_to "Download CSV", export_admin_users_path(format: "csv") %> 
+      </p>
+
     </header>
     <article>
       <div class="search">
@@ -33,7 +37,7 @@
             <%# end %>
           </table>
         <% else %>
-          利用此條件 查無分店 請重新查詢
+          查無結果 請重新查詢
         <% end %>
         <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <%# @users.each do |user| %>

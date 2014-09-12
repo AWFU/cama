@@ -15,10 +15,6 @@ class CartController < ApplicationController
   
   def index
 
-    # @stock = ProductStock.find_by_id(params[:cart][:stock])
-    # @result = Cart.check_stock(cookies[:cart_cama], @stock, params[:cart][:amount].to_i, cookies[:cart_cafe_attrs], item_attributes)
-    # cookies[:cart_cama] = @result[:cart_items]
-    # cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
     begin
       @result = Cart.check_stock_all(cookies[:cart_cama], cookies[:cart_cafe_attrs])
       cookies[:cart_cama] = @result[:cart_items]
@@ -41,9 +37,9 @@ class CartController < ApplicationController
   def set_ship_to
     
     @@ship_to = nil
-    #p "BE:set: shipping_to->#{params[:shipping_to]}-@@->#{@@ship_to}"
+    
     @@ship_to = params[:shipping_to] if params[:shipping_to].in? ["taiwan","island"]
-    #p "AF:set: shipping_to->#{params[:shipping_to]}-@@->#{@@ship_to}"
+    
     if @@ship_to.nil? || @@ship_to.empty?
       redirect_to cart_index_path, notice: "請選擇運送區域"
     else
@@ -56,10 +52,9 @@ class CartController < ApplicationController
     begin
       @order = Order.new
       @order_items = Cart.check_items_in_cart(cookies[:cart_cama], "for_cart")
-      #@ship_to =  @@ship_to ||= nil #unless (@@ship_to.defined?  || @@ship_to.nil? || @@ship_to.empty?)
-      #p "BE:check: shipping_to->#{params[:shipping_to]}-@@->#{@@ship_to}"
+      
       @@ship_to = nil
-      #p "AF:check: shipping_to->#{params[:shipping_to]}-@@->#{@@ship_to}"
+      
       redirect_to cart_index_path, notice: "請選擇運送區域"  and return if @ship_to.nil? || @ship_to.empty?
 
       redirect_to cart_index_path, alert: "購物車內沒有商品"  and return if @order_items.length == 0
@@ -489,7 +484,6 @@ class CartController < ApplicationController
 
     def set_ship_var
       @ship_to = @@ship_to ||= nil
-      #p "PRIVATE:set: shipping_to->#{params[:shipping_to]}-@@->#{@@ship_to}"
     end
 
     def restore_temp_order
@@ -504,22 +498,3 @@ class CartController < ApplicationController
     end
 
 end
-
-# info_hash_to_post = Hash.new
-
-# info_hash_to_post[:MID] = get_esun_MID
-# info_hash_to_post[:CID] = ""
-# info_hash_to_post[:TID] = "EC000001"
-# info_hash_to_post[:ONO] = @order.ordernum
-# info_hash_to_post[:TA] = sum_order_items(@order.orderitems)+get_shipping_fee_from_order(@order))
-# info_hash_to_post[:U] = receive_result_cart_index_url
-# info_hash_to_post[:M] = get_esun_key(@order.ordernum, @order_total)
-# # ----
-# esun_MID = get_esun_MID
-# esun_CID = ""
-# esun_TID = "EC000001" 
-# esun_ONO = @order.ordernum
-# esun_TA = @order_total = sum_order_items(@order.orderitems)+get_shipping_fee_from_order(@order))
-# esun_U = receive_result_cart_index_url
-# esun_M = get_esun_key(@order.ordernum, @order_total)
-# # ----

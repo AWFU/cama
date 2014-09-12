@@ -271,9 +271,10 @@ Cama::Application.routes.draw do
         end
       end
       resources :users , :only => [:index, :show] do 
-        # collection do 
-        #   get 'search', action: 'search'
-        # end
+        collection do 
+          get 'export', action: 'export'
+          #get 'search', action: 'search'
+        end
       end
       resources :deliveries
 
