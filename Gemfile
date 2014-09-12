@@ -77,6 +77,7 @@ gem 'cancan'
 gem 'rolify'
 
 gem 'whenever', :require => false
+gem 'spreadsheet'
 
 group :development do
   gem 'thin'

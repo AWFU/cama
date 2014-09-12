@@ -2,7 +2,8 @@
     <header>
       <h2>會員管理</h2>
       <p>
-        <%= link_to "Download CSV", export_admin_users_path(format: "csv") %> 
+        <%# link_to "Download CSV", export_admin_users_path(format: "csv") %> 
+        <%= link_to "Download Excel", export_admin_users_path(format: "xls") %>
       </p>
 
     </header>
