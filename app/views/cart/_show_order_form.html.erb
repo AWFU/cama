@@ -62,6 +62,9 @@
           </tr>
         </table>
       </div>
+      <span class="hidden-xs">
+        <input id="update_member_info" name="update_member_info" type="checkbox"><label for="update_member_info">同步更新為會員資料 </label>
+      </span> 
       <div class="column">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -71,9 +74,6 @@
         </table>
       </div>
       <br>
-      <span class="hidden-xs">
-        <input id="update_member_info" name="update_member_info" type="checkbox"><label for="update_member_info">同步更新為會員資料 </label>
-      </span> 
       <span class="hidden-xs">
         <% unless current_user.addressbooks.count >= 5 %>
         <input type="checkbox" id="add_to_addressbook" name="add_to_addressbook"><label for="add_to_addressbook">設為常用地址 </label>
@@ -90,25 +90,25 @@
     </div>
     <div class="col-md-5" id="info-receipt">
       <h4>發票資訊</h4>
-      <!-- <form class="form-inline" role="form"> -->
-        發票
-        <%= f.select :invoice_type, [["二聯式", "two-copies"], ["三聯式", "three-copies"]] , class: "form-control" %>
-      <!-- </form> -->
-      <div class="column invoice_block">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>統一編號</th>
-            <td><%= f.text_field :invoice_companynum , class: 'form-control' %></td>
-          </tr>
-        </table>
-      </div>
-      <div class="column invoice_block">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <th>發票抬頭</th>
-            <td><%= f.text_field :invoice_title , class: 'form-control' %></td>
-          </tr>
-        </table>
+      發票
+      <%= f.select :invoice_type, [["二聯式", "two-copies"], ["三聯式", "three-copies"]] , class: "form-control" %>
+      <div class='invoice_block' style='display:none;'>
+        <div class="column">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th>統一編號</th>
+              <td><%= f.text_field :invoice_companynum , class: 'form-control' %></td>
+            </tr>
+          </table>
+        </div>
+        <div class="column">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th>發票抬頭</th>
+              <td><%= f.text_field :invoice_title , class: 'form-control' %></td>
+            </tr>
+          </table>
+        </div>
       </div>
       <br>
       <span class="hidden-xs">※ 依統一發票使用辦法規定：個人戶(二聯式)發票一經開立，不得任意更改為公司戶(三聯式)發票。</span> 
@@ -125,9 +125,10 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-  // $("#order_invoice_type").change(function(){
-  //   ($(this).val() == "three-copies") ? $(".invoice_block").show() : $(".invoice_block").hide();
-  // });
+
+  $("#order_invoice_type").change(function(){
+    ($(this).val() == "three-copies") ? $(".invoice_block").show() : $(".invoice_block").hide();
+  });
   
   $("#order_receiver_name").val($("#order_buyer_name").val());
   $("#order_receiver_tel").val($("#order_buyer_tel").val());

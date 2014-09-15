@@ -85,7 +85,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 出貨通知(#{order.ordernum})")
     end
   end
 
@@ -94,7 +94,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 出貨通知(#{order.ordernum})")
     end
   end
 

@@ -114,7 +114,7 @@ class Admin::OrdersController < AdminController
   end
 
   def shipping_COD
-    @order.update(:package_tracking_no, params[:order][:package_tracking_no]) unless params[:order][:package_tracking_no].nil?
+    @order.update_column(:package_tracking_no, params[:order][:package_tracking_no]) unless params[:order][:package_tracking_no].nil?
     @order.shipping_COD!
     render :text => '<script type="text/javascript">parent.jQuery.colorbox.close(); </script>'
   end
