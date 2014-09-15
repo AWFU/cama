@@ -28,7 +28,7 @@
               <div class="tags">
               
                 <% talk.camatalks.each do |tag| %>
-                  <%= link_to tag.name , about_talks_path(tag.name)%><span>/</span>
+                  <%= link_to tag.name , about_talks_path(URI.encode_www_form_component(tag.name))%><span>/</span>
                 <% end %>
                 
               </div>
@@ -52,7 +52,7 @@
       <div id="right-tag" class="col-sm-3 col-sm-offset-0">
         <h5>cama 記事分類</h5>
         <% Talk.tag_counts_on(:camatalks).each do |tag| %>
-          <%= link_to tag.name, about_talks_path(tag.name) %>
+          <%= link_to tag.name, about_talks_path(URI.encode_www_form_component(tag.name)) %>
         <% end %>
       </div>
       <!--right-tag--> 

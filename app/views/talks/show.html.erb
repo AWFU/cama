@@ -43,7 +43,7 @@
 
             <div class="tags">
             <% @talk.camatalks.each do |tag| %>
-              <%= link_to tag.name , about_talks_path(tag.name)%><span>/</span>
+              <%= link_to tag.name , about_talks_path(URI.encode_www_form_component(tag.name))%><span>/</span>
             <% end %>
             </div>
 

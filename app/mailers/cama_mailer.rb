@@ -97,20 +97,26 @@ class CamaMailer < ActionMailer::Base
   # 訂單成立
   def order_placed(order)
     @order = order
-
-    mail(:to => gather_admin_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
+    unless gather_moderator_mailto_address.length == 0
+      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立")
+      #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
+    end
   end
 
   #已匯後五碼
   def atm_money_placed(order)
     @order = order
-    mail(:to => gather_admin_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 ATM填寫後五碼")
+    unless gather_moderator_mailto_address.length == 0
+      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼")
+    end
   end
 
   #新詢問
   def new_order_ask(order)
     @order = order
-    mail(:to => gather_admin_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 收到新的詢問")
+    unless gather_moderator_mailto_address.length == 0
+      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問")
+    end
   end
   # send to admin end
 
@@ -126,7 +132,7 @@ class CamaMailer < ActionMailer::Base
     RestClient.post "https://api:#{ Rails.application.config.action_mailer.mailgun_settings[:api_key]}@api.mailgun.net/v2/#{ Rails.application.config.action_mailer.mailgun_settings[:domain]}/messages", data.to_hash
   end
 
-  def gather_admin_mailto_address
+  def gather_moderator_mailto_address
     Admin.with_any_role(:moderator).collect{|admin| admin['email']} 
   end
 
