@@ -1,6 +1,7 @@
 #encoding: utf-8
 class CamaMailer < ActionMailer::Base
   include OrdersHelper
+
   #require this lib when sending email by MailGun API
   #require 'multimap'
 
@@ -11,13 +12,15 @@ class CamaMailer < ActionMailer::Base
   default from: "Cama Cafe <shopping@camacafe.com>"
   # through api: set basic params
   #before_action :set_basic_data
-  
+
   # send to user
   def welcome(user)
-    attachments.inline['camalogo.png'] = with_logo_image
+    ActiveRecord::Base.connection_pool.with_connection do
+      attachments.inline['camalogo.png'] = with_logo_image
 
-    @user = user
-    mail(:to => [ user.email ], :subject => "cama咖啡 會員註冊通知")
+      @user = user
+      mail(:to => [ user.email ], :subject => "cama咖啡 會員註冊通知")
+    end
   end
 
   def atm_checkout_completed_successfully(order)
@@ -38,84 +41,102 @@ class CamaMailer < ActionMailer::Base
     
     # origin
     attachments.inline['camalogo.png'] = with_logo_image
-    
-    user = order.user.email
-    @order = order
-    @ordersum = sum_order_items(order.orderitems) + get_shipping_fee_from_order(order)
-    #headers['X-Mailgun-Campaign-Id'] = '{"o:campaign": "camptest"}'
-    #attachments.inline['camalogo.png'] = File.new(File.join("public","images","email", "camalogo.png"))
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      @ordersum = sum_order_items(order.orderitems) + get_shipping_fee_from_order(order)
+      #headers['X-Mailgun-Campaign-Id'] = '{"o:campaign": "camptest"}'
+      #attachments.inline['camalogo.png'] = File.new(File.join("public","images","email", "camalogo.png"))
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
     #mail(:to => [ 'adam@summers.com.tw' ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
   end
 
   def vaccount_checkout_completed_successfully(order)
     attachments.inline['camalogo.png'] = with_logo_image
-
-    user = order.user.email
-    @order = order
-    @payment_window = 3 #繳款期限
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      @payment_window = 3 #繳款期限
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
   end
 
   def cod_checkout_completed_successfully(order)
     attachments.inline['camalogo.png'] = with_logo_image
-    user = order.user.email
-    @order = order
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
   end
 
   def general_checkout_completed_successfully(order)
     attachments.inline['camalogo.png'] = with_logo_image
-    user = order.user.email
-    @order = order
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
   end
 
   def ship(order)
     attachments.inline['camalogo.png'] = with_logo_image
-    user = order.user.email
-    @order = order
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
   end
 
   def ship_cod(order)
     attachments.inline['camalogo.png'] = with_logo_image
-    user = order.user.email
-    @order = order
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    end
   end
 
   def cancel_deal(order)
     attachments.inline['camalogo.png'] = with_logo_image
-    user = order.user.email
-    @order = order
-    mail(:to => [ order.user.email ], :subject => "cama咖啡 訂單取消(#{order.ordernum})")
+    ActiveRecord::Base.connection_pool.with_connection do
+      user = order.user.email
+      @order = order
+      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂單取消(#{order.ordernum})")
+    end
   end
   # send to user end
 
   # send to admin
   # 訂單成立
   def order_placed(order)
-    @order = order
-    unless gather_moderator_mailto_address.length == 0
-      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立")
-      #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
+    ActiveRecord::Base.connection_pool.with_connection do
+      @order = order
+      unless gather_moderator_mailto_address.length == 0
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立")
+        #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
+      end
     end
   end
 
   #已匯後五碼
   def atm_money_placed(order)
-    @order = order
-    unless gather_moderator_mailto_address.length == 0
-      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼")
+    ActiveRecord::Base.connection_pool.with_connection do
+      @order = order
+      unless gather_moderator_mailto_address.length == 0
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼")
+      end
     end
   end
 
   #新詢問
   def new_order_ask(order)
-    @order = order
-    unless gather_moderator_mailto_address.length == 0
-      mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問")
+    ActiveRecord::Base.connection_pool.with_connection do
+      @order = order
+      unless gather_moderator_mailto_address.length == 0
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問")
+      end
     end
   end
   # send to admin end

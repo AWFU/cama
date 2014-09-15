@@ -80,6 +80,7 @@ gem 'rolify'
 
 gem 'whenever', :require => false
 gem 'spreadsheet'
+gem 'sucker_punch', '~> 1.0'
 
 group :development do
   gem 'thin'

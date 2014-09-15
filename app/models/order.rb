@@ -132,33 +132,42 @@ class Order < ActiveRecord::Base
   def atm_checkout_completed_successfully!
     self.update_column(:payment_status, "order_placed_ATM")
     publish(:pub_atm_checkout_completed_successfully, self) # to listener
-    CamaMailer.atm_checkout_completed_successfully(self).deliver if @@sendmail
-    CamaMailer.order_placed(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :atm_checkout_completed_successfully, self) if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :order_placed, self) if @@sendmail
+    #CamaMailer.atm_checkout_completed_successfully(self).deliver if @@sendmail
+    #CamaMailer.order_placed(self).deliver if @@sendmail
   end
   def vaccount_checkout_completed_successfully!
     self.update_column(:payment_status, "order_placed_Vaccount")
     publish(:pub_vaccount_checkout_completed_successfully, self) # to listener
-    CamaMailer.vaccount_checkout_completed_successfully(self).deliver if @@sendmail
-    CamaMailer.order_placed(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :vaccount_checkout_completed_successfully, self) if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :order_placed, self) if @@sendmail
+    #CamaMailer.vaccount_checkout_completed_successfully(self).deliver if @@sendmail
+    #CamaMailer.order_placed(self).deliver if @@sendmail
   end
   def cod_checkout_completed_successfully!
     self.update_column(:payment_status, "order_placed_COD")
     publish(:pub_cod_checkout_completed_successfully, self) # to listener
-    CamaMailer.cod_checkout_completed_successfully(self).deliver if @@sendmail
-    CamaMailer.order_placed(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :cod_checkout_completed_successfully, self) if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :order_placed, self) if @@sendmail
+    # CamaMailer.cod_checkout_completed_successfully(self).deliver if @@sendmail
+    # CamaMailer.order_placed(self).deliver if @@sendmail
   end
   def general_checkout_completed_successfully!
     #self.update_column(:payment_status, "order_placed_general")
     self.update(:payment_status => "order_placed_general", :paid => "yes")
     publish(:pub_general_checkout_completed_successfully, self) # to listener
-    CamaMailer.general_checkout_completed_successfully(self).deliver if @@sendmail
-    CamaMailer.order_placed(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :general_checkout_completed_successfully, self) if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :order_placed, self) if @@sendmail
+    # CamaMailer.general_checkout_completed_successfully(self).deliver if @@sendmail
+    # CamaMailer.order_placed(self).deliver if @@sendmail
   end
 
   def money_placed_notice!
     self.update_column(:payment_status, "money_placed_notice")
     publish(:pub_money_placed_notice, self) # to listener
-    CamaMailer.atm_money_placed(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :atm_money_placed, self) if @@sendmail
+    #CamaMailer.atm_money_placed(self).deliver if @@sendmail
   end
   def pay!
     self.update({ :payment_status => "paid", :paid => "yes"})
@@ -167,12 +176,14 @@ class Order < ActiveRecord::Base
   def ship!
     self.update({payment_status: "shipped", paid: "yes", shipped: "yes"})
     publish(:pub_ship, self) # to listener
-    CamaMailer.ship(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :ship, self) if @@sendmail
+    #CamaMailer.ship(self).deliver if @@sendmail
   end
   def ship_COD!
     self.update({payment_status: "shipped_COD", shipped: "yes"})
     publish(:pub_ship_COD, self) # to listener
-    CamaMailer.ship_cod(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :ship_cod, self) if @@sendmail
+    #CamaMailer.ship_cod(self).deliver if @@sendmail
   end
   def finished!
     self.update_column(:payment_status, "finished")
@@ -181,7 +192,8 @@ class Order < ActiveRecord::Base
   def cancel_deal!
     self.update_column(:payment_status, "cancel")
     publish(:pub_cancel_deal, self) # to listener
-    CamaMailer.cancel_deal(self).deliver if @@sendmail
+    CamamailerJob.new.async.perform(CamaMailer, :cancel_deal, self) if @@sendmail
+    #CamaMailer.cancel_deal(self).deliver if @@sendmail
   end
   def deal_failed_at_checkout!
     self.update_column(:payment_status, "failed")
