@@ -42,7 +42,7 @@
   <div id="info" class="clearfix">
     <div class="col-md-7" id="info-people">
       <h4 class="clearfix">填寫收件人資訊<span class="pull-right hidden-xs">
-        <input id="info_as_buyer" type="checkbox"><label for="info_as_buyer">同會員資料</label>
+        <input id="info_as_buyer" type="checkbox" checked><label for="info_as_buyer">同會員資料</label>
       </span></h4>
       <div class="column">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -128,6 +128,10 @@ $(document).ready(function(){
   // $("#order_invoice_type").change(function(){
   //   ($(this).val() == "three-copies") ? $(".invoice_block").show() : $(".invoice_block").hide();
   // });
+  
+  $("#order_receiver_name").val($("#order_buyer_name").val());
+  $("#order_receiver_tel").val($("#order_buyer_tel").val());
+  $("#order_receiver_address").val($("#current_user_address").val());
 
   $("#info_as_buyer").change(function(){
     if($(this).prop('checked')){

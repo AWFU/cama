@@ -28,8 +28,6 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :receiver_name, :receiver_address, :receiver_tel,
     message: "收件人欄位均為必填"
-  # validates_presence_of 
-  # validates_presence_of 
 
   validates_presence_of :invoice_title, :invoice_companynum, message: "請填寫發票抬頭及統編" , if: "invoice_type == 'three-copies'"
   # validates_presence_of  , if: "invoice_type == 'three-copies'"
