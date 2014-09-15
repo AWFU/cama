@@ -62,7 +62,8 @@
           <%= link_to("分店查詢", stores_path, id: "nav-3") %>
         </li>
         <li><span>│</span></li>
-        <li><%= link_to "關於 cama" , page_pages_path('about'), id: 'nav-4' %></li>
+        <li><%# link_to "關於 cama" , page_pages_path('about'), id: 'nav-4' %>
+        <%= link_to "關於 cama" , about_path, id: 'nav-4' %></li>
         <li><span>│</span></li>
         <li>
           <%= link_to("談咖啡", talks_path, id: "nav-5") %>

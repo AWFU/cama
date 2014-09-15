@@ -4,6 +4,8 @@ Cama::Application.routes.draw do
   devise_for :admins, :path => 'camaadministrator', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
   root "statics#index"
 
+  get 'about' => 'statics#about', :as => :about
+  
   resources :pages, :controller => :statics do 
     collection do
       get ':page', :action => :show, :as => :page
