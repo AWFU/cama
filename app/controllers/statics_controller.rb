@@ -1,3 +1,4 @@
+#encoding: utf-8
 class StaticsController < ApplicationController
   layout false , only: [:index]
 
@@ -8,6 +9,7 @@ class StaticsController < ApplicationController
     @announcements = Announcement.includes(:galleries).for_index.limit(3)
     @talk = Talk.first
   
+    # 只顯示未下架產品
     active_product_ids = Product.where(status: 'enable')
     @recommended_products = Banner.where(type: 'SelectedProduct', status: 'enable', related_product_id: active_product_ids ).limit(3)
     

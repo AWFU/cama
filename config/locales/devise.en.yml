@@ -47,7 +47,7 @@ en:
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
-      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      unlocked: "您的帳號已被解鎖，現在請重新登入。"
   errors:
     messages:
       already_confirmed: "已註冊成功，請重新登入"
@@ -57,4 +57,4 @@ en:
       not_locked: "was not locked"
       not_saved:
         one: "有一項錯誤影響會員資料更新："
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        other: "有 %{count} 項錯誤影響會員資料更新："

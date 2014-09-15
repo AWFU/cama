@@ -75,8 +75,8 @@
         <td>風味5：</td>
         <td><%= f.text_field :taste_5, class: "text" %></td>
         <td></td>
-        <td></td>
-        <td></td>
+        <td>風味6：</td>
+        <td><%= f.text_field :taste_6, class: "text" %></td>
         <%= fields_for @product.article do | a | %>
           <%= a.hidden_field :content, {:id => 'product_content'} %>
         <% end %>

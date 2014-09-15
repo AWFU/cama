@@ -10,6 +10,7 @@
   <section class="container row" id="member-info">
     <div class="col-md-10 col-md-offset-1 col-sm-12 row">
       <article>
+      <%= devise_error_messages! %>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <h3>請填寫您的資料</h3>
           <%# devise_error_messages! %>
@@ -52,14 +53,20 @@
           <%= recaptcha_tags :display => { :theme => "blackglass" } %>
           <div class="text-center">
             <input type="checkbox" id="agree_privacy" >
-            我已閱讀 <a href="#" target="_blank">服務條款</a>，<a href="#" target="_blank">隱私條款</a> 並同意註冊成會員<br>
-            <%= f.submit "加入會員", class: "btn" %>
+            <label for="agree_privacy">
+            我已閱讀 <a href="#" target="_blank">服務條款</a>，<a href="#" target="_blank">隱私條款</a> 並同意註冊成會員
+            </label><br>
+            <%= f.submit "加入會員", class: "btn", data: {disable_with: "..."} %>
           </div>
         <% end %>
       </article>
     </div>
   </section>
 </article>
+
+<script src="/js_plugins/jq_validation/jquery.validate.min.js"></script>
+<script src="/js_plugins/jq_validation/additional-methods.min.js"></script>
+<script src="/js_plugins/jq_validation/messages_zh_TW.js"></script>
 
 <script type="text/javascript">
 $("#new_user").submit(function(){
@@ -73,3 +80,26 @@ $("#new_user").submit(function(){
     return true;
   });
 </script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#new_user").validate({
+    //debug: true,
+    rules: {
+      "user[user_name]": {required:true},
+      "user[email]": {
+        required:true,
+        email: true
+      },
+      "user[password]": {
+        required:true,
+        minlength: 8
+      },
+      "user[password_confirmation]": {
+        required:true,
+        minlength: 8
+      },
+      "user[recaptcha_response_field]": {required:true}
+    }
+  });
+  });
+</script>>

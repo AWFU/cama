@@ -1,13 +1,15 @@
+#encoding: utf-8
 class RegistrationsController < Devise::RegistrationsController
 
   def create
     if verify_recaptcha
       super
-      CamaMailer.welcome(@user).deliver unless @user.invalid?
+      CamamailerJob.new.async.perform(CamaMailer, :welcome, @user) unless @user.invalid?
+      #CamaMailer.welcome(@user).deliver unless @user.invalid?
     else
       build_resource(sign_up_params)
       clean_up_passwords(resource)
-      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+      flash.now[:alert] = "驗證碼錯誤"
       flash.delete :recaptcha_error
       render :new
     end

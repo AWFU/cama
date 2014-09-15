@@ -140,7 +140,7 @@ class Admin::BannersController < AdminController
     if banner_type == 'IndexSlider'
       params.require(:index_slider).permit(:title, :description)
     elsif banner_type == 'SelectedProduct'
-      params.require(:selected_product).permit(:title, :description, :related_product_id)
+      params.require(:selected_product).permit(:title, :description, :related_product_id, :status)
     end
       
   end
