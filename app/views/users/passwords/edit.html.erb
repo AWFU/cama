@@ -21,12 +21,6 @@
               <td><%= f.password_field :password, :autofocus => true , class: 'form-control' %></td>
             </tr>
           </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <th><img src="/images/mbr-04.jpg"><%= f.label :password, "新密碼" %></th>
-              <td><%= f.text_field :username ,class: "form-control" %></td>
-            </tr>
-          </table>
 
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -49,18 +43,6 @@
 <script src="/js_plugins/jq_validation/additional-methods.min.js"></script>
 <script src="/js_plugins/jq_validation/messages_zh_TW.js"></script>
 
-<script type="text/javascript">
-$("#new_user").submit(function(){
-    if (!$("#agree_privacy").is(":checked")) {
-        alertify.log('請同意站方規則及服務條款與隱私權政策');  
-        //success
-        //error
-        return false;
-    };
-
-    return true;
-  });
-</script>
 <script type="text/javascript">
   $(document).ready(function(){
     $("#new_user").validate({

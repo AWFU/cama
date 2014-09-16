@@ -21,9 +21,20 @@ class StoresController < ApplicationController
       
       # search services use AND condition
       match_ids = (StoreServiceShip.where(service_id: params[:look_for_services]).select('store_id').group('store_id').count).select {|k,v| v == params[:look_for_services].length }
-      @stores = Store.where(id: match_ids.keys ,country: params[:country], city: params[:city], district: params[:district])
+      
+      unless params[:district].empty? || params[:district].nil?
+        @stores = Store.where(id: match_ids.keys ,country: params[:country], city: params[:city], district: params[:district])
+      else
+        @stores = Store.where(id: match_ids.keys ,country: params[:country], city: params[:city])
+      end
+        
     else
-      @stores = Store.where(country: params[:country], city: params[:city], district: params[:district])
+      unless params[:district].empty? || params[:district].nil?
+        @stores = Store.where(country: params[:country], city: params[:city], district: params[:district])
+      else
+        @stores = Store.where(country: params[:country], city: params[:city])
+      end
+      #@stores = Store.where(country: params[:country], city: params[:city], district: params[:district])
     end
 
     respond_to do |format|

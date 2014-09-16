@@ -24,7 +24,7 @@
             </div>
             <div class="col-sm-3">
                <%= select_tag :district, options_from_collection_for_select(@districts ,
-          "id", "name" ) , id: 'districts_select', class: "form-control" %>
+          "id", "name" ) , id: 'districts_select', class: "form-control", :prompt => '-- 請選擇 --' %>
             </div>
         </div>
         <!--search-->

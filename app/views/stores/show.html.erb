@@ -12,7 +12,12 @@
   <div class="container row">
     <div class="col-md-8 col-md-offset-2 col-sm-12" id="content">
       <div class="row">
-      <div id="photo" class="col-md-6"> <img src="/sample/sample9.jpg" class="img-responsive"> 
+      <div id="photo" class="col-md-6">
+        <% if @store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.first %>
+            <image width="100%" src=<%= "#{@store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.first.attachment.url}"%> class="img-responsive"  /> 
+        <% else %>
+           <img src="/sample/sample9.jpg" class="img-responsive"> 
+        <% end %>
       </div><!--photo-->
       <div id="info" class="col-md-6">
         <h3><%= @store.name %></h3>

@@ -7,7 +7,7 @@
     </tr>
     <% stores.each do |store|%>
       <tr>
-        <td align="center"><%= link_to store.name , store_path(store), target: "_blank" %></td>
+        <td align="center"><%= link_to store.name , store_path(store) %></td>
         <td><%= store.address %>  <%= store.phone %></td>
       </tr>
     <% end %>
