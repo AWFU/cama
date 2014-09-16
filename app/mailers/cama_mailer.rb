@@ -114,7 +114,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立(#{order.ordernum})")
         #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
       end
     end
@@ -125,7 +125,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼(#{order.ordernum})")
       end
     end
   end
@@ -135,7 +135,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問(#{order.ordernum})")
       end
     end
   end

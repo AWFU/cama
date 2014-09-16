@@ -27,7 +27,7 @@ class Admin::OrdersController < AdminController
   end
 
   def history
-    @orders = Order.history.order(sort_column + " " + sort_direction)
+    @orders = Order.history.order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show

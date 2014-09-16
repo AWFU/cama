@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 
   include Wisper::Publisher
   
-  @@sendmail = true
+  @@sendmail = false
 
   belongs_to :user
   has_many :orderitems, :dependent => :destroy
@@ -23,6 +23,7 @@ class Order < ActiveRecord::Base
   
   scope :latest, -> { where("aasm_state != 'hold'").order(created_at: :desc) }
 
+  paginates_per 30
 
   #validation
 

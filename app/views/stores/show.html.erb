@@ -24,7 +24,7 @@
         <ul>
           <li>地址：<%= @store.address %></li>
           <li>電話：<%= @store.phone %></li>
-          <li>營業時間：<%= @store.ophour %></li>
+          <li>營業時間：<%= simple_format(@store.ophour) %></li>
         </ul>
       </div><!--info-->
       </div>
@@ -44,7 +44,7 @@
       </div><!--tag-->
 
       <div id="intro">
-        <p><%= @store.intro %></p>
+        <p><%= simple_format (@store.intro) %></p>
       </div><!--tag-->
 
       <div id="map">

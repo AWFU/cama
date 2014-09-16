@@ -69,7 +69,7 @@ class Admin::StoresController < AdminController
 
   # tab-2: store photo uploads
   def storephoto_upload
-    
+    @gallery_count = @store.galleries.select{ |v| v['type'] == "StorePhotoGallery" }.count
   end
 
   def create_store_attachment

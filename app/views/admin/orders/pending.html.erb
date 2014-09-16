@@ -37,7 +37,7 @@ div ,td, p .noTransition {
       <tr>
         <th width="5%" align="center" class="icon"></th>
         <th width="12%" align="center"><%= sortable "payment_type", "付款方式" %></th>
-        <th width="21%" align="left"><%= sortable "created_at", "時間" %></th>
+        <th width="21%" align="left"><%= sortable "created_at", "訂單成立時間" %></th>
         <th width="16%" align="left"><%= sortable "ordernum", "編號" %></th>
         <th width="5%" align="center"><a href="javascript:void(0);">收款</a></th>
         <th width="5%" align="center"><a href="javascript:void(0);">出貨</a></th>
@@ -46,7 +46,13 @@ div ,td, p .noTransition {
 
       <% @orders.each do |order| %>
         <tr id="order_<%= order.id %>">
-          <td class="icon"></td>
+          <td class="icon">
+            <% if order.payment_type == 'Vaccount' || order.payment_type == 'atm_transfer' %>
+              <% unless 3.days.ago < order.created_at %>
+                <img src="/images/idx-02a.png">
+              <% end %>
+            <% end %>
+          </td>
           <td align="center"><%= order.get_payment_type %></td>
           <td><span class="time"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></span></td>
           <td><%= link_to order.ordernum, admin_order_path(order), :class => "show_order close", :remote => true, :data => { order_id: order.id } %></td>

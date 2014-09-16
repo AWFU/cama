@@ -3,7 +3,7 @@ class Useradmin::OrdersController < UseradminController
   before_action :order_params, only: [:atm_transfered]
   
   def index
-    @orders = current_user.orders.where("aasm_state != 'hold'").order(created_at: :desc).all
+    @orders = current_user.orders.where("aasm_state != 'hold'").where("created_at between ? and ?", 1.year.ago, Date.today).order(created_at: :desc)
   end
   
   def show

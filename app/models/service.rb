@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Service < ActiveRecord::Base
-  has_many :store_service_ships
+  has_many :store_service_ships, dependent: :destroy
   has_many :stores , through: :store_service_ships
   has_many :galleries, -> { order('ranking, created_at') } , as: :attachable , dependent: :destroy
   
