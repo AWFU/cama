@@ -29,21 +29,15 @@ class User < ActiveRecord::Base
   paginates_per 20
   
   def self.update_info_on_order_create(current_user, params)
-    if(params[:update_member_info] || params[:set_as_default_address])
-      if(params[:update_member_info])
-        current_user.username = params[:order][:receiver_name]
-        current_user.tel = params[:order][:receiver_tel]
-        #current_user.address = params[:order][:receiver_address]
-        
-      end
-
-      current_user.address_to_receive = params[:order][:receiver_address]
-      # if(params[:set_as_default_address])
-      #   current_user.address_to_receive = params[:order][:receiver_address]
-      # end
-      current_user.save
+    if(params[:update_member_info])
+      current_user.username = params[:order][:receiver_name]
+      current_user.tel = params[:order][:receiver_tel]
+      #current_user.address = params[:order][:receiver_address]
     end
-
+    
+    current_user.address_to_receive = params[:order][:receiver_address]
+    current_user.save
+    
     if(params[:add_to_addressbook])
       @addressbook = current_user.addressbooks.create({:address => params[:order][:receiver_address]})
     end

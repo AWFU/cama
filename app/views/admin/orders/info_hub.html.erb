@@ -18,6 +18,8 @@ div ,td, p .noTransition {
   <%= render 'atm_confirm' %>
 <% elsif params[:event].in? ["comfirmed_Vaccount"]%>
 <%= render 'vaccount_confirm' %>
+<% elsif params[:event].in? ["post_collect_checked"]%>
+<%= render 'post_collect_checked' %>
 <% else %>
 
 <div id="wrapper">
