@@ -38,7 +38,7 @@
   </header>
 
   <article>
-  <%= current_admin.email %>
+  <%= current_admin.email %> - the [<%= current_admin.name %>] 
   <nav _height="auto" class="left">
     <ul>
       <% if @current_ability.can? :manage , ProductCate %>

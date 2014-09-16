@@ -18,7 +18,7 @@
           <% if attr[1]["stock_id"] ==  item[:id] %>
             
             <%= attr[1]["amount"] %>包
-            <%= item[:name] %>
+            <%# item[:name] %>
             <%= "不" unless attr[1]["needgrind"] == "true" %>需要研磨
             <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
             <br>

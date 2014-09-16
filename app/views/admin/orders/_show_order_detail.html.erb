@@ -32,7 +32,7 @@
                     <% if attr[1]["stock_id"] ==  item.product_stock_id && attr[1]["needgrind"] == "true" %>
                 
                         <%= attr[1]["amount"] %>包
-                        <%= item.item_name %>
+                        <%# item.item_name %>
                         <%= "不" unless attr[1]["needgrind"] == "true" %>需要研磨
                         <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
                       <br>  

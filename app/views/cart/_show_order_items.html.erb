@@ -19,7 +19,7 @@
           <% if attr[1]["stock_id"] ==  item[:id] %>
             <%# link_to "-", minus_cart_path(item[:id], attr[0]), :method => :post, :class => "minor" %>
             <%= attr[1]["amount"] %>包
-            <%= item[:name] %>
+            <%# item[:name] %>
             <%= "不" unless attr[1]["needgrind"] == "true" %>需要研磨
             <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
             <%# link_to "+", plus_cart_path(item[:id], attr[0]), :method => :post, :class => "plus" %>
