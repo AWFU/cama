@@ -31,7 +31,7 @@ Cama::Application.routes.draw do
       #金流串接
       get "post_order/:id" => "cart#post_order", :as => "post_order"
       get "receive_result" => "cart#receive_result"
-
+      
       match "add" => "cart#add" , :via => :post
     end
 
