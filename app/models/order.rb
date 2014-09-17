@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 
   include Wisper::Publisher
   
-  @@sendmail = false
+  @@sendmail = true
 
   belongs_to :user
   has_many :orderitems, :dependent => :destroy
@@ -34,6 +34,7 @@ class Order < ActiveRecord::Base
   # validates_presence_of  , if: "invoice_type == 'three-copies'"
   validates_numericality_of :accountinfo , message: "請填寫數字5碼", on: :update, :allow_nil => true , if: "payment_type == 'atm_transfer'"
   validates_length_of :accountinfo, is: 5 , message: "請填寫數字5碼", on: :update , :allow_nil => true, if: "payment_type == 'atm_transfer'"
+  validates_length_of :invoice_companynum, is: 8 , message: "請填寫數字8碼", on: :update , if: "invoice_type == 'three-copies'"
 
   def check_attrs
     self.ordernum = self.generate_ordernum if self.ordernum.blank?

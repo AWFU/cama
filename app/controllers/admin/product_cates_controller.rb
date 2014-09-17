@@ -52,10 +52,12 @@ class Admin::ProductCatesController < AdminController
   def destroy
 
     #@product_cate.destroy if @product_cate && @product_cate.products.count == 0
-    
-    flash[:alert] = "此分類下仍有產品 無法刪除" if @product_cate.products.count > 0
-    
     deletable = true
+    if @product_cate.products.count > 0
+      flash[:alert] = "此分類下仍有產品 無法刪除" 
+      deletable = false
+    end
+    
     # prevent delete by mistake
     ProductCate.where(id: @product_cate.descendents).each do |category|
       if category.products.count > 0

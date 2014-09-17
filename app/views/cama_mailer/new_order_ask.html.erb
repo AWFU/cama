@@ -6,8 +6,13 @@
 <body>
   <p>親愛的管理員，您好：</p>
 
-  <p>訂單編號：<%= @order.ordernum%>，會員填寫了新的詢問，快回來後台查看吧！</p>
+  <p>訂單編號：<%= @order.ordernum%>，</p>
+  <p>會員於訂單中留言：</p>
+  <p><%= @order.orderasks.last.description %></p>
+  <p>提醒您請盡速處理。！</p>
 
+  <p><%= link_to "後台登入頁link", new_admin_session_url ,target: "_blank" %></p>
+  
   <%= render "cama_mailer/footer" %>
 </body>
 </html>

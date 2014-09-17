@@ -122,7 +122,7 @@
 <% end %>
 <!--info-->
 
-
+<script src="/js_plugins/mask/jquery.mask.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -189,7 +189,9 @@ $(document).ready(function(){
               return true;
             }else { return false; }
           }
-        }
+        },
+        maxlength: 8,
+        minlength: 8
       },
       "order[invoice_title]": {
         required: {
@@ -204,6 +206,8 @@ $(document).ready(function(){
       
     }
   });
+
+  $('#order_invoice_companynum').mask('00000000');
 
 });
 

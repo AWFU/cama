@@ -135,7 +135,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 收到新的詢問(#{order.ordernum})")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 客服信件(#{order.ordernum})")
       end
     end
   end
