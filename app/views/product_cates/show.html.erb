@@ -38,7 +38,10 @@
                 <div class="col-sm-4 clearfix">   
                   <%= list_product(product) %>
                   <div class="pull-right">
-                    <p><%= product.name%><span>(<%= product.unit %>)</span><br>
+                    <p>
+                      <%= link_to category_product_path(@product_cate, product) do %>
+                        <%= product.name%><span>(<%= product.unit %>)</span><br>
+                      <% end %>
                       <% if product.price_for_sale > 0 %>
                         優惠價 $<%= number_with_delimiter(product.price_for_sale) %> 元
                       <% else %>
@@ -54,7 +57,9 @@
                 <%= list_product(product) %>
                 <div class="pull-right">
                   <p>
-                    <%= product.name%><span>(<%= product.unit %>)</span><br>
+                    <%= link_to category_product_path(@product_cate, product) do %>
+                      <%= product.name%><span>(<%= product.unit %>)</span><br>
+                    <% end %>
                     <% if product.price_for_sale > 0 %>
                       優惠價 $<%= number_with_delimiter(product.price_for_sale) %> 元
                     <% else %>
