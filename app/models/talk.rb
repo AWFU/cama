@@ -13,7 +13,7 @@ class Talk < ActiveRecord::Base
   
   before_validation :check_attrs
   
-  paginates_per 10
+  paginates_per 3
 
   def check_attrs
     self.title = "未命名文章" if self.title.blank?
