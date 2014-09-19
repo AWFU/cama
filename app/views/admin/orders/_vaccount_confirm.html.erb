@@ -2,8 +2,8 @@
   <div id="up">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td width="24%">此訂單虛擬帳號：</td>
-            <td width="76%"><%= @order.accountinfo %></td>
+            <td width="24%">繳款帳號：</td>
+            <td width="76%"><%= @order.accountinfo.unpack('a5a5a4').join('-') %></td>
         </tr>
         <tr>
             <td width="24%">訂單金額：</td>

@@ -127,7 +127,7 @@
             <% if @order.payment_status != 'shipped' && @order.payment_type == 'Vaccount' && @order.accountinfo.present? %>
               付款方式： 虛擬帳號 <br>
               銀行：玉山銀行 敦南分行 (銀行代碼:808) <br>
-              帳號：<%= @order.accountinfo %> <br>
+              帳號：<%= @order.accountinfo.unpack('a5a5a4').join('-') %> <br>
             <% end %>
           </div>
         </article>
