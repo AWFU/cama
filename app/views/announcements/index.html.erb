@@ -26,7 +26,12 @@
           </div>
           <div class="col-md-8">
             <h3><%= announcement.title %></h3>
-            <p><%= announcement.subtitle.first(45) %></p>
+            <p>
+            <% if announcement.subtitle.length > 0 %>
+              <%= announcement.subtitle.first(45) %>
+              <%= '...' if announcement.subtitle.length > 45 %>
+            <% end %>
+            </p>
             <%= link_to("看更多", announcement_path(announcement), class: "more") %>          
           </div>
         </div>
