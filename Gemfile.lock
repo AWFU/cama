@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: d1fc95b3c21c8294e69c70e3995459d11dabfd67
+  branch: rails-4
+  specs:
+    ransack (1.2.3)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      i18n
+      polyamorous (~> 1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,6 +138,8 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     polyglot (0.3.5)
     populator (1.0.0)
     rack (1.5.2)
@@ -268,6 +282,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails-alertify
   rails_admin
+  ransack!
   recaptcha
   remotipart
   rolify

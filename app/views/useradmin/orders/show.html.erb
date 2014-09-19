@@ -48,6 +48,7 @@
                     <% end %>
                   </td>
                   <td width="43%" class="name"><a><%= "#{ item.item_name }" %></a>
+                  <% if get_product_of(item) && get_product_of(item).grindable == 1 %>
                     <div class="detail"> <a>明細</a>
                       <p> <img src="/images/ord-02.png"> 
                       <%# 要重寫 做 collection%>
@@ -57,7 +58,8 @@
                           
                                   <%= attr[1]["amount"] %>包
                                   <%# item.item_name %>
-                                  <%= "不" unless attr[1]["needgrind"] == "true" %>需要研磨
+                                  <%= "不磨" unless attr[1]["needgrind"] == "true" %>
+                                  <%= "研磨" if attr[1]["needgrind"] == "true" %>
                                   <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
                                 <br>  
                               <% end %>
@@ -68,7 +70,9 @@
                         <% end %>
                         
                       </p>
-                    </div></td>
+                    </div>
+                    <% end %>
+                  </td>
                   <td align="center">$<%= number_with_delimiter(item.item_price) %></td>
                   <td align="center"><%= item.amount %> 組</td>
                   <td align="center">$<%= number_with_delimiter(item.item_price * item.amount) %></td>

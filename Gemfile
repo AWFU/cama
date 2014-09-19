@@ -81,6 +81,7 @@ gem 'rolify'
 gem 'whenever', :require => false
 gem 'spreadsheet'
 gem 'sucker_punch', '~> 1.0'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 
 group :development do
   gem 'thin'

@@ -14,7 +14,7 @@
 		number: "請輸入數字",
 		digits: "請輸入整數",
 		creditcard: "請輸入合法的信用卡號碼",
-		equalTo: "請重複輸入一次",
+		equalTo: "不相符",
 		accept: "請輸入有效的後缀字串",
 		maxlength: $.validator.format("請輸入長度不大於{0} 的字串"),
 		minlength: $.validator.format("請輸入長度不小於 {0} 的字串"),
