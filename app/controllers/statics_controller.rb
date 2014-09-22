@@ -1,13 +1,13 @@
 #encoding: utf-8
 class StaticsController < ApplicationController
-  layout false , only: [:index, :about]
+  layout false , only: [:index]
 
   def index
     
     @index_sliders = Banner.includes(:galleries).where(type: 'IndexSlider', status: 'enable').limit(5)
     @jobs = Job.where(status: 'enable')
     @announcements = Announcement.includes(:galleries).for_index.limit(3)
-    @announcement_length = 12
+    @announcement_length = 26
 
     @talk = Talk.first
   

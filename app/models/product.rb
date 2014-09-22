@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   has_many :galleries, -> { order('ranking, created_at') } , as: :attachable , dependent: :destroy
 
   has_many :product_stocks, dependent: :destroy
+  before_destroy { |record| Banner.destroy_all "related_product_id = #{record.id}"  }
 
   scope :front_show_by_cate, ->(product_cate_id) { where("product_cate_id = ? AND status = ?", product_cate_id, "enable") }
 

@@ -11,8 +11,6 @@ class Admin::OrdersController < AdminController
   #before_action :need_mail, :only => [:checkout_succeeded_ATM, :checkout_succeeded_Vaccount, :checkout_succeeded_COD, :checkout_succeeded_general, :shipping, :shipping_first, :shipping_COD]
 
   def index
-    #@q = Order.search(params[:q])
-    #@orders = @q.result(distinct: true)
     @orders = Order.todolist.order(sort_column + " " + sort_direction)
   end
 
@@ -29,7 +27,10 @@ class Admin::OrdersController < AdminController
   end
 
   def history
-    @orders = Order.history.order(sort_column + " " + sort_direction).page(params[:page])
+    @q = Order.history.search(params[:q])
+    @orders = @q.result(distinct: true).includes(:user).page(params[:page])
+
+    #@orders = Order.history.order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show

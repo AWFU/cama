@@ -17,7 +17,9 @@
           <div class="col-md-4 cover">
             <% if announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first %>
               <% announcement_cover_url = announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.first.attachment.url %>
-              <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
+              <%= link_to announcement_path(announcement) do %>
+                <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
+              <% end %>
             <% end %>
             <div class="date">
               <b><%= announcement.created_at.strftime("%d")%></b><br>
@@ -25,7 +27,7 @@
             </div>
           </div>
           <div class="col-md-8">
-            <h3><%= announcement.title %></h3>
+            <h3><%= link_to(announcement.title, announcement_path(announcement) ) %></h3>
             <p>
             <% if announcement.subtitle.length > 0 %>
               <%= announcement.subtitle.first(45) %>

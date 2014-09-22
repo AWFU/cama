@@ -11,7 +11,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   #config.mailer_sender = 'postmaster@sandbox6bfc02b6428d419186e8f7fa102fb7a1.mailgun.org'
-  config.mailer_sender = 'Cama Cafe <shopping@camacafe.com>'
+  config.mailer_sender = 'cama cafe <shopping@camacafe.com>'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

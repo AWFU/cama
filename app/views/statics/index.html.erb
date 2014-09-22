@@ -101,7 +101,7 @@
             <div class="col-sm-4 clearfix">
               <div class="pull-right">
               <% rcm_product = Product.find(selected_product.related_product_id) %>
-                <p><span>●</span><b><%= rcm_product.name %></b><span>●</span><br><%= selected_product.description%>
+                <p><span>●</span><b><%= link_to(rcm_product.name, category_product_path(rcm_product.product_cate, rcm_product) ) %></b><span>●</span><br><%= selected_product.description%>
                 </p>
               </div>
               <div class="pull-left"> 

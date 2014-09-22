@@ -31,7 +31,7 @@ Cama::Application.routes.draw do
       #金流串接
       get "post_order/:id" => "cart#post_order", :as => "post_order"
       get "receive_result" => "cart#receive_result"
-      
+
       match "add" => "cart#add" , :via => :post
     end
 
@@ -262,7 +262,9 @@ Cama::Application.routes.draw do
           get '/shipped' , action: 'shipped'
           get '/pending' , action: 'pending'
           get '/human_involved' , action: 'human_involved'
-          get '/history' , action: 'history'
+          #get '/history' , action: 'history'
+          match 'history' => 'orders#history', via: [:get, :post], as: :history
+          
         end
 
       end

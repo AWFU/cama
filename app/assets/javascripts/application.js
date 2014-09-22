@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require jquery.ui.sortable
+//= require jquery.ui.accordion
 //= require select2
 //= require select2_locale_zh-TW
 //= require alertify

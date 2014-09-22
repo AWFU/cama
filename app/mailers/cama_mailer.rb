@@ -9,7 +9,7 @@ class CamaMailer < ActionMailer::Base
   #default from: "Cama Cafe Postmaster <postmaster@sandbox6bfc02b6428d419186e8f7fa102fb7a1.mailgun.org>"
   #default from: "Cama Cafe <postmaster@sandbox6bfc02b6428d419186e8f7fa102fb7a1.mailgun.org>"
   #default 'X-Mailgun-Campaign-Id' => 'camptest'
-  default from: "Cama Cafe <shopping@camacafe.com>"
+  default from: "cama cafe <shopping@camacafe.com>"
   # through api: set basic params
   #before_action :set_basic_data
 

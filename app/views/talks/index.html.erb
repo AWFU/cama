@@ -15,13 +15,13 @@
         <% @talks.each do |talk| %>
           <div class="content">
             <div class="title">
-              <h3><%= talk.title %></h3>
+              <h3><%= link_to talk.title, talk_path(talk) %></h3>
               <span>作者 cama 著 ‧ <%= talk.created_at.strftime("%Y/%m/%d")%></span> </div>
             <div class="cover"> 
               <% if talk.galleries.first %>
-              
-                <image src=<%= "#{talk.galleries.first.attachment.url}" %> class="img-responsive" /> 
-                
+                <%= link_to talk_path(talk) do %>
+                  <image src=<%= "#{talk.galleries.first.attachment.url}" %> class="img-responsive" /> 
+                <% end %>
               <% end %>
             </div>
             <div class="text">
