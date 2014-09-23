@@ -33,7 +33,13 @@
     <% end %>
   }
   </script>
-  
+  <script>
+jQuery(function($){
+  $("a").focus(function(){
+    $(this).blur();
+  });
+});
+</script>
 </head>
 <body>
 

@@ -5,7 +5,9 @@ html{overflow-x:hidden}
 body{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;line-height:1.7em!important;
 background:url(../images/bg.jpg);overflow-x:hidden}
 a{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;-webkit-transition:all ease .3s;
--moz-transition:all ease .3s;line-height:1.7em!important;color:#000}
+-moz-transition:all ease .3s;line-height:1.7em!important;color:#000;
+outline: medium none;/* for Firefox Google Chrome  */
+behavior:expression(this.onFocus=this.blur()); /* for IE */}
 a:hover{text-decoration:none}
 
 .container-fluid{padding-left:0;padding-right:0}
