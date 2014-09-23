@@ -87,12 +87,13 @@
         <h3>cama 經典推薦</h3>
         <article class="row">
           <% @recommended_products.each do | selected_product | %>
+            <% rcm_product = Product.find(selected_product.related_product_id) %>
             <div class="col-sm-4 clearfix">
               <div class="pull-left"> 
                 <%= link_to( image_tag(rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.attachment.url, class: "img-responsive"), category_product_path(rcm_product.product_cate, rcm_product) ) unless selected_product.related_product_id == 0 || rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.nil? %>
               </div>
               <div class="pull-right">
-              <% rcm_product = Product.find(selected_product.related_product_id) %>
+              
                 <p><span>●</span><b><%= link_to(rcm_product.name, category_product_path(rcm_product.product_cate, rcm_product) ) %></b><span>●</span><br><%= selected_product.description%>
                 </p>
               </div>
