@@ -33,8 +33,8 @@ background:url(../images/nws-02.png) right center no-repeat}
 #news-show .title{margin:5% 0}
 #news-show .date{width:75px}
 #news-show .date > div{width:75px;height:75px;text-align:center;color:#fff;padding:3px 0 0 0;
-background:url(../images/idx-10.png) center center no-repeat #FABE00}
-#news-show .date b{font:300 25px "Arial Black", Gadget, sans-serif}
+background:url(../images/idx-10.png) center center no-repeat #FABE00;line-height:2em;padding:5px 0 0 0}
+#news-show .date b{font:900 25px "Arial", Gadget, sans-serif}
 #news-show h3{color:#5b2407;padding:0 0 0 25px;line-height:1.3em}
 
 #news-show .content{padding:0 0 0 100px}
