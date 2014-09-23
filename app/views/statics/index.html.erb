@@ -67,8 +67,7 @@
                   <div class="date"><b><%= announcement.created_at.strftime("%d")%></b><br>
                       <%= announcement.created_at.strftime("%-m月")%></div>
                 </div>
-            <div class="title"><% if (announcement.title.length > @announcement_length) %>
-                          <% note = announcement.title.first(@announcement_length)  %>
+            <div class="title"><% if (announcement.title.length > @announcement_length) %><% note = announcement.title.first(@announcement_length)  %>
                           <%= note+"..." %>
                       <% else %>
                           <%= announcement.title %>
