@@ -15,7 +15,9 @@
       <li>
         <%= link_to("談咖啡", talks_path) %>
       </li>
-      <li><a class="space">&nbsp;</a></li>
+      <li>
+        <%= link_to("回首頁", root_url) %>
+      </li>
       <li>
           <%= link_to '登入', new_user_session_path unless user_signed_in? %>
           <%= link_to '我的帳戶', useradmin_orders_path if user_signed_in? %>
