@@ -14,26 +14,24 @@
         <div class="row">
           <div class="sliderContainer col-sm-4">
             <!-- <span id="slider-prev"></span>  Product slider  <span id="slider-next"></span> -->
-            <div id="photo" class="text-center">
-              <ul class="bxslider-1">
+
+            <div class="bxslider text-center" id="photo">            
                 <% @product.galleries.each do |attach| %>
-                    <li>
+                    <figure>
                       <image src=<%= "#{attach.attachment.url}" %> class="img-responsive"/>
-                   </li>
-                <% end %>
-              </ul>
+                   </figure>
+                <% end %>            
             </div>
-              
-            <ul id="bx-pager" class="bxslider-2" id="thumb">
-            <% @product.galleries.each_with_index do |attach, index| %>
+            <!--photo-->
+            <ul id="thumb">
+              <% @product.galleries.each_with_index do |attach, index| %>
               <li>
                 <a data-slide-index="<%= "#{index}" %>" href="">
-                  <image height="auto" src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
+                  <image src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
                 </a>
               </li>
-            <% end %>
-            </ul>
-           
+              <% end %>
+            </ul>          
           </div>
 
           <div class="col-sm-8">
@@ -110,29 +108,19 @@
 
     editor.output();
 
-    $('.bxslider-1').bxSlider({
-      slideWidth: $('.sliderContainer').width(),
-      pagerCustom: '#bx-pager',
-      nextSelector: '#slider-next',
-      prevSelector: '#slider-prev',
-      nextText: 'Onward →',
-      prevText: '← Go back'
-    });  
+  $('#photo').bxSlider({      
+    pagerCustom: '#thumb',
+    controls: false
+  });  
 
-    $('.bxslider-2').bxSlider({
-      // randomStart:true,
-      // pager:false,
-      // slideWidth: 85,   
-      // minSlides: 3,
-      // maxSlides: 3,
-      // slideMargin: 5
-
-      pager: false,
-      minSlides: 1,
-      maxSlides: 3,
-      slideWidth: $('.sliderContainer').width()/3,
-      slideMargin: 10
-    });  
+  $('#thumb').bxSlider({
+    randomStart:true,
+    pager:false,
+    slideWidth: 85,   
+    minSlides: 3,
+    maxSlides: 3,
+    slideMargin: 5
+  });
     
     $(function(){ 
       var _showTab = 0;

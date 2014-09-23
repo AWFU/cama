@@ -57,7 +57,7 @@ background-position:top left;background-repeat:no-repeat;}
 
 #product-show{color:#492f18}
 
-#photo{margin:0 0 25px 0}
+#photo{margin:0 0 25px 0;text-align:center;}
 #photo img{display:inline}
 
 #thumb li img{border:1px solid #B9B1AA}

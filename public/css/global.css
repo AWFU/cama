@@ -102,8 +102,6 @@ body > footer a:hover{text-decoration:underline;color:#2d2929}
 body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184px;font-size:0px;text-indent:-7777px}
 #copyright{background:#000;color:#a6a6a6;font-size:.8em;padding:10px 0}
 
-body > footer .icon{display:inline!important}
-
 @media(max-width: 1024px) {
 	body > footer h3{background:url(../images/logo.png) left 0 no-repeat}
 }
@@ -111,4 +109,5 @@ body > footer .icon{display:inline!important}
 	body > footer p{padding-top:0;text-align:center}
 	body > footer h3{background:url(../images/logo-m.png) center 0 no-repeat;position:relative;left:30px;height:154px}
 	#copyright{text-align:center}
+	body > footer .icon{display:inline!important}
 }
