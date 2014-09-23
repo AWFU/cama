@@ -94,9 +94,9 @@ font-size:.9em!important;padding:5px 15px;left:0;top:36px}
 #member-info article{background:none;border:0}
 #member-info table{margin:0 0 10px 0}
 #member-info h3{font-size:1.4em}
-#member-info th{background:#EADAB7;color:#735500;font:300 1em "";padding:10px 0 10px 5%;width:25%}
+#member-info th{background:#EADAB7;color:#735500;font:300 1em "arial";padding:2% 3%}
 #member-info th img{margin:0 10px 0 0}
-#member-info td{background:#fff}
+#member-info td{background:#fff;padding:2% 3%}
 #member-info .form-control{border:0;box-shadow:none}
 #member-info input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px;background:#FABF00}
 
@@ -105,7 +105,7 @@ font-size:.9em!important;padding:5px 15px;left:0;top:36px}
 
 @media(max-width: 767px) {
 	#member-info h3{margin:10% 0 5% 0}
-	#member-info th{font-size:.9em;width:40%}
+	#member-info th{}
 	#member-info th img{width:15px;height:auto}
 }
 #member-login .text-center img{display:inline;margin:0 0 10% 0;}
@@ -119,3 +119,12 @@ font-size:.9em!important;padding:5px 15px;left:0;top:36px}
 #member-login input.btn{margin:10% 0 0 0;background:#FABE00;color:#553319;
 font-size:1.3em;padding:1% 10%}
 #member-login input.btn:hover{background:#E3AD00}
+
+.toggle_new_addressbook{display:inline-block;padding:5px 20px;color:#333!important;
+background:#fabe00;cursor:pointer}
+.toggle_new_addressbook img{margin:-5px 0 0 10px}
+.toggle_new_addressbook:hover{background:#fabe00;text-decoration:none!important}
+
+.tool a{color:#999!important;font:300 .9em "arial";display:inline-block;border:1px solid #ddd;
+padding:2px 5px;border-radius:5px;}
+.tool a:hover{background:#eee;text-decoration:none!important}
