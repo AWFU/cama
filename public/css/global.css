@@ -20,7 +20,7 @@ a:hover{text-decoration:none}
 body > header{background:#FABF00;height:332px}
 body > header h1{width:35%;text-align:center}
 body > header h1 a{display:inline-block;width:225px;height:184px;
-background:url(../images/logo.png) center 0 no-repeat;text-indent:-7777px}
+background:url(../images/logo.png) center 0 no-repeat;font-size:0px;text-indent:-7777px}
 body > header nav{width:65%;padding:105px 0 0 0}
 body > header nav ul li{float:left}
 body > header nav ul{overflow:hidden}
@@ -97,7 +97,7 @@ body > footer{background:url(../images/line.jpg) 0 0 repeat-x #FABF00;padding:55
 body > footer p{padding-top:132px;color:#2d2929}
 body > footer a{color:#2d2929}
 body > footer a:hover{text-decoration:underline;color:#2d2929}
-body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184px;text-indent:-7777px}
+body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184px;font-size:0px;text-indent:-7777px}
 #copyright{background:#000;color:#a6a6a6;font-size:.8em;padding:10px 0}
 
 @media(max-width: 1024px) {
