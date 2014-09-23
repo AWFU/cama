@@ -231,9 +231,9 @@ ActiveRecord::Schema.define(version: 20140910095242) do
   create_table "product_cates", force: true do |t|
     t.integer  "parent_id"
     t.string   "name"
+    t.integer  "depth"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "depth"
   end
 
   create_table "product_stocks", force: true do |t|

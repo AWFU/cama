@@ -51,23 +51,23 @@
         <li><a href="http://www.facebook.com/camacafe" target="_blank" alt="facebook" ><img src="/images/fb.png"></a></li>
       </ul>
       <ul id="nav-down">
-        <li>
-          <%= link_to "店內飲品", page_pages_path('beverages'), id: "nav-1"%>
+        <li id="nav-1">
+          <%= link_to "店內飲品", page_pages_path('beverages') %>
         </li>
         <li><span>│</span></li>
-        <li>
-          <%= link_to("豆類與週邊", categories_path, id: "nav-2") %>
+        <li id="nav-2">
+          <%= link_to("豆類與週邊", categories_path) %>
         </li>
         <li><span>│</span></li>
-        <li>
-          <%= link_to("分店查詢", stores_path, id: "nav-3") %>
+        <li id="nav-3">
+          <%= link_to("分店查詢", stores_path) %>
         </li>
         <li><span>│</span></li>
-        <li><%# link_to "關於 cama" , page_pages_path('about'), id: 'nav-4' %>
-        <%= link_to "關於 cama" , about_path, id: 'nav-4' %></li>
+        <li id="nav-4"><%# link_to "關於 cama" , page_pages_path('about'), id: 'nav-4' %>
+        <%= link_to "關於 cama" , about_path %></li>
         <li><span>│</span></li>
-        <li>
-          <%= link_to("談咖啡", talks_path, id: "nav-5") %>
+        <li id="nav-5">
+          <%= link_to("談咖啡", talks_path) %>
         </li>
         <li>
           <%= link_to cart_index_path, 'data-no-turbolink' => true, class: "cart" do %>

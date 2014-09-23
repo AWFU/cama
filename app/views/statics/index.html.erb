@@ -59,30 +59,20 @@
           <% @announcements.each do |announcement| %>
             <div class="col-sm-3"> 
               <%= link_to announcement_path(announcement) do %>
-                <table width="100%" border="0" cellspacing="0" cellpadding="0" >
-                  <tr>
-                    <td colspan="2" class="hidden-xs">
-                    <% if announcement.galleries.first %>
+                <div class="hidden-xs cover">
+                  <% if announcement.galleries.first %>
                       <% announcement_cover_url = announcement.galleries.first.attachment.url %>
                       <%= image_tag announcement_cover_url , class:"img-responsive" if announcement_cover_url %>
                     <% end %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="date hidden-xs">
-                      <b><%= announcement.created_at.strftime("%d")%></b><br>
-                      <%= announcement.created_at.strftime("%-m月")%>
-                    </td>
-                    <td class="title">
-                      <% if (announcement.title.length > @announcement_length) %>
+                  <div class="date"><b><%= announcement.created_at.strftime("%d")%></b><br>
+                      <%= announcement.created_at.strftime("%-m月")%></div>
+                </div>
+            <div class="title"><% if (announcement.title.length > @announcement_length) %>
                           <% note = announcement.title.first(@announcement_length)  %>
                           <%= note+"..." %>
                       <% else %>
                           <%= announcement.title %>
-                      <% end %>
-                    </td>
-                  </tr>
-                </table>
+                      <% end %></div>                
               <% end %>
             </div>
           <% end %>
@@ -99,14 +89,15 @@
         <article class="row">
           <% @recommended_products.each do | selected_product | %>
             <div class="col-sm-4 clearfix">
+              <div class="pull-left"> 
+                <%= link_to( image_tag(rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.attachment.url, class: "img-responsive"), category_product_path(rcm_product.product_cate, rcm_product) ) unless selected_product.related_product_id == 0 || rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.nil? %>
+              </div>
               <div class="pull-right">
               <% rcm_product = Product.find(selected_product.related_product_id) %>
                 <p><span>●</span><b><%= link_to(rcm_product.name, category_product_path(rcm_product.product_cate, rcm_product) ) %></b><span>●</span><br><%= selected_product.description%>
                 </p>
               </div>
-              <div class="pull-left"> 
-                <%= link_to( image_tag(rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.attachment.url, class: "img-responsive"), category_product_path(rcm_product.product_cate, rcm_product) ) unless selected_product.related_product_id == 0 || rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.nil? %>
-              </div>
+              
             </div>
           <% end %>
         </article>
@@ -126,7 +117,7 @@
               <% end %>
               </p>
               <%= link_to talk_path(@talk) do %>
-                看更多
+                <img src="images/idx-08.png">
               <% end %>
             <% end %>
           </div>
@@ -150,19 +141,36 @@
   
   <script src="/js/bootstrap.min.js"></script> 
   <script src="/js/jquery.bxslider.min.js"></script> 
-  <script type="text/javascript">
-    $('.bxslider').bxSlider({
-        auto: true,
-        controls:false
-        //autoControls: true
-        //slideWidth: $('.sliderContainer').width()
-        //pagerCustom: '#bx-pager',
-        //nextSelector: '#slider-next',
-        //prevSelector: '#slider-prev',
-        //nextText: 'Onward →',
-        //prevText: '← Go back'
-      });  
-  </script>
+  <script src="js/jquery.parallax-1.1.3.js"></script> 
+<script src="js/SmoothScroll.js"></script> 
+<script src="js/TweenMax.min.js"></script> 
+<script src="js/jquery.superscrollorama.js"></script> 
+<script>
+  $(document).ready(function(){
+    $('.bxslider').bxSlider({controls:false});
+    $('#talk').parallax({offsetY:500,speedFactor:0.18}); 
+
+  });    
+</script>
+<script>
+jQuery(document).ready(function(){  
+  var controller = $.superscrollorama();
+  controller.addTween('#news header', TweenMax.from( 
+    $('#news article'),  .5 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      'top':'20px'
+    }}
+  ));
+  controller.addTween('#rcm h3', TweenMax.from( 
+    $('#rcm article'),  1 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      'top':'50px'
+    }}
+  ));
+});
+</script>
 </body>
 
 </html>
