@@ -191,4 +191,5 @@ body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184
 	body > footer p{padding-top:0;text-align:center}
 	body > footer h3{background:url(../images/logo-m.png) center 0 no-repeat;position:relative;left:30px;height:154px}
 	#copyright{text-align:center}
+	body > footer .icon{display:inline!important}
 }
