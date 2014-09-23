@@ -14,8 +14,10 @@
           公司地址：台北市大安區信義路四段155號12樓<br>
           E-mail : <a href="mailto:service@camacafe.com" target="_blank">service@camacafe.com</a><br>
           <br>
-          <a href="http://www.facebook.com/camacafe" class="visible-xs icon" target="_blank" alt="facebook" ><img src="/images/fb.png"></a>   <a href="http://cama.summers.com.tw" class="visible-xs icon" alt="home" ><img src="/images/home.png"></a>
-
+          <a href="http://www.facebook.com/camacafe" class="visible-xs icon" target="_blank" alt="facebook" ><img src="/images/fb.png"></a>   
+          <%= link_to root_url , class: "visible-xs icon", alt: "home" do %>
+            <img src="/images/home.png">
+          <% end %>
           </p>
       </div>
     </div>
