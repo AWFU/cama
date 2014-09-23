@@ -7,7 +7,7 @@ class Talk < ActiveRecord::Base
   belongs_to :article, :dependent => :destroy
   has_many :galleries, -> { order('ranking, created_at') } , as: :attachable , dependent: :destroy
 
-  default_scope { order('talks.ranking ASC, talks.created_at') }
+  default_scope { order('talks.ranking ASC, talks.created_at DESC') }
 
   validates_presence_of :title
   

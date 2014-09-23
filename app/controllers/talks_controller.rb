@@ -5,15 +5,15 @@ class TalksController < ApplicationController
 
   # tagged_with example
     
-    # useful in talks
-    #指定特別 tag分類
-    #@stores = Store.tagged_with(["台中市","台北市"], on: :locations, any: true)
-    #不指定特別 tag分類
-    #@stores = Store.tagged_with(["台中市","台北市"], any: true)
-    #其他屬性(can work with pre-defined scope and paginate)
-    # :match_all => true , :exclude => true, 
-    #You can also use :wild => true option along with :any or :exclude option. It will be looking for %awesome% and %cool% in SQL
-    #find_related_skills
+  # useful in talks
+  #指定特別 tag分類
+  #@stores = Store.tagged_with(["台中市","台北市"], on: :locations, any: true)
+  #不指定特別 tag分類
+  #@stores = Store.tagged_with(["台中市","台北市"], any: true)
+  #其他屬性(can work with pre-defined scope and paginate)
+  # :match_all => true , :exclude => true, 
+  #You can also use :wild => true option along with :any or :exclude option. It will be looking for %awesome% and %cool% in SQL
+  #find_related_skills
 
   def index
     tag = params[:tag].to_param
