@@ -1,6 +1,6 @@
 <% order_items.each do |item| %>
 <tr>
-  <td width="12%">
+  <td width="12%" class="cover">
     <% unless item[:product_id].nil? || item[:product_id].empty? %>
        <% if Product.find_by_id(item[:product_id]).galleries.select{ |v| v['type'] == "ProductPhotoGallery" }.count > 0 %>
           <%= image_tag Product.find_by_id(item[:product_id]).galleries.select{ |v| v['type'] == "ProductPhotoGallery" }.first.attachment.url %>
@@ -8,32 +8,36 @@
     <% end %>
   </td>
   <td width="43%" class="name">
-    <%= generate_product_link(item) %>
-    <% if Product.find(item[:product_id]).grindable == 1 %>
-      <div class="detail"> <a>明細</a>
-        <p> 
-            <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
-            <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
-            <%# NEED REWRITE %>
-            <% if attr[1]["stock_id"] ==  item[:id] %>
-              
-              <%= attr[1]["amount"] %>包
-              <%# item[:name] %>
-              <%= "不磨" unless attr[1]["needgrind"] == "true" %>
-              <%= "研磨" if attr[1]["needgrind"] == "true" %>
-              <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
-              <br>
-            <% end %>
-          
-            <% end %>
-        </p>
-      </div>
-    <% end %>
+    <%= generate_product_link(item) %>    
   </td>
-  <td align="center">$<%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %>元</td>
-  <td align="center"><%= label_tag :amount, item[:amount], :disabled => true %></td>
-  <td align="center">$<%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
-  <td align="center">&nbsp;</td>
-
+  <td width="12%" align="center">$<%= item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] %></td>
+  <td width="12%" align="center"><%= label_tag :amount, item[:amount], :disabled => true %></td>
+  <td width="12%" align="center">$<%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
+  <td width="9%" align="center" class="delete">&nbsp;</td>
 </tr>
+<tbody class="detail">
+<% if Product.find(item[:product_id]).grindable == 1 %>
+  <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
+  <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
+  <tr>
+    <td>&nbsp;</td>
+    <td class="name">
+      <%= "不磨" unless attr[1]["needgrind"] == "true" %>
+      <%= "研磨" if attr[1]["needgrind"] == "true" %>
+      <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
+    </td>
+    <td>&nbsp;</td>
+  <% if attr[1]["stock_id"] ==  item[:id] %>
+      <td align="center">
+      <%= attr[1]["amount"] %>
+      </td>
+  <%# item[:name] %>
+  <% end %>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <%# NEED REWRITE %> 
+</tr>
+  <% end %>
+<% end %>  
+</tbody>
 <% end %>
