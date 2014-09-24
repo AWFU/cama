@@ -93,7 +93,7 @@ Cama::Application.routes.draw do
           member do
             post  'peditor/:id/createPhoto'       => 'peditor#createPhoto'
 
-            get   '/basic_info'       => 'products#basic_info'
+            get   '/basic_info'       => 'products#basic_info', as: 'basic_info'
             post  '/basic_info'       => 'products#update'
 
             get   '/free_paragraph'       => 'products#free_paragraph'
