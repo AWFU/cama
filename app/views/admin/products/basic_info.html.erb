@@ -3,7 +3,7 @@
 
 <nav class="left">
 
-    <%= link_to "簡介", basic_info_admin_product_cate_product_path(@product_cate, @product), class: "active"%>
+    <%= link_to "簡介", basic_info_admin_product_cate_product_path(@product_cate.id, @product), class: "active"%>
     <%= link_to "照片", productphoto_upload_admin_product_cate_product_path(@product_cate, @product)%>
     <%= link_to "風味", taste_attributes_admin_product_cate_product_path(@product_cate, @product)%>
     <%= link_to "其他", free_paragraph_admin_product_cate_product_path(@product_cate, @product)%>
@@ -129,17 +129,23 @@
 
 </article>
 
-
-
 <script type="text/javascript">
  $( document ).ready(function() {
     
+    if ($("#product_grindable").is(':checked'))
+    {
+      $('#grind_level_container').show();
+    }else{
+      $('#grind_level_container').hide();
+    };
+
     $("#product_grindable").change(function(){
       if($(this).is(':checked')){
         $('#grind_level_container').show();
       } else {
         $('#grind_level_container').hide();
-    }
-});
+      }
+    });
+
  });
 </script>

@@ -51,7 +51,7 @@ class Admin::ProductsController < AdminController
       else
         #Rails.application.routes.recognize_path(request.referer)[:action]
         #p session[:return_to].parameterize.underscore.to_sym
-        format.html { redirect_to :back, notice: @product.errors.full_messages }
+        format.html { render :basic_info, notice: @product.errors.full_messages }
       end      
     end
   end
@@ -76,6 +76,10 @@ class Admin::ProductsController < AdminController
   # tab-1: basic
   def basic_info
     #session[:return_to] = 'basic_info'
+  end
+
+  def update_basic_info
+
   end
   # tab-2: product photo uploads
   def productphoto_upload
@@ -138,6 +142,6 @@ class Admin::ProductsController < AdminController
     end
 
     def get_product_cate
-      @product_cate = Product.find_by_id(params[:id])
+      @product_cate = Product.find_by_id(params[:id]).product_cate
     end
 end

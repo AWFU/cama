@@ -21,35 +21,42 @@
     <% end %>
   </td>
 </tr>
-<tbody class="detail">
+
 <% if Product.find(item[:product_id]) && Product.find(item[:product_id]).grindable == 1 %>
-  <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
-  <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
-            <%# NEED REWRITE %>
-  <tr>
-    <td>&nbsp;</td>
-    <td class="name">
-      <%= "不磨" unless attr[1]["needgrind"] == "true" %>
-      <%= "研磨" if attr[1]["needgrind"] == "true" %>
-      <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
-      <%# link_to "+", plus_cart_path(item[:id], attr[0]), :method => :post, :class => "plus" %>
-              
-              <%# link_to "刪除", delete_by_attribute_cart_path(item[:id], attr[0]), :method => :post, :class => "delete_by_attribute" , :data => {:confirm => "確定刪除？"} %>
-    </td>
-    <td>&nbsp;</td>
-  <% if attr[1]["stock_id"] ==  item[:id] %>
-  <%# link_to "-", minus_cart_path(item[:id], attr[0]), :method => :post, :class => "minor" %>
-      <td align="center">
-      <%= attr[1]["amount"] %>
-      <%# item[:name] %>
-      </td>
-  <%# item[:name] %>
-  <% end %>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <%# NEED REWRITE %> 
-</tr>
-  <% end %>
-<% end %>  
-</tbody>
+  <tbody class="detail">
+
+    <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
+    <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
+              <%# NEED REWRITE %>
+      <% if attr[1]["stock_id"] ==  item[:id] %>
+        <tr>
+          <td>&nbsp;</td>
+          <td class="name">
+            <%= "不磨" unless attr[1]["needgrind"] == "true" %>
+            <%= "研磨" if attr[1]["needgrind"] == "true" %>
+            <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
+            <%# link_to "+", plus_cart_path(item[:id], attr[0]), :method => :post, :class => "plus" %>
+                    
+                    <%# link_to "刪除", delete_by_attribute_cart_path(item[:id], attr[0]), :method => :post, :class => "delete_by_attribute" , :data => {:confirm => "確定刪除？"} %>
+          </td>
+          <td>&nbsp;</td>
+            
+            <%# link_to "-", minus_cart_path(item[:id], attr[0]), :method => :post, :class => "minor" %>
+                <td align="center">
+                <%= attr[1]["amount"] %>
+                <%# item[:name] %>
+                </td>
+            <%# item[:name] %>
+            
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <%# NEED REWRITE %> 
+        </tr>
+      <% end %>
+
+    <% end %>
+
+  </tbody>
+  <% end %>  
+
 <% end %>

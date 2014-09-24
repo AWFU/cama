@@ -15,29 +15,34 @@
   <td width="12%" align="center">$<%= ( item[:price_for_sale] > 0 ? item[:price_for_sale] : item[:price] ) * item[:amount] %></td>
   <td width="9%" align="center" class="delete">&nbsp;</td>
 </tr>
-<tbody class="detail">
-<% if Product.find(item[:product_id]).grindable == 1 %>
-  <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
-  <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
-  <tr>
-    <td>&nbsp;</td>
-    <td class="name">
-      <%= "不磨" unless attr[1]["needgrind"] == "true" %>
-      <%= "研磨" if attr[1]["needgrind"] == "true" %>
-      <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
-    </td>
-    <td>&nbsp;</td>
-  <% if attr[1]["stock_id"] ==  item[:id] %>
-      <td align="center">
-      <%= attr[1]["amount"] %>
-      </td>
-  <%# item[:name] %>
-  <% end %>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <%# NEED REWRITE %> 
-</tr>
-  <% end %>
-<% end %>  
-</tbody>
+  <% if Product.find(item[:product_id]).grindable == 1 %>
+    <tbody class="detail">
+
+      <% attributes = JSON.parse_if_json(cookies[:cart_cafe_attrs]) %>
+      <% attributes.each do | attr | %> <!-- [ number , {...}] pairs -->
+        <% if attr[1]["stock_id"] ==  item[:id] %>
+          <tr>
+            <td>&nbsp;</td>
+            <td class="name">
+              <%= "不磨" unless attr[1]["needgrind"] == "true" %>
+              <%= "研磨" if attr[1]["needgrind"] == "true" %>
+              <%= attr[1]["grindlevel"] if attr[1]["needgrind"] == "true" %>
+            </td>
+            <td>&nbsp;</td>
+          
+            <td align="center">
+            <%= attr[1]["amount"] %>
+            </td>
+            <%# item[:name] %>
+          
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <%# NEED REWRITE %> 
+          </tr>
+        <% end %>
+      <% end %>
+
+    </tbody>
+  <% end %>  
+
 <% end %>
