@@ -9,9 +9,10 @@ div ,td, p .noTransition {
 <header>
   <h2 class="left">門市資訊<span>/ 分店管理</span></h2>
   <nav class="left">
-    <%= link_to "分店資料", edit_admin_store_path(@store)%>
+    <%= link_to "簡介", edit_admin_store_path(@store)%>
     <a href="javascript:void(0);" class="active">照片</a>
   </nav>
+  <div class="explain right"><p>圖片尺寸：609 px * 406 px</p></div>
 </header>
 <article>
   <% if @gallery_count < 5 %>
