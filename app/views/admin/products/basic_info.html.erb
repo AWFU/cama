@@ -13,7 +13,7 @@
 </header>
 <article>
 <div class="hgroup">
-<%= form_for(@product, :url => admin_product_cate_product_path(@product.product_cate, @product), html: { id: "patchthisproduct" } ) do |f| %>
+    <%= form_for(@product, :url => basic_info_admin_product_cate_product_path(@product.product_cate, @product), html: { id: "patchthisproduct" } ) do |f| %>
         <div class="right">
         <!-- 顯示  --><%# f.check_box :status, { class: 'checkbox'  }, "enable", "disable" %>
         &nbsp;&nbsp;磨豆 <%= f.check_box :grindable, { class: 'checkbox'  }, 1, 0 %>

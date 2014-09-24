@@ -2,10 +2,10 @@
 class Admin::ProductsController < AdminController
   authorize_resource
   
-  before_action :set_product_with_cate, only: [:show, :edit ,:basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
-  before_action :get_product_cate, only: [:basic_info, :productphoto_upload, :taste_attributes, :free_paragraph]
+  before_action :set_product_with_cate, only: [:show, :edit ,:basic_info, :update_basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
+  before_action :get_product_cate, only: [:basic_info, :update_basic_info, :productphoto_upload, :taste_attributes, :free_paragraph]
   before_action :set_product, only: [:update, :change_status, :destroy]
-  before_action :disable_product_when_edit, only: [:edit, :basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
+  before_action :disable_product_when_edit, only: [:edit, :basic_info, :update_basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
   
   def create
 
@@ -45,13 +45,10 @@ class Admin::ProductsController < AdminController
     
     respond_to do |format|
       if @product.save
-        #session[:return_to] = nil
         format.html { redirect_to :back, notice: '更新成功' }
-      #format.html { redirect_to admin_product_cate_product_path(@product.product_cate_id, @product) }
+        #format.html { redirect_to admin_product_cate_product_path(@product.product_cate_id, @product) }
       else
-        #Rails.application.routes.recognize_path(request.referer)[:action]
-        #p session[:return_to].parameterize.underscore.to_sym
-        format.html { render :basic_info, notice: @product.errors.full_messages }
+        format.html { render :back, notice: @product.errors.full_messages }
       end      
     end
   end
@@ -79,7 +76,18 @@ class Admin::ProductsController < AdminController
   end
 
   def update_basic_info
-
+    @product.update(product_params.merge({:status => "enable"})) && ( params[ :article ].nil? ^ @product.article.update( params.require(:article).permit(:content) ) )
+    
+    respond_to do |format|
+      if @product.save
+        #session[:return_to] = nil
+        format.html { redirect_to :back, notice: '更新成功' }
+      #format.html { redirect_to admin_product_cate_product_path(@product.product_cate_id, @product) }
+      else
+        flash.now[:notice] = @product.errors.full_messages 
+        format.html { render :basic_info}
+      end      
+    end
   end
   # tab-2: product photo uploads
   def productphoto_upload

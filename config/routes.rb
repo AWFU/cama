@@ -94,7 +94,7 @@ Cama::Application.routes.draw do
             post  'peditor/:id/createPhoto'       => 'peditor#createPhoto'
 
             get   '/basic_info'       => 'products#basic_info', as: 'basic_info'
-            post  '/basic_info'       => 'products#update_basic_info'
+            patch  '/basic_info'       => 'products#update_basic_info'
 
             get   '/free_paragraph'       => 'products#free_paragraph'
             post  '/free_paragraph'       => 'products#update'
@@ -102,10 +102,8 @@ Cama::Application.routes.draw do
             post 'create_product_attachment' , :action => 'create_product_attachment'
             post 'create_taste_attachment' , :action => 'create_taste_attachment'
           
-            #match :basic_info, :via => :get
             match :productphoto_upload, :via => :get
             match :taste_attributes, :via => :get
-            #match :free_paragraph, :via => :get
 
             match :change_status, :via => :post
 
