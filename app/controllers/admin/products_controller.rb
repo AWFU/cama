@@ -2,8 +2,8 @@
 class Admin::ProductsController < AdminController
   authorize_resource
   
-  before_action :set_product_with_cate, only: [:show, :edit , :update ,:basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
-  before_action :get_product_cate, only: [:update, :basic_info, :productphoto_upload, :taste_attributes, :free_paragraph]
+  before_action :set_product_with_cate, only: [:show, :edit ,:basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
+  before_action :get_product_cate, only: [:basic_info, :productphoto_upload, :taste_attributes, :free_paragraph]
   before_action :set_product, only: [:update, :change_status, :destroy]
   before_action :disable_product_when_edit, only: [:edit, :basic_info, :productphoto_upload, :taste_attributes, :free_paragraph, :create_product_attachment, :create_taste_attachment]
   
@@ -51,7 +51,7 @@ class Admin::ProductsController < AdminController
       else
         #Rails.application.routes.recognize_path(request.referer)[:action]
         #p session[:return_to].parameterize.underscore.to_sym
-        format.html { render :basic_info, notice: @product.errors.full_messages }
+        format.html { redirect_to :back, notice: @product.errors.full_messages }
       end      
     end
   end
