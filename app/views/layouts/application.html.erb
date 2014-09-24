@@ -11,15 +11,17 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
+  <link rel="SHORTCUT ICON" href="/images/favicon.ico">
   <link href="/css/reset.css" rel="stylesheet">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/global.css" rel="stylesheet">
+  <script src="/js/bootstrap.min.js"></script> 
+  <script src="/js/SmoothScroll.js"></script> 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
   <![endif]-->
 
    <script>
@@ -33,7 +35,13 @@
     <% end %>
   }
   </script>
-  
+  <script>
+jQuery(function($){
+  $("a").focus(function(){
+    $(this).blur();
+  });
+});
+</script>
 </head>
 <body>
 <%# content_for yield :header inside %>
@@ -43,8 +51,7 @@
 
 <%= render 'layouts/front_shared_footer' %>
 
-<script src="/js/bootstrap.min.js"></script> 
-<script src="/js/SmoothScroll.js"></script> 
+
 <!-- Bootstrap -->
 </body>
 

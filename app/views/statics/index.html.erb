@@ -11,7 +11,7 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
+  <link rel="SHORTCUT ICON" href="/images/favicon.ico">
   <!-- Bootstrap -->
   <link href="/css/reset.css" rel="stylesheet">
   <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +35,13 @@
     <% end %>
   }
   </script>
+   <script>
+jQuery(function($){
+  $("a").focus(function(){
+    $(this).blur();
+  });
+});
+</script>
   
 </head>
 <body>

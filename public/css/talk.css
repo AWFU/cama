@@ -17,6 +17,8 @@ border:1px solid #FABE00;margin:0 0 5% 0}
 .title {background:url(../images/tlk-02.jpg) 45px 33px no-repeat;padding:10px 2% 30px 100px;
 line-height:.1em}
 .title h3{line-height:1.3em}
+.title h3 a{font-size:1em!important;line-height:1.2em!important}
+.title h3 a:hover{color:#5e9797}
 .title span{color:#5e9797;font-size:.9em;}
 @media(max-width: 767px) {
 	.title{background:none;padding:10px 5% 5% 5%}
@@ -43,6 +45,22 @@ background:url(../images/tlk-04.gif) right center no-repeat;margin:0 0 0 0}
 @media(max-width: 767px) {
 	.text {padding-left:5%}
 	#talk-list .text > article{display:none}	
+}
+
+/*YouTube Responsive*/
+.part[data-type=video]{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+.part[data-type=video] iframe,
+.part[data-type=video] object,
+.part[data-type=video] embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /*-----------------------------------------------------------------------分類---*/

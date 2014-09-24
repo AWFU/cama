@@ -4,7 +4,9 @@
 body{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;line-height:1.7em!important;
 background:url(../images/bg.jpg)}
 a{font:300 12pt Arial,微軟正黑體,Microsoft JhengHei!important;-webkit-transition:all ease .3s;
--moz-transition:all ease .3s;line-height:1.7em!important;color:#000}
+-moz-transition:all ease .3s;line-height:1.7em!important;color:#000;
+outline: medium none; /* for Firefox Google Chrome  */
+behavior:expression(this.onFocus=this.blur()); /* for IE */}
 a:hover{text-decoration:none}
 
 .container-fluid{padding-left:0;padding-right:0}
@@ -136,7 +138,8 @@ font-size:0px;text-indent:-7777px}
 #rcm article span{margin:0 5px;position:relative;top:-3px;}
 #rcm article img{display:inline}
 #rcm article .pull-left{width:100%;text-align:center}
-#rcm article .pull-right{width:100%;text-align:center}
+#rcm article .pull-right{width:100%;text-align:left}
+#rcm article .pull-right a{font-size:1.2em!important}
 #rcm article > div{padding:0 3%;-webkit-transition:all ease .3s;-moz-transition:all ease .3s}
 #rcm article > div:hover{background:#EEE7E1;border-radius: 5px}
 
@@ -188,4 +191,5 @@ body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184
 	body > footer p{padding-top:0;text-align:center}
 	body > footer h3{background:url(../images/logo-m.png) center 0 no-repeat;position:relative;left:30px;height:154px}
 	#copyright{text-align:center}
+	body > footer .icon{display:inline!important}
 }

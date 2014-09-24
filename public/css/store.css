@@ -23,11 +23,11 @@
 #submit .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
 
 /*結果*/
-#resualt{padding:10% 0 0 0}
-#resualt table{border-bottom:1px solid #C5AF9C;border-right:1px solid #C5AF9C}
-#resualt td{border-top:1px solid #C5AF9C;border-left:1px solid #C5AF9C;padding:1%}
-#resualt td a{color:#0f22b1}
-#resualt td a:hover{text-decoration:underline}
+#result{padding:10% 0 0 0}
+#result table{border-bottom:1px solid #C5AF9C;border-right:1px solid #C5AF9C}
+#result td{border-top:1px solid #C5AF9C;border-left:1px solid #C5AF9C;padding:1%}
+#result td a{color:#0f22b1}
+#result td a:hover{text-decoration:underline}
 
 /*封面*/
 #photo img{border:3px solid #A38F49}

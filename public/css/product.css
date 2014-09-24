@@ -44,7 +44,6 @@ background-position:top left;background-repeat:no-repeat;}
 .visible-xs.banner{margin:0 0 5% 0}
 
 .list .pull-left{width:100%}
-.list .pull-left img:hover{border:1px solid #B9B1AA}
 .list .pull-right{width:100%;font-size:1.1em;padding:10% 0 0 0}
 .list .pull-right span{font-size:.8em}
 .clearfix{margin:0 0 5% 0}
@@ -58,7 +57,7 @@ background-position:top left;background-repeat:no-repeat;}
 
 #product-show{color:#492f18}
 
-#photo{margin:0 0 25px 0}
+#photo{margin:0 0 25px 0;text-align:center;}
 #photo img{display:inline}
 
 #thumb li img{border:1px solid #B9B1AA}
