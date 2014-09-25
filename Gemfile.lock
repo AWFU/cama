@@ -253,6 +253,9 @@ GEM
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
     wisper (1.3.0)
+    xray-rails (0.1.14)
+      coffee-rails
+      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
@@ -297,3 +300,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   whenever
   wisper
+  xray-rails

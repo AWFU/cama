@@ -91,7 +91,7 @@ group :development do
   gem 'brakeman', :require => false
   gem 'sqlite3'
   gem 'sextant'
-  #gem 'xray-rails'
+  gem 'xray-rails'
 end
 
 
