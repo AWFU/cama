@@ -48,8 +48,8 @@ div ,td, p .noTransition {
         <tr id="order_<%= order.id %>">
           <td class="icon">
             <% if order.payment_type == 'Vaccount' || order.payment_type == 'atm_transfer' %>
-              <% unless 3.days.ago < order.created_at %>
-                <img src="/images/idx-02a.png">
+              <% unless 4.days.ago < order.created_at %>
+                <img src="/images/admin/warn.gif">
               <% end %>
             <% end %>
           </td>

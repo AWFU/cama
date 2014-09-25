@@ -15,7 +15,7 @@
         <% if service.galleries.first %>
           <%= image_tag service.galleries.where("type = 'ServiceIconGallery'").first.attachment.url %>
         <% else %>
-          <img src="/images/admin/explain.png">
+          <img src="/images/admin/tag-default.jpg">
         <% end %>
           <%= service.name %>
         <div class="tool">

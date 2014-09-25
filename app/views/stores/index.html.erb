@@ -35,7 +35,7 @@
                 <% if service.galleries.where("type='ServiceIconGallery'").count > 0 %>
                   <%= image_tag service.galleries.where("type = 'ServiceIconGallery'").first.attachment.url, class: "pull-left" %>
                 <% else %>
-                  <img class="pull-left" src="/images/admin/explain.png">
+                  <img class="pull-left" src="/images/tag-default.jpg">
                 <% end %>
                 <!-- <img src="sample/sample8.jpg" > -->
                 <span class="pull-left">
