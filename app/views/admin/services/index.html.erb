@@ -19,8 +19,7 @@
         <% end %>
           <%= service.name %>
         <div class="tool">
-          <%= link_to("", edit_admin_service_path(service), class: "edit", title: "編輯" ) %>
-          <%= link_to("", admin_service_path(service), :method => :delete, :data => {:confirm => "確定刪除？"}, class: "delete", title: "刪除") %>
+          <%= link_to("", edit_admin_service_path(service), class: "edit", title: "編輯" ) %><%= link_to("", admin_service_path(service), :method => :delete, :data => {:confirm => "確定刪除？"}, class: "delete", title: "刪除") %>
         </div>
       </div>
     <% end %>
