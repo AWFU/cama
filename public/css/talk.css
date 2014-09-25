@@ -3,6 +3,9 @@
 
 #banner{background:#c4c4bf;}
 #banner .container{background:url(../images/tlk-01.jpg) right center no-repeat;color:#352e2e}
+@media(max-width: 1023px) {
+#banner .container{background:url(../images/tlk-01.jpg) left center no-repeat
+}
 
 /*-----------------------------------------------------------------------頁身---*/
 
