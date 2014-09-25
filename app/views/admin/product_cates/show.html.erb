@@ -33,14 +33,13 @@
 
           
           <tr class="show_product_cate_<%= product_cate.id %>" >
-            <td width="6%"><img src="/images/admin/folder.png"></td>
+            <td width="6%" style="background:url(/images/admin/folder.png) center center no-repeat"></td>
             <td width="76%">
               <%= link_to(product_cate.name, admin_product_cate_path(product_cate)) %>
             </td>
             <td width="18%">
               <div class="tool">
-                <%= link_to "", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit", title:"編輯" %>
-                <%= link_to "", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete", title: "刪除" %>
+                <%= link_to "", "javascript:void(0);", :data => { :id => product_cate.id }, :class => "edit", title:"編輯" %><%= link_to "", admin_product_cate_path(product_cate), :data => { :confirm => "將會刪除分類底下所有商品，確定繼續？" }, :method => :delete, :class => "delete", title: "刪除" %>
               </div>
             </td>
           </tr>
@@ -50,17 +49,16 @@
           <tr class="list-edit edit_product_cate_<%= product_cate.id %>" style="display:none;">
             <%= form_for(product_cate, :url => admin_product_cate_path(product_cate) , html: { id: "patchthiscate_#{product_cate.id}"}) do |f| %>
             
-            <td>&nbsp;</td>
-            <td>
+            <td width="6%" style="background:url(/images/admin/folder.png) center center no-repeat"></td>
+            <td width="76%">
               <div style="position:relative">
                 <%= f.text_field :name, class:"text", placeholder: "分類名稱", style:"width:50%" %>
               </div>
             </td>
             
-            <td align="right" valign="top">
+            <td align="right" valign="top" width="18%">
               <div class="tool">
-                <a href="javascript: document.getElementById('patchthiscate_<%= product_cate.id %>').submit();" class="uvs" data-no-turbolink = true >儲存</a>
-                <%= link_to "取消", "javascript:void(0);" ,:data => { :id => product_cate.id }, :class => "uvs" %>
+                <a href="javascript: document.getElementById('patchthiscate_<%= product_cate.id %>').submit();" class="uvs" data-no-turbolink = true >儲存</a><%= link_to "取消", "javascript:void(0);" ,:data => { :id => product_cate.id }, :class => "uvs" %>
               </div>
             </td>
             <% end %>
@@ -71,8 +69,8 @@
       <!-- new -->
         <tr class="list-new list-edit edit_product_cate" style="display:none;">
           <%= form_for(@new_cate, :url => admin_product_cates_path , html: {id: "create_new_cate" }) do |f| %>
-            <td width="6%" valign="top">&nbsp;</td>
-            <td width="70%">
+            <td width="6%" style="background:url(/images/admin/folder.png) center center no-repeat"></td>
+            <td width="76%">
               
                 <%= f.text_field :name, :placeholder => "分類名稱" , class: "text new_cate_name_input" %>
 
@@ -82,8 +80,7 @@
             </td>
             <td width="18%" align="right">
               <div class="tool">
-                <a href="javascript: document.getElementById('create_new_cate').submit();" class="uvs" data-no-turbolink = true >儲存</a>
-                <%= link_to("取消", "javascript:void(0);", :class => "uvs cancel_new_product_cate") %>
+                <a href="javascript: document.getElementById('create_new_cate').submit();" class="uvs" data-no-turbolink = true >儲存</a><%= link_to("取消", "javascript:void(0);", :class => "uvs cancel_new_product_cate") %>
               </div>
             </td>
           <% end %>
@@ -133,8 +130,7 @@
           </td>
           <td width="18%">
             <div class="tool">
-              <%= link_to("", basic_info_admin_product_cate_product_path(@product_cate, product), class: 'edit') %>
-              <%= link_to("", admin_product_cate_product_path(@product_cate, product), :method => :delete, :data => {:confirm => "確定刪除？"}, class: 'delete') %>
+              <%= link_to("", basic_info_admin_product_cate_product_path(@product_cate, product), class: 'edit') %><%= link_to("", admin_product_cate_product_path(@product_cate, product), :method => :delete, :data => {:confirm => "確定刪除？"}, class: 'delete') %>
             </div>
           </td>
         </tr>

@@ -18,7 +18,7 @@
   <div class="hgroup">
     <div class="right">
       <%= form_for(@talk, :url => admin_talk_path(@talk), html: { id: "patchthistalk", :multipart => true } ) do |f| %>
-      置頂<%= f.check_box :ranking, { class: 'checkbox'  }, 100, 999 %>
+      置頂 <%= f.check_box :ranking, { class: 'checkbox'  }, 100, 999 %>
     </div>
   </div>
 
@@ -70,7 +70,7 @@
         </td>
       </tr>
       <tr>
-        <td width="7%">摘要：</td>
+        <td width="7%" valign="top">摘要：</td>
         <td width="93%">
           <%= f.text_area :subtitle, class: "text" ,placeholder: "輸入文章摘要" %>
         </td>
@@ -78,7 +78,7 @@
       <tr>
         <td width="7%">標籤：</td>
         <td colspan="4">
-          <%= f.text_field :camatalk_list, id: "talk_camatalk_field" %>
+          <%= f.text_field :camatalk_list, id: "talk_camatalk_field", class: "tag-text" %>
         </td>
 
         <%= fields_for @talk.article do | a | %>
