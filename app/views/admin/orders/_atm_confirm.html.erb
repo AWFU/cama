@@ -14,7 +14,7 @@
     </table>
   </div>
   <div id="down">
-      <%= link_to "確認", "/admin/orders/#{@order.id}/#{params[:event]}" , :method => :post , class: "action_confirmed" , id: "send" %>
       <%= link_to "取消" , "javascript: void(0);" , class: "cancel" , id: "cancel" %>
+      <%= link_to "確認", "/admin/orders/#{@order.id}/#{params[:event]}" , :method => :post , class: "action_confirmed" , id: "send" %>      
   </div>
  </div> 
