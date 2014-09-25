@@ -53,6 +53,8 @@ aside .active a{background:#FABF00;color:#595959}
 
 #total{padding:0 5% 5% 5%}
 
+#recaptcha_response_field{border:1px solid #ccc!important;padding:5%;}
+
 /*-----------------------------------------------------------------------頁首---*/
 
 #form{padding:0 5% 5% 5%;}
