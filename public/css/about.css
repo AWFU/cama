@@ -1,0 +1,83 @@
+﻿
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/abt-01.jpg) 125px center no-repeat}
+
+article .content{padding:5% 0;color:#562107}
+article .content h3{text-indent:-9999px;padding:0 0 12% 0;margin:0 0 10% 0}
+article .content h4{font:600 1.4em Arial,微軟正黑體,Microsoft JhengHei;line-height:1.5em;margin:0 0 5% 0}
+article .content p{line-height:2.3em}
+
+#content-1{color:#311c10;}
+#content-1 h2{color:#705A4D;font-size:2.5em!important;margin:0 0 15% 0}
+#content-1 .col-sm-5{background:url(../images/abt-03-1.png) 100% bottom no-repeat;padding-bottom:28%}
+#content-1 .col-sm-6{background:url(../images/abt-03-2.png) 250% bottom no-repeat;}
+#content-1 img{margin-top:16%}
+
+#content-2 h3{background:url(../images/abt-04.png) 0 0 no-repeat;background-size:contain}
+#content-3{background:url(../images/abt-06.jpg) center center no-repeat;color:#fff;}
+#content-3 h3{background:url(../images/abt-05.png) 0 0 no-repeat;background-size:contain}
+#content-4 h3{background:url(../images/abt-09.png) 0 0 no-repeat;background-size:contain}
+#content-5{background:url(../images/abt-11.jpg) center center no-repeat;color:#fff}
+#content-5 h3{background:url(../images/abt-10.png) 0 0 no-repeat;background-size:contain}
+
+
+@media(max-width: 1249px) {
+	#content-1 .col-sm-5,
+	#content-1 .col-sm-6{background:none;padding-bottom:0}
+}
+
+@media(max-width: 767px) {
+	article .content{padding:15% 0}
+	article .content h3{padding:0 0 15% 0}
+	article .content p{line-height:1.9em;font-size:1em}	
+}
+
+#list-box {padding:5% 0 0 0}
+#list-box h3{background:url(../images/abt-12.png) center 0 no-repeat;padding:0 0 14% 0;
+background-size:contain;text-indent:-9999px}
+#list-box .clearfix{background:url(../images/abt-14.png) center 55px no-repeat;position:relative}
+#list-box .list:nth-child(3){margin:145px 0 0 0}
+#list-box .pull-left,
+#list-box .pull-right{width:50%;height:295px}
+#list-box h5{width:85px;height:85px;background:#FABE00;color:#fff;border-radius:50%;
+font-size:1.7em;text-align:center;padding:30px 0 0 0;margin:0 auto 15px auto}
+#list-box p{text-align:center;color:#5e2906}
+
+#bike{background-image:url(../images/bike-1.png);background-center:0 0;background-repeat:no-repeat;width:116px;height:111px;
+position:absolute;top:-2.5%;left:30%}
+
+@media(max-width: 1023px) {
+	#list-box .pull-left,
+	#list-box .pull-right{width:100%;margin:10% 0 0 0!important;height:auto!important}
+	#list-box .clearfix{background:none}
+}
+@media(max-width: 767px) {
+	#list-box {padding:15% 0 0 0}
+	#list-box h3{height:114px}
+}
+
+#cup{background:url(../images/abt-15.jpg) center top no-repeat;height:996px;padding:0;}
+#cup .container{position:relative;padding:240px 0 0 0;}
+#cup h3{width:999px;height:306px;background:url(../images/abt-17.png) 0 0 no-repeat;position:absolute;left:10%;top:0;z-index:1;}
+#cup #star{width:1496px;height:367px;background:url(../images/abt-16.png) 0 0 no-repeat;position:absolute;z-index:2;
+left:-15%;top:10%;}
+#cup .bxslider{position:relative;z-index: 3;}
+#cup .bxslider li{text-align:center}
+#cup .bxslider li img{display:inline}
+
+.bx-prev,.bx-next{width:64px;height:64px;display:block;position:absolute;top:50%;z-index:4;text-indent:-7777px;}
+.bx-prev{background:url(../images/abt-20.png) 0 0 no-repeat;left:0;}
+.bx-prev:hover{left:-10px;}
+.bx-next{background:url(../images/abt-21.png) 0 0 no-repeat;right:0;}
+.bx-next:hover{right:-10px;}
+
+#report h5{text-align:center;font-size:2em;margin:0 0 4% 0;}
+#report span{font-size:.8em;position:relative;top:10px;}
+#report h6{font-size:1em;line-height:1.3em;}
+#report section > div {margin:0 0 5% 0;}
+
+@media(max-width: 767px) {
+	#report h5{margin:0 0 15% 0;}
+}
