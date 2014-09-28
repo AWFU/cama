@@ -7,18 +7,6 @@ class Announcement < ActiveRecord::Base
   #default_scope { order('ranking ASC, created_at') }
   scope :for_index, -> { where(status: "enable").order('ranking ASC, created_at DESC') }  
   scope :for_admin, -> { order('ranking ASC, created_at DESC') }  
-  # for next, previous page in show action
-  # scope :next_page, lambda {|id| where("id > ? and status = ?",id, 'enable').order("ranking ASC, created_at ASC, id ASC") } # this is the default ordering for AR
-  # scope :previous_page, lambda {|id| where("id < ? and status = ? ",id, 'enable').order("ranking DESC, created_at DESC, id DESC") }
-
-  # def next
-  #   Announcement.next_page(self.id).first
-  # end
-
-  # def previous
-  #   Announcement.previous_page(self.id).first
-  # end
-  # for next, previous page in show action ＥＮＤ
 
   validates_presence_of :title
   
