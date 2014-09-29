@@ -212,7 +212,11 @@
 <script src="js/jquery.superscrollorama.js"></script> 
 <script src="js/jquery.bxslider.min.js"></script> 
 <script>
+function star(){
+	$('#div2').fadeOut(8000).fadeIn(8000,fadeRepeat)
+}
   $(document).ready(function(){
+  	star();
     $('.bxslider').bxSlider({pager:false});
     $('#content-3').parallax({offsetY:-200,speedFactor:0.2}); 
 	$('#content-5').parallax({offsetY:-200,speedFactor:0.3}); 
@@ -227,6 +231,24 @@ jQuery(document).ready(function(){
       'position':'relative',
       top:'40px'  
     }}
+  ).delay(.5)).addTween('#content-2', TweenMax.from( 
+    $('#content-2 h3'),  1 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      left:'40px'  
+    }}
+  )).addTween('#content-3', TweenMax.from( 
+    $('#content-3 h3'),  1 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      right:'40px'  
+    }}
+  )).addTween('#content-4', TweenMax.from( 
+    $('#content-4 h3'),  1 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      left:'40px'  
+    }}
   )).addTween('#content-4', TweenMax.from( 
     $('#content-4 .col-sm-4 img'),  1.5 ,  {css:{
       opacity:0,
@@ -240,7 +262,13 @@ jQuery(document).ready(function(){
       left:'-60px',
 	  'transform':'rotate(-180deg)'
     }}
-	)).addTween('#content-1', TweenMax.from( 
+  )).addTween('#content-5', TweenMax.from( 
+    $('#content-5 h3'),  1 ,  {css:{
+      opacity:0,
+      'position':'relative',
+      right:'40px'  
+    }}
+  )).addTween('#content-1', TweenMax.from( 
     $('#content-1 img'),  1 ,  {css:{
       opacity:0,
       'position':'relative',
