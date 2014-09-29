@@ -30,7 +30,7 @@ aside .active a{background:#FABF00;color:#595959}
 /*-----------------------------------------------------------------------訂單---*/
 
 #order{padding:5%;}
-#order th{text-align:center;background:#FDF3C4;font-weight:300}
+#order th{font-family:微軟正黑體,Microsoft JhengHei;text-align:center;background:#FDF3C4;font-weight:300}
 #order td{padding:2.5% 0;border-bottom:1px solid #FDEBB2}
 #order a{color:#D5A300}
 #order a:hover{color:#FABF00}
@@ -85,7 +85,7 @@ aside .active a{background:#FABF00;color:#595959}
 #member-info article{background:none;border:0}
 #member-info table{margin:0 0 10px 0}
 #member-info h3{font-size:1.4em}
-#member-info th{background:#EADAB7;color:#735500;font:300 1em 微軟正黑體,Microsoft JhengHei;padding:14px 10px 10px 14px;width:20%;}
+#member-info th{font-family:微軟正黑體,Microsoft JhengHei;background:#EADAB7;color:#735500;font:300 1em 微軟正黑體,Microsoft JhengHei;padding:14px 10px 10px 14px;width:20%;}
 #member-info th img{margin:0 20px 0 0;}
 #member-info td{background:#fff;padding: 0 10px;width:80%;}
 #member-info .form-control{border:0;box-shadow:none}
@@ -97,14 +97,15 @@ aside .active a{background:#FABF00;color:#595959}
 
 @media(max-width: 767px) {
 	#member-info h3{margin:10% 0 5% 0}
-	#member-info th{width:35%;}
+	#member-info th{font-family:微軟正黑體,Microsoft JhengHei;width:35%;}
 	#member-info th img{width:15px;height:auto;margin:0 10px 0 0;}
 	#member-info td{width:65%}
 }
+
 #member-login .text-center img{display:inline;margin:0 0 10% 0;}
 #member-login article{background:none;border:none}
 #member-login table{background:#fff;border:1px solid #F1F1F0;margin:2.5% 0}
-#member-login th{min-width:46px;max-width:78px}
+#member-login th{font-family:微軟正黑體,Microsoft JhengHei;min-width:46px;max-width:78px}
 #member-login .form-control{border:0;box-shadow:none}
 #member-login a{font-size:1em!important;color:#0f22b1;margin-left:5%}
 #member-login a:hover{text-decoration:underline}
@@ -118,9 +119,10 @@ background:#fabe00;cursor:pointer}
 .toggle_new_addressbook img{margin:-5px 0 0 10px}
 .toggle_new_addressbook:hover{background:#fabe00;text-decoration:none!important}
 
-
-#member-info .tool{position:absolute;top:0;right:0;background:#fff;}
+#member-info .tool{position:absolute;top:0;right:0;background:#fff}
 
 .tool a{color:#999!important;font:300 .9em "arial";display:inline-block;border:1px solid #ddd;
-padding:2px 5px;border-radius:5px;}
+padding:2px 5px;border-radius:5px}
 .tool a:hover{background:#eee;text-decoration:none!important}
+
+
