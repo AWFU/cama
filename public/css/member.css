@@ -2,7 +2,7 @@
 /*-----------------------------------------------------------------------頁首---*/
 
 #banner{background:#4E2D1A}
-#banner .container{background:url(../images/mbr-01.jpg) 300px center no-repeat}
+#banner .container{background:url(../images/mbr-01.jpg) 150px center no-repeat}
 
 /*-----------------------------------------------------------------------頁身---*/
 
@@ -85,19 +85,21 @@ aside .active a{background:#FABF00;color:#595959}
 #member-info article{background:none;border:0}
 #member-info table{margin:0 0 10px 0}
 #member-info h3{font-size:1.4em}
-#member-info th{background:#EADAB7;color:#735500;font:300 1em "arial";padding:2% 3%}
-#member-info th img{margin:0 10px 0 0}
-#member-info td{background:#fff;padding:2% 3%}
+#member-info th{background:#EADAB7;color:#735500;font:300 1em 微軟正黑體,Microsoft JhengHei;padding:14px 10px 10px 14px;width:20%;}
+#member-info th img{margin:0 20px 0 0;}
+#member-info td{background:#fff;padding: 0 10px;width:80%;}
 #member-info .form-control{border:0;box-shadow:none}
 #member-info input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px;background:#FABF00}
 
 #member-info article a{font-size:1em!important;color:#0f22b1}
 #member-info article a:hover{text-decoration:underline}
 
+
 @media(max-width: 767px) {
 	#member-info h3{margin:10% 0 5% 0}
-	#member-info th{}
-	#member-info th img{width:15px;height:auto}
+	#member-info th{width:35%;}
+	#member-info th img{width:15px;height:auto;margin:0 10px 0 0;}
+	#member-info td{width:65%}
 }
 #member-login .text-center img{display:inline;margin:0 0 10% 0;}
 #member-login article{background:none;border:none}
@@ -115,6 +117,9 @@ font-size:1.3em;padding:1% 10%}
 background:#fabe00;cursor:pointer}
 .toggle_new_addressbook img{margin:-5px 0 0 10px}
 .toggle_new_addressbook:hover{background:#fabe00;text-decoration:none!important}
+
+
+#member-info .tool{position:absolute;top:0;right:0;background:#fff;}
 
 .tool a{color:#999!important;font:300 .9em "arial";display:inline-block;border:1px solid #ddd;
 padding:2px 5px;border-radius:5px;}
