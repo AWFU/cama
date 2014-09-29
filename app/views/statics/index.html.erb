@@ -100,8 +100,8 @@ jQuery(function($){
                 <%= link_to( image_tag(rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.attachment.url, class: "img-responsive"), category_product_path(rcm_product.product_cate, rcm_product) ) unless selected_product.related_product_id == 0 || rcm_product.galleries.select{ |v| v['type'] == 'ProductPhotoGallery' }.first.nil? %>
               </div>
               <div class="pull-right">
-              
-                <p><span>●</span><b><%= link_to(rcm_product.name, category_product_path(rcm_product.product_cate, rcm_product) ) %></b><span>●</span><br><%= selected_product.description%>
+                <h6><span>●</span><b><%= link_to(rcm_product.name, category_product_path(rcm_product.product_cate, rcm_product) ) %></b><span>●</span></h6>
+                <p><%= selected_product.description%>
                 </p>
               </div>
               
