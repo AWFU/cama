@@ -50,6 +50,8 @@ background:url(../images/tlk-04.gif) right center no-repeat;margin:0 0 0 0}
 	#talk-list .text > article{display:none}	
 }
 
+.text .part a{color:#2260A4;}
+
 /*YouTube Responsive*/
 .part[data-type=video]{
     position: relative;

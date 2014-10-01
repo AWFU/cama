@@ -95,7 +95,7 @@ bottom:0px;padding:12px 0 0 0}
 
 /*-----------------------------------------------------------------------頁身---*/
 
-body > article{background:url(../images/line.jpg) 0 0 repeat-x;padding-top:16%}
+body > article{background:url(../images/line.jpg) 0 0 repeat-x;padding-top:220px}
 @media(max-width: 1024px) {
 	body > article{padding-top:27%}
 }
@@ -117,8 +117,8 @@ height:165px;position:relative;top:26px}
 
 #news .cover{position:relative}
 #news .title{padding:10px 10px 0 10px;height:80px;}
-#news .date{width:50px;height:50px;position:absolute;top:27%;text-align:center;color:#fff;position:absolute;
-background:url(../images/idx-10.png) center center no-repeat #8E8E8E}
+#news .date{width:50px;height:50px;position:absolute;top:27%;text-align:center;color:#fff;padding:1px 0 0 0;
+background:url(../images/idx-10.png) center center no-repeat #8E8E8E;line-height: 1.6em	}
 #news article a:hover .date{background-color:#FABE00}
 
 @media(max-width: 767px) {	
@@ -131,8 +131,8 @@ _:-moz-tree-row(hover), #news .img-responsive{width:100%}
 
 /*-----------------------------------------------------------------------經典推薦---*/
 
-#rcm {padding:10% 0}
-#rcm h3{background:url(../images/idx-06.gif) center center no-repeat;height:123px;margin:0 0 5% 0;
+#rcm {padding:5% 0 10% 0}
+#rcm h3{background:url(../images/idx-06.gif) center center no-repeat;height:123px;margin:0 0 2.5% 0;
 font-size:0px;text-indent:-7777px}
 #rcm article h6{text-align:center;font-size:1.2em;}
 #rcm article h6 b{font-weight:300}

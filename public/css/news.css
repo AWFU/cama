@@ -47,6 +47,8 @@ background:url(../images/idx-10.png) center center no-repeat #FABE00;line-height
 	#news-show .content{padding:0}
 }
 
+#news-show .part a{color:#2260A4;}
+
 /*YouTube Responsive*/
 .part[data-type=video]{
     position: relative;

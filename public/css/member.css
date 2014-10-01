@@ -107,7 +107,7 @@ aside .active a{background:#FABF00;color:#595959}
 #member-login table{background:#fff;border:1px solid #F1F1F0;margin:2.5% 0}
 #member-login th{font-family:微軟正黑體,Microsoft JhengHei;min-width:46px;max-width:78px}
 #member-login .form-control{border:0;box-shadow:none}
-#member-login a{font-size:1em!important;color:#0f22b1;margin-left:5%}
+#member-login a{font-size:1em!important;color:#0f22b1;margin-left:5%;color:#800a0a}
 #member-login a:hover{text-decoration:underline}
 
 #member-login input.btn{margin:10% 0 0 0;background:#FABE00;color:#553319;
@@ -126,3 +126,9 @@ padding:2px 5px;border-radius:5px}
 .tool a:hover{background:#eee;text-decoration:none!important}
 
 
+.alertify-log {
+  background: #CA3D00;
+}
+.alertify-log-success {
+  background: #A8C01B!important;
+}

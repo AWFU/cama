@@ -138,3 +138,14 @@ color:#4e2d1a}
 @media(max-width: 767px) {
 	#thx p{background:url(../images/cart-01.jpg) 50% 10% #FABE00 no-repeat;padding:150px 10% 10% 10%}
 }
+
+
+
+
+    
+.alertify-log {
+  background: #CA3D00;
+}
+.alertify-log-success {
+  background: #A8C01B!important;
+}
