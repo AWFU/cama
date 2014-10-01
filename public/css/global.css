@@ -101,7 +101,8 @@ body > footer a{color:#2d2929}
 body > footer a:hover{text-decoration:underline;color:#2d2929}
 body > footer h3{background:url(../images/logo.png) right 0 no-repeat;height:184px;font-size:0px;text-indent:-7777px}
 #copyright{background:#000;color:#a6a6a6;font-size:.8em;padding:10px 0}
-
+#copyright a{color:#a6a6a6;font-size:1em!important}
+#copyright a:hover{text-decoration:underline;}
 @media(max-width: 1024px) {
 	body > footer h3{background:url(../images/logo.png) left 0 no-repeat}
 }
