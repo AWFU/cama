@@ -23,6 +23,7 @@
                 <% end %>            
             </div>
             <!--photo-->
+            <br>
             <ul id="thumb">
               <% @product.galleries.where(type: 'ProductPhotoGallery').each_with_index do |attach, index| %>
               <li>
@@ -59,12 +60,12 @@
         </div>
         <!--intro-->
         <div id="chart" class="row">
-          <div class="col-sm-offset-2 col-sm-4 text-center">
+          <div class="col-sm-5 text-center">
             <% @product.galleries.select{ |v| v['type'] == "TasteAttributeGallery" }.each do |attach| %>
                 <image src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
             <% end %>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-7">
             <% unless @product.taste_attributes.to_hash.length == 0 %>
               <%= show_taste_sttributes(@product.taste_attributes) %>
             <% end %>

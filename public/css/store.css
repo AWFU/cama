@@ -10,9 +10,9 @@
 
 /*標籤*/
 #store-list .tag{border-top:1px solid #C5AF9C;border-bottom:1px solid #C5AF9C;padding:2.5% 0;margin:5% 0}
-#store-list .tag li{width:45%;margin:2.5%}
+#store-list .tag li{width:31%;margin:1%}
 #store-show .tag{padding:1.5% 0}
-#store-show .tag li{width:50%;margin:2.5% 0;background:url(../images/sto-04.png) 95% center no-repeat #fff}
+#store-show .tag li{width:31%;margin:1%;background:url(../images/sto-04.png) 95% center no-repeat #fff}
 
 .tag li{font-size:.9em;background:#fff;height:33px;padding:0 10px 0 0}
 .tag li span{padding:4px 0 0 10px}

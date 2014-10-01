@@ -38,20 +38,12 @@
             <p>開始結帳，請先選本島、離島或海外取件</p>          
             <%= button_to("本島", set_ship_to_cart_index_path('taiwan'), :class => "next btn pull-right", :role => 'button', data: {disable_with: "..."} ) %>
             <%= button_to("離島", set_ship_to_cart_index_path('island'), :class => "next btn pull-right", :role => 'button', data: {disable_with: "..."} ) %>
-        </div>
-      
+        </div>      
         <div class="pull-left">
-          <h4>重要提醒：</h4>
-          未滿1500：運費80元，
-          滿1500：免運費<br>
-          <br>
-          貨到付款：
-          未滿1500：運費+代收費 110元，
-          滿1500：(免運費)代收費30元<br>
-          <br>
-          離島郵局寄送：
-          未滿1500：運費100元，
-          滿1500：免運費 <br>
+          <h4>運費說明：</h4><br>  
+* 消費金額未滿1500：運費80元， 滿1500：免運費 <br><br>
+* 貨到付款：消費金額 未滿1500：運費+代收費 110元， 滿1500：(免運費)代收費30元 <br><br>
+* 離島郵局寄送： 消費金額未滿1500：運費100元， 滿1500：免運費<br>
           <br>
           <%= link_to("繼續購物", categories_path, :id => "back", class: "btn pull-right", role: "button" ) %>
         </div>

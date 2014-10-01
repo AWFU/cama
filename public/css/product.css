@@ -15,7 +15,7 @@ body > header{height:244px}
 /*-----------------------------------------------------------------------分類---*/
 
 #aside-left{text-align:center}
-#aside-left h5{background:url(../images/prd-02.png) center center no-repeat;height:23px;font-size:1.5em}
+#aside-left h5{background:url(../images/prd-02.png) center center no-repeat;height:23px;font-size:1.1em;padding-top:3px;}
 #aside-left ul{margin:0 0 30px 0}
 #aside-left a{display:inline-block;min-width:88px;padding:8px 0 3px 0;
 background-position:center bottom;color:#555}
@@ -57,9 +57,10 @@ background-position:top left;background-repeat:no-repeat;}
 
 #product-show{color:#492f18}
 
-#photo{margin:0 0 25px 0;text-align:center;}
+#photo{text-align:center;}
 #photo img{display:inline}
 
+#thumb {}
 #thumb li img{border:1px solid #B9B1AA}
 #thumb li img:hover{border-color:#8D7D70}
 .bx-controls-direction a{
@@ -79,10 +80,10 @@ background-position:top left;background-repeat:no-repeat;}
 /*-----------------------------------------------------------------------資訊---*/
 
 /*標題*/
-h3{padding:3% 0}
+h3{padding:3% 0 0 0}
 
 /*特色*/
-#features{padding:3% 0}
+#features{padding:0 0 3% 0}
 #features li{background:url(../images/prd-04.png) 0 8px no-repeat;padding:0 0 0 20px;
 font-size:.95em}
 
@@ -99,14 +100,13 @@ font-size:.95em}
 .buy .btn{background:#FFCE54;box-shadow:0 3px 0 #CAA23D}
 .buy .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
 
-
 /*簡介*/
 #intro{padding:5% 0}
 #intro p{line-height:2em}
 
 /*圖表*/
 #chart{padding:5% 0;color:#231815}
-#chart li{font-weight:900;font-size:1em;letter-spacing:.2em}
+#chart li{font-weight:900;font-size:1em;}
 #chart img{display:inline}
 
 /*照片*/
