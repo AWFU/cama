@@ -11,6 +11,7 @@
     <section class="row" id="product-list">
       
       <%= render 'aside_desktop' %>
+      <%= render 'aside_mobile' %>
 
       <article class="col-sm-9 col-xs-12">
         <% if @product_cate.parent_id != 0 && @parent_cate.galleries.first  %>
@@ -21,7 +22,7 @@
           
         <% end %>
         
-        <%= render 'aside_mobile' %>
+       
 
         <h3><%= @product_cate.name %></h3>
         
