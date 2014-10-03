@@ -22,17 +22,17 @@ background-position:center bottom;color:#555}
 #aside-left a:hover{background:url(../images/prd-01.png) center bottom no-repeat;
 color:#793003}
 
-#aside-up{margin:0 0 5% 0;border:1px solid #B9B1AA}
-#aside-up .tab{background:url(../images/prd-02.png);overflow:hidden;margin:0}
-#aside-up .tab li{float:left;width:25%;}
-#aside-up .tab li a{display:block;width:100%;text-align:center;font-size:1.3em!important}
-#aside-up .tab li a:hover{color:#780606}
+#aside-up .tab{background:#693003;overflow:hidden;margin:0;}
+#aside-up .tab li{float:left;width:24%;padding:10px 0;}
+#aside-up .tab li a{display:inline-block;width:100%;text-align:center;font:300 1em "微軟正黑體"!important;
+color:#e5d8d0;border-right:1px solid #e5d8d0;}
+#aside-up .tab li a:hover,
+#aside-up .tab .active a{color:#cf9901}
+#aside-up .tab .active {background:url(../images/prd-08.gif) center bottom no-repeat;}
 
-#aside-up .tab .active a{background:#ECB983}
-#aside-up .sub{color:#442D1E}
-#aside-up .sub ul{margin:0;background:#F5F5F3}
-#aside-up .sub li{border-top:1px solid #B9B1AA}
-#aside-up .sub li a{display:block;width:100%;padding:5px 15px}
+#aside-up .sub ul{margin:0;background:#ebebeb;border-bottom:1px solid #dbdbdb;padding:0 20px;}
+#aside-up .sub li a{display:block;width:100%;padding:10px 20px;background:url(../images/prd-07.gif) 0 center no-repeat;
+border-bottom:1px solid #dbdbdb;color:#73613d;}
 #aside-up .sub li a:hover{color:#780606}
 
 /*-----------------------------------------------------------------------列表---*/
@@ -51,6 +51,7 @@ background-position:top left;background-repeat:no-repeat;}
 @media(max-width: 767px) {
 	.list .pull-left{width:33%}
 	.list .pull-right{width:62%;padding:3% 0 0 0}
+	.visible-xs.banner{margin:0 0 0 0}
 }
 
 /*-----------------------------------------------------------------------櫥窗---*/

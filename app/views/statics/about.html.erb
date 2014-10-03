@@ -215,8 +215,15 @@
   $(document).ready(function(){
     $('.bxslider').bxSlider({pager:false});
     $('#content-3').parallax({offsetY:-200,speedFactor:0.2}); 
-	$('#content-5').parallax({offsetY:-200,speedFactor:0.3}); 
+    $('#content-5').parallax({offsetY:-200,speedFactor:0.3}); 
   }); 
+</script>
+<script>
+function Flashing(){   
+    $("#star").fadeOut(1500).fadeIn(1500);
+    setTimeout(Flashing,500);   
+}   
+Flashing();  
 </script> 
 <script>
 jQuery(document).ready(function(){  
