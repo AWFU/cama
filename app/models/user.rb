@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  validates :email, :uniqueness => true,
-                    :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i, :message => 'E-Mail 格式不符'  }
+  validates :email, :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i, :message => 'E-Mail 格式不符'  }
   #validates_uniqueness_of :email, :message => 'E-Mail 已有人使用。'
 
   #validates_presence_of :tel, :allow_nil => true ,:message => "請輸入電話或行動電話"

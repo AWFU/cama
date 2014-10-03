@@ -16,10 +16,10 @@ class CamaMailer < ActionMailer::Base
   # send to user
   def welcome(user)
     ActiveRecord::Base.connection_pool.with_connection do
-      attachments.inline['camalogo.png'] = with_logo_image
+      attachments.inline['camalogo.jpg'] = with_logo_image
 
       @user = user
-      mail(:to => [ user.email ], :subject => "cama咖啡 會員註冊通知")
+      mail(:to => [ user.email ], :subject => "cama網站 會員註冊通知")
     end
   end
 
@@ -31,7 +31,7 @@ class CamaMailer < ActionMailer::Base
     # @data[:to] = [ order.user.email, "adam29@livemail.tw" ]
     # @data[:subject] = "cama咖啡 訂購單(#{order.ordernum})" # 主旨
     # @data[:html] = render 'atm_checkout_completed_successfully', locals: {order: @order, ordersum: @ordersum} # 內容
-    # @data[:inline] = File.new(File.join("public","images","email", "camalogo.png")) # inline img
+    # @data[:inline] = File.new(File.join("public","images","email", "camalogo.jpg")) # inline img
 
     #p data.to_hash
     # back to use mailer
@@ -40,20 +40,20 @@ class CamaMailer < ActionMailer::Base
     #deliver_by_api(@data)
     
     # origin
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
       @ordersum = sum_order_items(order.orderitems) + get_shipping_fee_from_order(order)
       #headers['X-Mailgun-Campaign-Id'] = '{"o:campaign": "camptest"}'
-      #attachments.inline['camalogo.png'] = File.new(File.join("public","images","email", "camalogo.png"))
+      #attachments.inline['camalogo.jpg'] = File.new(File.join("public","images","email", "camalogo.jpg"))
       mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
     end
     #mail(:to => [ 'adam@summers.com.tw' ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
   end
 
   def vaccount_checkout_completed_successfully(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -63,7 +63,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def cod_checkout_completed_successfully(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -72,7 +72,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def general_checkout_completed_successfully(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -81,7 +81,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def ship(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -90,7 +90,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def ship_cod(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -99,7 +99,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def cancel_deal(order)
-    attachments.inline['camalogo.png'] = with_logo_image
+    attachments.inline['camalogo.jpg'] = with_logo_image
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
@@ -162,7 +162,7 @@ class CamaMailer < ActionMailer::Base
   end
 
   def with_logo_image
-    File.read(File.join("public","images","email", "camalogo.png")) # inline img
+    File.read(File.join("public","images","email", "camalogo.jpg")) # inline img
   end
 
 end
