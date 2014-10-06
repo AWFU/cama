@@ -129,8 +129,8 @@
     <h3>聚星雲集簽名杯</h3>
     <div id="star"></div>
         <ul class="bxslider">
-          <li><img src="images/abt-18.png" class="img-responsive"/></li>
-          <li><img src="images/abt-19.png" class="img-responsive"/></li>
+          <li><img src="images/abt-18.png"/></li>
+          <li><img src="images/abt-19.png"/></li>
         </ul>
 
     </section>
@@ -358,3 +358,16 @@ jQuery(document).ready(function(){
   ));
 });
 </script>
+<script>
+jQuery(function($){
+  $(".bx-controls-direction a").focus(function(){
+    $(this).blur();
+  });
+});
+</script>
+<script type="text/javascript"><!--
+if(document.all){
+var tags=document.all.tags("a")
+for (var i=0;i<tags.length;i++)
+tags(i).outerHTML=tags(i).outerHTML.replace(">"," onfocus=\"this.blur();\">")}
+// --></script>

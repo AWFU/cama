@@ -67,7 +67,8 @@ left:-15%;top:10%;}
 #cup .bxslider li{text-align:center}
 #cup .bxslider li img{display:inline}
 
-.bx-prev,.bx-next{width:64px;height:64px;display:block;position:absolute;top:50%;z-index:4;text-indent:-7777px;}
+.bx-prev,.bx-next{width:64px;height:64px;display:block;position:absolute;top:50%;z-index:4;
+	font-size:0px!important;text-indent:-7777px;}
 .bx-prev{background:url(../images/abt-20.png) 0 0 no-repeat;left:0;}
 .bx-prev:hover{left:-10px;}
 .bx-next{background:url(../images/abt-21.png) 0 0 no-repeat;right:0;}
