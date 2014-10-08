@@ -29,7 +29,7 @@ class CamaMailer < ActionMailer::Base
 
     # through api: set params
     # @data[:to] = [ order.user.email, "adam29@livemail.tw" ]
-    # @data[:subject] = "cama咖啡 訂購單(#{order.ordernum})" # 主旨
+    # @data[:subject] = "cama網站 訂購單(#{order.ordernum})" # 主旨
     # @data[:html] = render 'atm_checkout_completed_successfully', locals: {order: @order, ordersum: @ordersum} # 內容
     # @data[:inline] = File.new(File.join("public","images","email", "camalogo.jpg")) # inline img
 
@@ -47,9 +47,9 @@ class CamaMailer < ActionMailer::Base
       @ordersum = sum_order_items(order.orderitems) + get_shipping_fee_from_order(order)
       #headers['X-Mailgun-Campaign-Id'] = '{"o:campaign": "camptest"}'
       #attachments.inline['camalogo.jpg'] = File.new(File.join("public","images","email", "camalogo.jpg"))
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 訂購單(#{order.ordernum})")
     end
-    #mail(:to => [ 'adam@summers.com.tw' ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+    #mail(:to => [ 'adam@summers.com.tw' ], :subject => "cama網站 訂購單(#{order.ordernum})")
   end
 
   def vaccount_checkout_completed_successfully(order)
@@ -58,7 +58,7 @@ class CamaMailer < ActionMailer::Base
       user = order.user.email
       @order = order
       @payment_window = 3 #繳款期限
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 訂購單(#{order.ordernum})")
     end
   end
 
@@ -67,7 +67,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 訂購單(#{order.ordernum})")
     end
   end
 
@@ -76,7 +76,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂購單(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 訂購單(#{order.ordernum})")
     end
   end
 
@@ -85,7 +85,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 出貨通知(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 出貨通知(#{order.ordernum})")
     end
   end
 
@@ -94,7 +94,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 出貨通知(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 出貨通知(#{order.ordernum})")
     end
   end
 
@@ -103,7 +103,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       user = order.user.email
       @order = order
-      mail(:to => [ order.user.email ], :subject => "cama咖啡 訂單取消(#{order.ordernum})")
+      mail(:to => [ order.user.email ], :subject => "cama網站 訂單取消(#{order.ordernum})")
     end
   end
   # send to user end
@@ -114,8 +114,8 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 新訂單成立(#{order.ordernum})")
-        #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama咖啡 新訂單成立")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama網站 新訂單成立(#{order.ordernum})")
+        #mail(:to => gather_moderator_mailto_address, bcc: gather_admin_cc_address, :subject => "cama網站 新訂單成立")
       end
     end
   end
@@ -125,7 +125,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 ATM填寫後五碼(#{order.ordernum})")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama網站 ATM填寫後五碼(#{order.ordernum})")
       end
     end
   end
@@ -135,7 +135,7 @@ class CamaMailer < ActionMailer::Base
     ActiveRecord::Base.connection_pool.with_connection do
       @order = order
       unless gather_moderator_mailto_address.length == 0
-        mail(:to => gather_moderator_mailto_address, :subject => "cama咖啡 客服信件(#{order.ordernum})")
+        mail(:to => gather_moderator_mailto_address, :subject => "cama網站 客服信件(#{order.ordernum})")
       end
     end
   end
