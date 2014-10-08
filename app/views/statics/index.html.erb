@@ -24,7 +24,7 @@
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-   <script>
+  <script>
     window.onload= function() {
     <% if !flash[:notice].nil? %>
      alertify['success']('<%= flash[:notice] %>', 2000);
@@ -35,19 +35,16 @@
     <% end %>
   }
   </script>
-   <script>
-jQuery(function($){
-  $("a").focus(function(){
-    $(this).blur();
+  <script>
+    jQuery(function($){
+      $("a").focus(function(){
+      $(this).blur();
+    });
   });
-});
-</script>
-  
+  </script>  
 </head>
 <body>
-
-  <%= render 'layouts/index_header' %>
-  
+  <%= render 'layouts/index_header' %>  
   <article class="container-fluid">
     <div class="container">
       <section id="news">
