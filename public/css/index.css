@@ -18,7 +18,7 @@ a:hover{text-decoration:none}
 
 /*-----------------------------------------------------------------------頁首---*/
 
-body > header{background:#FABF00;height:525px}
+body > header{background:#FDB813;height:525px}
 body > header h1{width:35%;text-align:center}
 body > header h1 a{display:inline-block;width:225px;height:184px;
 background:url(../images/logo.png) center 0 no-repeat;font-size:0px;text-indent:-7777px}
@@ -39,7 +39,7 @@ body > header nav ul{overflow:hidden}
 -webkit-transition:all ease .3s;-moz-transition:all ease .3s}
 #nav-down li:hover{background-position:center 0}
 #nav-down li:hover a{color:#780606;}
-#nav-down a{display:block;padding:0px 20px 0 20px;background:#FABF00;}
+#nav-down a{display:block;padding:0px 20px 0 20px;background:#FDB813;}
 
 #nav-down .cart{position:relative;top:-20px}
 #nav-down .count{position:absolute;top:-10px;right:-45px;background:url(../images/count.png) 0 0 no-repeat;
@@ -52,7 +52,7 @@ width:68px;height:28px;font-size:.8em;text-align:center;line-height:1em;padding:
 #nav-5{background-image:url(../images/nav-5.png)}
 
 /*手機版導航*/
-#nav-top{height:47px;border-bottom:1px solid #E8B203;background:#FABF00;box-shadow:0 1px 0 #FACE47;
+#nav-top{height:47px;border-bottom:1px solid #E8B203;background:#FDB813;box-shadow:0 1px 0 #FACE47;
 padding:10px 10px 0 10px}
 #nav-top .cart{position:relative;top:0px;right:70px;}
 #nav-top .count{position:absolute;top:0;right:-69px;background:url(../images/count.png) 0 0 no-repeat;
@@ -180,7 +180,7 @@ font-size:0px;text-indent:-7777px}
 
 /*-----------------------------------------------------------------------頁尾---*/
 
-body > footer{background:url(../images/line.jpg) 0 0 repeat-x #FABF00;padding:55px 0 20px 0;font-size:.9em}
+body > footer{background:url(../images/line.jpg) 0 0 repeat-x #FDB813;padding:55px 0 20px 0;font-size:.9em}
 body > footer p{padding-top:132px;color:#2d2929}
 body > footer a{color:#2d2929}
 body > footer a:hover{text-decoration:underline;color:#2d2929}

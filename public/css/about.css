@@ -82,3 +82,16 @@ left:-15%;top:10%;}
 @media(max-width: 767px) {
 	#report h5{margin:0 0 15% 0;}
 }
+
+#quick{position:fixed;background:url(../images/side.png) center 30px no-repeat #252932;border-radius:10px;
+	width:110px;padding:125px 0 25px 0;background-size: 60%;right:10px;bottom:10%;z-index:9;}
+#quick li{}
+#quick li a{color:#9DA1AA;border-top:1px solid #1C2029;border-bottom:1px solid #2F333C;
+padding:12px 0;text-align:center;font-size:.9em!important;display:block;}
+#quick li a:hover{background:#1C2127;color:#f9f9f9;}
+@media(max-width: 1023px) {
+	#quick{display:none!important}
+}
+
+
+
