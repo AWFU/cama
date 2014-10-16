@@ -18,19 +18,21 @@
 </article>
 
 <%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale42.htm", :id => "send_to_esun", style: "display:none;") do %>
-<%= text_field_tag :MID, get_esun_MID %>
 
-<%= text_field_tag :CID, "" %>
+<%= hidden_field_tag :MID, get_esun_MID %>
 
-<%= text_field_tag :TID, "EC000001" %>
+<%= hidden_field_tag :CID, "" %>
 
-<%= text_field_tag :ONO, @order.ordernum %>
+<%= hidden_field_tag :TID, "EC000001" %>
 
-<%= text_field_tag :TA, ( @order_total = sum_order_items(@order.orderitems)+get_shipping_fee_from_order(@order)) %><br>
+<%= hidden_field_tag :ONO, @order.ordernum %>
 
-<%= text_field_tag :U, receive_result_cart_index_url %>
+<%= hidden_field_tag :TA, ( @order_total = sum_order_items(@order.orderitems)+get_shipping_fee_from_order(@order)) %><br>
 
-<%= text_field_tag :M, get_esun_key(@order.ordernum, @order_total) %>
+<%= hidden_field_tag :U, receive_result_cart_index_url %>
+
+<%= hidden_field_tag :M, get_esun_key(@order.ordernum, @order_total) %>
+
 <% end %>
 
 <!-- <a id="sendrequest">send</a> -->

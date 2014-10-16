@@ -18,7 +18,7 @@ production:
   pool: 5
   timeout: 5000
   username: rails
-  password: "3edc&UJM"
+  password: "Glcczuvzzz0GJf"
   
 staging:
   adapter: mysql2
