@@ -1,0 +1,11 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/ntc-01.jpg) 200px center no-repeat}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+@media(max-width: 767px) {
+.content h3{text-align:center}
+}
