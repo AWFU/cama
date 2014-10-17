@@ -114,6 +114,7 @@ font-size:.95em}
 #gallery img{margin:0 0 5% 0}
 
 /*按鈕*/
+#buy-2{margin-top:5%}
 .buy .btn{background:#FFCE54;box-shadow:0 3px 0 #CAA23D}
 .buy .btn:active{box-shadow:0 1px 0 #CAA23D;position:relative;top:2px}
 

@@ -40,10 +40,10 @@
             <%= button_to("離島", set_ship_to_cart_index_path('island'), :class => "next btn pull-right", :role => 'button', data: {disable_with: "..."} ) %>
         </div>      
         <div class="pull-left">
-          <h4>運費說明：</h4><br>  
-* 消費金額未滿1500：運費80元，滿1500：免運費 <br><br>
-* 貨到付款：消費金額 未滿1500：運費+代收費 110元，滿1500：(免運費)代收費30元 <br><br>
-* 離島郵局寄送： 消費金額未滿1500：運費100元，滿1500：免運費<br>
+          <h4>運費說明：</h4>
+* 本島寄送運費 80 元，滿 1500 元免運費<br>
+<!--* 貨到付款：消費金額 未滿1500：運費+代收費 110元，滿1500：(免運費)代收費30元 <br><br>-->
+* 離島郵局寄送運費 100 元，滿 1500 元免運費<br>
           <br>
           <%= link_to("繼續購物", categories_path, :id => "back", class: "btn pull-right", role: "button" ) %>
         </div>
