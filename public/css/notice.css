@@ -1,0 +1,17 @@
+
+/*-----------------------------------------------------------------------頁首---*/
+
+#banner{background:#4E2D1A}
+#banner .container{background:url(../images/ntc-01.jpg) 200px center no-repeat}
+
+h3{color:#4E2D1A}
+p{color:#4E2D1A;padding:2.5% 0;}
+p.second{padding-left:5%;}
+p a{color:#cc6600;}
+p a:hover{text-decoration:underline;color:#cc6600;}
+
+/*-----------------------------------------------------------------------頁身---*/
+
+@media(max-width: 767px) {
+.content h3{text-align:center}
+}
