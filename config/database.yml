@@ -8,6 +8,7 @@ development:
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
+  strict: false
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,6 +20,7 @@ production:
   timeout: 5000
   username: rails
   password: "Glcczuvzzz0GJf"
+  strict: false
   
 staging:
   adapter: mysql2
@@ -27,3 +29,4 @@ staging:
   timeout: 5000
   username: rails
   password: "3edc&UJM"
+  strict: false

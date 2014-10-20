@@ -21,7 +21,7 @@ class Article < ActiveRecord::Base
         
       end
       
-      return meta
+      return meta.gsub('&nbsp;', ' ')
     
   rescue
     return ''
