@@ -14,7 +14,7 @@ section article{background:#fff;border:1px solid #ECE4C0;font-size:.95em!importa
 /*-----------------------------------------------------------------------側欄---*/
 
 aside{padding:0}
-aside h3{font:300 1em "";padding:0 0 0 10px}
+aside h3{font:300 1.4em 'Microsoft JhengHei',Arial,微軟正黑體;padding:0 0 0 10px}
 aside li{margin:0 0 5px 0}
 aside li a{display:block;text-align:center;color:#595959}
 aside li a:hover,
@@ -30,7 +30,7 @@ aside .active a{background:#FABF00;color:#595959}
 /*-----------------------------------------------------------------------訂單---*/
 
 #order{padding:5%;}
-#order th{font-family:微軟正黑體,Microsoft JhengHei;text-align:center;background:#FDF3C4;font-weight:300}
+#order th{font:300 1em 'Microsoft JhengHei',Arial,微軟正黑體;text-align:center;background:#FDF3C4;padding:2% 0;}
 #order td{padding:2.5% 0;border-bottom:1px solid #FDEBB2}
 #order a{color:#D5A300}
 #order a:hover{color:#FABF00}
@@ -43,6 +43,10 @@ aside .active a{background:#FABF00;color:#595959}
 #order tbody.detail {background:#FDF3C4;color:#333;border-left:1px dashed #FABE00;border-right:1px dashed #FABE00}
 #order tbody.detail td{padding-top:1%;padding-bottom:1%;border:none;border-bottom:1px dashed #FABE00}
 #order tbody.detail img{position:absolute;top:0;left:0}
+
+@media(max-width: 1279px) {
+	#order td > img{width:50px;height:50px}
+}
 
 @media(max-width: 767px) {
 	#order{overflow-x:scroll;padding:5% 5% 0 5%}
@@ -60,7 +64,7 @@ aside .active a{background:#FABF00;color:#595959}
 #form{padding:0 5% 5% 5%;}
 #form a{font-size:1em!important;color:#0f22b1;margin:0 0 0 15px}
 #form a:hover{text-decoration:underline}
-#form h4{color:#4e2d1a;font:900 1em Arial,微軟正黑體,Microsoft JhengHei}
+#form h4{color:#4e2d1a;font:900 1em 'Microsoft JhengHei',Arial,微軟正黑體}
 #form .btn{background:#FABE00;color:#4e2d1a}
 
 @media(max-width: 767px) {
@@ -85,27 +89,32 @@ aside .active a{background:#FABF00;color:#595959}
 #member-info article{background:none;border:0}
 #member-info table{margin:0 0 10px 0}
 #member-info h3{font-size:1.4em}
-#member-info th{font-family:微軟正黑體,Microsoft JhengHei;background:#EADAB7;color:#735500;font:300 1em 微軟正黑體,Microsoft JhengHei;padding:14px 10px 10px 14px;width:20%;}
+#member-info th{font-family:'Microsoft JhengHei',Arial,微軟正黑體;background:#EADAB7;color:#735500;font:300 1em 'Microsoft JhengHei',Arial,微軟正黑體;padding:14px 10px 10px 14px;width:20%;}
 #member-info th img{margin:0 20px 0 0;}
 #member-info td{background:#fff;padding: 0 10px;width:80%;}
 #member-info .form-control{border:0;box-shadow:none}
 #member-info input.btn{margin:15px 0 0 15px;padding:0 7%;font-size:1em!important;height:40px;background:#FABF00}
 
+#member-info .tool{position:absolute;top:0;right:0;background:#fff}
+
 #member-info article a{font-size:1em!important;color:#0f22b1}
 #member-info article a:hover{text-decoration:underline}
 
 
+@media(max-width: 1279px) {
+	#member-info th img{width:15px;height:15px;margin:0 10px 0 0;}
+}
+
 @media(max-width: 767px) {
 	#member-info h3{margin:10% 0 5% 0}
-	#member-info th{font-family:微軟正黑體,Microsoft JhengHei;width:35%;}
-	#member-info th img{width:15px;height:auto;margin:0 10px 0 0;}
-	#member-info td{width:65%}
+	#member-info th{font-family:'Microsoft JhengHei',Arial,微軟正黑體;width:45%;}	
+	#member-info td{width:55%}
 }
 
 #member-login .text-center img{display:inline;margin:0 0 10% 0;}
 #member-login article{background:none;border:none}
 #member-login table{background:#fff;border:1px solid #F1F1F0;margin:2.5% 0}
-#member-login th{font-family:微軟正黑體,Microsoft JhengHei;min-width:46px;max-width:78px}
+#member-login th{font-family:'Microsoft JhengHei',Arial,微軟正黑體;min-width:46px;max-width:78px}
 #member-login .form-control{border:0;box-shadow:none}
 #member-login a{font-size:1em!important;color:#0f22b1;margin-left:5%;color:#800a0a}
 #member-login a:hover{text-decoration:underline}
@@ -114,12 +123,12 @@ aside .active a{background:#FABF00;color:#595959}
 font-size:1.3em;padding:1% 10%}
 #member-login input.btn:hover{background:#E3AD00}
 
+
 .toggle_new_addressbook{display:inline-block;padding:5px 20px;color:#333!important;
 background:#fabe00;cursor:pointer}
 .toggle_new_addressbook img{margin:-5px 0 0 10px}
 .toggle_new_addressbook:hover{background:#fabe00;text-decoration:none!important}
 
-#member-info .tool{position:absolute;top:0;right:0;background:#fff}
 
 .tool a{color:#999!important;font:300 .9em "arial";display:inline-block;border:1px solid #ddd;
 padding:2px 5px;border-radius:5px}
@@ -132,3 +141,5 @@ padding:2px 5px;border-radius:5px}
 .alertify-log-success {
   background: #A8C01B!important;
 }
+
+##recaptcha_widget_div{width:50%;}

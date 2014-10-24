@@ -24,7 +24,7 @@ color:#793003}
 
 #aside-up .tab{background:#693003;overflow:hidden;margin:0;}
 #aside-up .tab li{float:left;width:24%;padding:10px 0;}
-#aside-up .tab li a{display:inline-block;width:100%;text-align:center;font:300 1em "微軟正黑體"!important;
+#aside-up .tab li a{display:inline-block;width:100%;text-align:center;font:300 1em 'Microsoft JhengHei',Arial,微軟正黑體!important;
 color:#e5d8d0;border-right:1px solid #e5d8d0;}
 #aside-up .tab li a:hover,
 #aside-up .tab .active a{color:#cf9901}
