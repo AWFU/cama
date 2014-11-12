@@ -48,7 +48,11 @@ div ,td, p .noTransition {
         <li class="active">3. 最後確認</li>
       </ul>
       <div id="info">
-        <h4>付款方式： <%= @order.get_payment_type %></h4>
+        <h4>付款方式： <%= @order.get_payment_type %>
+        <% if @order.payment_type == 'credit_card' %>
+          ​(使用玉山銀行信用卡交易系統​)
+        <% end %>
+        </h4>
         <% if @order.payment_type == 'atm_transfer' %>
           <p>匯款戶名：咖碼股份有限公司<br>
             銀行：玉山銀行 敦南分行 (銀行代碼:808) 帳號：0314-940-019559</p>
