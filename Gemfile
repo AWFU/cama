@@ -12,9 +12,6 @@ group :production, :staging do
 	gem 'mysql2'
 end
 
-gem 'capistrano', "3.0.1", group: :development
-gem 'capistrano-ext'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -83,6 +80,9 @@ gem 'spreadsheet'
 gem 'sucker_punch', '~> 1.0'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 
+#change - 1112
+gem 'capistrano' #, "3.0.1", group: :development
+
 group :development do
   gem 'thin'
   gem 'meta_request'
@@ -92,6 +92,13 @@ group :development do
   gem 'sqlite3'
   gem 'sextant'
   gem 'xray-rails'
+
+  #add - 1112
+  gem 'capistrano-bundler', '~> 1.1.2'
+  
+  gem 'rvm-capistrano'
+  gem 'capistrano-ext'
+
 end
 
 
