@@ -4,9 +4,9 @@
 #banner{background:#4E2D1A}
 #banner .container{background:url(../images/ntc-01.jpg) 200px center no-repeat}
 
-h3{color:#4E2D1A}
-p{color:#4E2D1A;padding:2.5% 0;}
-p.second{padding-left:5%;}
+h3{color:#4E2D1A;margin:30px 0 15px 0;}
+p{color:#4E2D1A;padding:0 0 10px 0;}
+p.second{padding-left:10px;}
 p a{color:#cc6600;}
 p a:hover{text-decoration:underline;color:#cc6600;}
 

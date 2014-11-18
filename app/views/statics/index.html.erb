@@ -151,7 +151,10 @@
 <script src="js/jquery.superscrollorama.js"></script> 
 <script>
   $(document).ready(function(){
-    $('.bxslider').bxSlider({controls:false});
+    $('.bxslider').bxSlider({
+      controls:false,
+      auto:true
+    });
     $('#talk').parallax({offsetY:500,speedFactor:0.18}); 
 
   });    

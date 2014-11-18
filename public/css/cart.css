@@ -128,7 +128,7 @@ padding:2.5% 5% 0 5%;background-size:contain}
 color:#4e2d1a}
 #thx p{background:url(../images/cart-01.jpg) 80% 20% #FABE00 no-repeat;padding:10% 5%}
 #thx span{font-size:.9em}
-#thx a{color:#0f22b1}
+#thx a{background:#8c0000;color:#fff;padding:10px 20px;border-radius:5px}
 #thx a:hover{text-decoration:underline}
 
 @media(max-width: 1023px) {
@@ -148,4 +148,9 @@ color:#4e2d1a}
 }
 .alertify-log-success {
   background: #A8C01B!important;
+}
+
+label.error{color:#fff;position:absolute;background:#8c0000;
+width:35px;height:auto;text-align:center;border-radius:5px;font-size:.7em;
+padding:0 0 0 0;right:20px;margin-top:-31px
 }

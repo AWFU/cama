@@ -55,7 +55,8 @@
           <div class="text-center">
             <input type="checkbox" id="agree_privacy" >
             <label for="agree_privacy">
-            我已閱讀 <a href="#" target="_blank">服務條款</a>，<a href="#" target="_blank">隱私條款</a> 並同意註冊成會員
+            我已閱讀 「<%= link_to "服務條款", page_pages_path('terms')%>」、「<%= link_to "隱私權政策", page_pages_path('privacy')%>」、
+                  「<%= link_to "退換貨須知", page_pages_path('returns')%>」 並同意註冊成會員
             </label><br>
             <%= f.submit "加入會員", class: "btn", data: {disable_with: "..."} %>
           </div>
