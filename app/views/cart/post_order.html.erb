@@ -1,3 +1,8 @@
+
+<style>
+#thx p{background:url(/images/cart-01.jpg) center 45px #FABE00 no-repeat;padding:150px 0 45px 0}
+</style>
+
 <article class="container-fluid">
   <section class="container row">
     <div class="col-md-8 col-md-offset-2" >
@@ -8,8 +13,8 @@
         <li>3. 最後確認</li>
       </ul>
       <div id="thx" class="text-center">
-        <p><%= image_tag("/images/loading.gif") %> 連線中...<br>
-        <br>
+        <p>連線中...<br>
+        <%= image_tag("/images/ajax-loader.gif") %>
         <br>
         <br>
       </div>  <!--thx-->
@@ -39,8 +44,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
   
-  $("#send_to_esun").submit();
+   $("#send_to_esun").submit();
 
-  setTimeout(function() { window.location.href = '<%= "#{receive_result_cart_index_url}?ONO=#{@order.ordernum}&ERR=連線逾時" %>'; }, 15000);
+   setTimeout(function() { window.location.href = '<%= "#{receive_result_cart_index_url}?ONO=#{@order.ordernum}&ERR=連線逾時" %>'; }, 15000);
 });
 </script>
