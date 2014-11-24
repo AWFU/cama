@@ -20,7 +20,7 @@
       </li>
       <li>
           <%= link_to '登入', new_user_session_path unless user_signed_in? %>
-          <%= link_to '我的帳戶', useradmin_orders_path if user_signed_in? %>
+          <%= link_to "Hi, #{current_user.username}", useradmin_orders_path if user_signed_in? %>
       </li>
       <li>
           <%= link_to '註冊', new_user_registration_path unless user_signed_in? %>
@@ -43,7 +43,7 @@
       <ul id="nav-up">
         <li>
           <%= link_to '登入', new_user_session_path unless user_signed_in? %>
-          <%= link_to '帳戶', useradmin_orders_path if user_signed_in? %>
+          <%= link_to "Hi, #{current_user.username}", useradmin_orders_path if user_signed_in? %>
         </li>
         <li><span>│</span></li>
         <li>
