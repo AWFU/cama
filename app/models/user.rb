@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
   validates :email, :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i, :message => 'E-Mail 格式不符'  }
   #validates_uniqueness_of :email, :message => 'E-Mail 已有人使用。'
-
+  validates_length_of :username, :maximum => 30, :message => "姓名須 30 字內"
   #validates_presence_of :tel, :allow_nil => true ,:message => "請輸入電話或行動電話"
   #validates :tel, :allow_nil => true, :format => { :with =>/[- #)(0-9]{4,10}[- #)(0-9]{4,10}/, :message => '聯絡電話 格式不符' }
 

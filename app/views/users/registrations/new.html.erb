@@ -87,7 +87,10 @@ $("#new_user").submit(function(){
     $("#new_user").validate({
     //debug: true,
     rules: {
-      "user[user_name]": {required:true},
+      "user[user_name]": {
+        required:true,
+        maxlength: 30
+      },
       "user[email]": {
         required:true,
         email: true
