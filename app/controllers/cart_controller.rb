@@ -17,8 +17,8 @@ class CartController < ApplicationController
 
     begin
       @result = Cart.check_stock_all(cookies[:cart_cama], cookies[:cart_cafe_attrs])
-      cookies[:cart_cama] = @result[:cart_items]
-      cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+      cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+      cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
       
       if @result[:cart_message].to_s.length > 0
         flash.now[:alert] = @result[:cart_message]
@@ -175,7 +175,7 @@ class CartController < ApplicationController
             
             # partial dead...
             @cart_cama_items = JSON.parse_if_json(cookies[:cart_cama]) || Hash.new
-            cookies[:cart_cama] = Cart.check_cookies(@cart_cama_items)
+            cookies[:cart_cama] = { value: Cart.check_cookies(@cart_cama_items), httponly: true } 
 
             @items_dead.each do |deaditem|
               @cart_cafe_attrs = JSON.parse_if_json(cookies[:cart_cafe_attrs]) || Hash.new
@@ -342,8 +342,8 @@ class CartController < ApplicationController
       
       if(@stock)
         @result = Cart.check_stock(cookies[:cart_cama], @stock, params[:cart][:amount].to_i, cookies[:cart_cafe_attrs], item_attributes)
-        cookies[:cart_cama] = @result[:cart_items]
-        cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+        cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+        cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
 
         @cart_message = @result[:cart_message]
       else
@@ -361,8 +361,8 @@ class CartController < ApplicationController
 
   def plus
     @result = Cart.plus_stock(cookies[:cart_cama], params[:id] ,cookies[:cart_cafe_attrs], params[:index])
-    cookies[:cart_cama] = @result[:cart_items]
-    cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+    cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+    cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
 
     @cart_message = @result[:cart_message]
 
@@ -373,8 +373,8 @@ class CartController < ApplicationController
 
   def minus
     @result = Cart.minus_stock(cookies[:cart_cama], params[:id] ,cookies[:cart_cafe_attrs], params[:index])
-    cookies[:cart_cama] = @result[:cart_items]
-    cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+    cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+    cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
 
     @cart_message = @result[:cart_message]
 
@@ -385,8 +385,8 @@ class CartController < ApplicationController
 
   def delete_by_attribute
     @result = Cart.minus_partial_stock_to_zero(cookies[:cart_cama], params[:id] ,cookies[:cart_cafe_attrs], params[:index])
-    cookies[:cart_cama] = @result[:cart_items]
-    cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+    cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+    cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
 
     @cart_message = @result[:cart_message]
 
@@ -397,8 +397,8 @@ class CartController < ApplicationController
 
   def delete
     @result = Cart.delete_stock(cookies[:cart_cama], params[:id] , cookies[:cart_cafe_attrs])
-    cookies[:cart_cama] = @result[:cart_items]
-    cookies[:cart_cafe_attrs] = @result[:cart_cafe_attrs]
+    cookies[:cart_cama] = { value: @result[:cart_items], httponly: true } 
+    cookies[:cart_cafe_attrs] = { value: @result[:cart_cafe_attrs], httponly: true }  
 
     @cart_message = @result[:cart_message]
 
