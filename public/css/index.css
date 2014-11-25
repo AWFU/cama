@@ -27,7 +27,7 @@ body > header nav ul li{float:left}
 body > header nav ul{overflow:hidden}
 
 /*桌面版導航*/
-#nav-up {width:125px;float:right;margin:0 0 25px 0}
+#nav-up {min-width:125px;float:right;margin:0 0 25px 0}
 #nav-up li{margin:0 0 0 5px;color:#333331}
 #nav-up a{color:#333331;font-size:.9em!important}
 #nav-up a:hover{text-decoration:underline}
