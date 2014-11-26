@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910095242) do
+ActiveRecord::Schema.define(version: 20141126073540) do
 
   create_table "addressbooks", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "addressbooks", ["user_id"], name: "index_addressbooks_on_user_id"
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -65,6 +67,9 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.string   "slug"
   end
 
+  add_index "announcements", ["article_id"], name: "index_announcements_on_article_id"
+  add_index "announcements", ["id", "type"], name: "index_announcements_on_id_and_type"
+
   create_table "articles", force: true do |t|
     t.string   "name"
     t.text     "content"
@@ -82,6 +87,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "updated_at"
     t.string   "type"
   end
+
+  add_index "banners", ["id", "type"], name: "index_banners_on_id_and_type"
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -156,6 +163,9 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.integer  "ranking",         default: 999, null: false
   end
 
+  add_index "galleries", ["attachable_id", "attachable_type"], name: "index_galleries_on_attachable_id_and_attachable_type"
+  add_index "galleries", ["id", "type"], name: "index_galleries_on_id_and_type"
+
   create_table "jobs", force: true do |t|
     t.string   "name"
     t.string   "websiteurl"
@@ -172,6 +182,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "updated_at"
   end
 
+  add_index "orderasks", ["order_id"], name: "index_orderasks_on_order_id"
+
   create_table "orderitems", force: true do |t|
     t.integer  "order_id"
     t.integer  "product_stock_id"
@@ -183,6 +195,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "updated_at"
   end
 
+  add_index "orderitems", ["order_id"], name: "index_orderitems_on_order_id"
+
   create_table "orderlogs", force: true do |t|
     t.integer  "order_id"
     t.string   "content"
@@ -190,6 +204,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "updated_at"
     t.string   "inner_state"
   end
+
+  add_index "orderlogs", ["order_id"], name: "index_orderlogs_on_order_id"
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -219,6 +235,7 @@ ActiveRecord::Schema.define(version: 20140910095242) do
   end
 
   add_index "orders", ["aasm_state"], name: "index_orders_on_aasm_state"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "photos", force: true do |t|
     t.string   "image"
@@ -228,13 +245,17 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "updated_at"
   end
 
+  add_index "photos", ["article_id"], name: "index_photos_on_article_id"
+
   create_table "product_cates", force: true do |t|
     t.integer  "parent_id"
     t.string   "name"
-    t.integer  "depth"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "depth"
   end
+
+  add_index "product_cates", ["parent_id"], name: "index_product_cates_on_parent_id"
 
   create_table "product_stocks", force: true do |t|
     t.integer  "product_id"
@@ -244,6 +265,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "product_stocks", ["product_id"], name: "index_product_stocks_on_product_id"
 
   create_table "products", force: true do |t|
     t.integer  "product_cate_id"
@@ -261,6 +284,9 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.string   "unit"
     t.text     "grind_level"
   end
+
+  add_index "products", ["article_id"], name: "index_products_on_article_id"
+  add_index "products", ["product_cate_id"], name: "index_products_on_product_cate_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -334,6 +360,8 @@ ActiveRecord::Schema.define(version: 20140910095242) do
     t.string   "subtitle"
     t.string   "slug"
   end
+
+  add_index "talks", ["article_id"], name: "index_talks_on_article_id"
 
   create_table "user_roles", force: true do |t|
     t.string   "name"

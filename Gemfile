@@ -99,7 +99,6 @@ group :development do
   
   gem 'rvm-capistrano'
   gem 'capistrano-ext'
+  #gem 'lol_dba'
 
 end
-
-
