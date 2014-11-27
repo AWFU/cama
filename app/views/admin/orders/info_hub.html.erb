@@ -54,7 +54,7 @@ div ,td, p .noTransition {
 <br>
 <br>Advanced OP: 交易查詢<br>
 <h3>send 交易查詢</h3>
-<%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale47.htm", :id => "send_to_esun") do |f|%>
+<%= form_tag("https://acq.esunbank.com.tw/acq_online/online/sale47.htm", :id => "send_to_esun") do |f|%>
 特店代碼：<%= text_field_tag :MID, get_esun_MID %><br>
 
 訂單編號：<%= text_field_tag :ONO, @order.ordernum %><br>
@@ -72,7 +72,7 @@ div ,td, p .noTransition {
 
 <br>Advanced OP: 交易查詢<br>
 <h3>請款前, 線上取消授權</h3>
-<%= form_tag("https://acqtest.esunbank.com.tw/acq_online/online/sale51.htm", :id => "send_cancel_to_esun") do |f|%>
+<%= form_tag("https://acq.esunbank.com.tw/acq_online/online/sale51.htm", :id => "send_cancel_to_esun") do |f|%>
 特店代碼：<%= text_field_tag :MID, get_esun_MID %><br>
 
 訂單編號：<%= text_field_tag :ONO, @order.ordernum %><br>
