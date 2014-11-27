@@ -115,6 +115,10 @@
     controls: false
   });  
 
+  if( $('#chart img').length == 0 ){
+    $('#chart').hide()
+  }
+
   $('#thumb').bxSlider({
     randomStart:true,
     pager:false,
