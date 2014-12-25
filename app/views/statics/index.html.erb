@@ -115,7 +115,7 @@
             <% unless @talk.nil? %>
               <h4><%= @talk.title %></h4>
               <p>
-              <% if @talk.subtitle.length > 0 %>
+              <% if @talk.subtitle && @talk.subtitle.length > 0 %>
                 <%= @talk.subtitle.first(63) %>
                 <%= '...' if @talk.subtitle.length > 63 %>
               <% end %>
