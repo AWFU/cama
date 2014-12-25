@@ -87,7 +87,9 @@ class Admin::TalksController < AdminController
         format.html { redirect_to edit_admin_talk_path(@talk), notice: 'Talk was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: :back }
+        @gallery_count = @talk.galleries.select{ |v| v['type'] == "TalkCoverGallery" }.count
+        flash.now[:notice] = @talk.errors.full_messages 
+        format.html { render :edit }
         format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end

@@ -10,14 +10,15 @@ class Talk < ActiveRecord::Base
   default_scope { order('talks.ranking ASC, talks.created_at DESC') }
 
   validates_presence_of :title
-  
-  before_validation :check_attrs
+  validates_presence_of :subtitle
+
+  before_validation :check_attrs, on: :create
   
   paginates_per 3
 
   def check_attrs
     self.title = "未命名文章" if self.title.blank?
-    self.subtitle = " " if self.subtitle.blank?
+    self.subtitle = "摘要"+Time.now.strftime('%Y%m%d') if self.subtitle.blank?
   end
 
   extend FriendlyId

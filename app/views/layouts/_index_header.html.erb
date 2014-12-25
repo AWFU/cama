@@ -87,11 +87,20 @@
 
         <% if slide.galleries.first %>
           <li>
-            <%= link_to slide.description, target: '_blank' do %>
-            <image src=<%= "#{slide.galleries.first.attachment.url}" %> />
+
+            <% if slide.description.blank? %>
+              <%= link_to slide.description, target: '_blank', class: 'nohand' do %>
+                <image src=<%= "#{slide.galleries.first.attachment.url}" %> />
+              <% end %>
+            <% else %>
+              <%= link_to slide.description, target: '_blank' do %>
+                <image src=<%= "#{slide.galleries.first.attachment.url}" %> />
+              <% end %>
             <% end %>
+            
          </li>
-         <% end %>
+        <% end %>
+        
       <% end %>
 
     </ul>
