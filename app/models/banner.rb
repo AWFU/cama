@@ -22,7 +22,7 @@ class Banner < ActiveRecord::Base
     
     if self.is_index_slider?
       self.status = "enable"
-      self.description = "javascript:void(0);" if self.description.blank?
+      # self.description = "javascript:void(0);" if self.description.blank?
     else
       self.status = "disable" if self.status.blank?
     end
