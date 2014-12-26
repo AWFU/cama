@@ -65,6 +65,8 @@ background:url(../images/idx-10.png) center center no-repeat #FABE00;line-height
     height: 100%;
 }
 
+.part img{margin:20px auto}
+
 /*-----------------------------------------------------------------------頁碼---*/
 
 .page{text-align:center;padding:5% 0 0 0}
