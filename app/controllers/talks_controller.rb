@@ -19,14 +19,15 @@ class TalksController < ApplicationController
     tag = params[:tag].to_param
     allow = tag.in? Talk.tag_counts_on(:camatalks).pluck(:name) unless tag.nil? || tag.empty?
     if params[:tag] && allow
+      @page_title = "談咖啡-#{tag}分類" #through meta-tag
       @talks = Talk.includes(:galleries).tagged_with(tag, on: :camatalks, any: true).page(params[:page])
       @talks = Talk.includes(:galleries).page(params[:page]) if @talks.count == 0
     else
+      @page_title = "談咖啡" #through meta-tag
       @talks = Talk.includes(:galleries).page(params[:page])
       render :index
     end
-    
-    
+
   end
 
   def show
@@ -59,6 +60,7 @@ class TalksController < ApplicationController
       @talk = Talk.find(params[:id])
       
       if request.path.downcase != talk_path(@talk).downcase
+        @dy_title = @talk.title
         return redirect_to @talk, :status => :moved_permanently
       end
     rescue

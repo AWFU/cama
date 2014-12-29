@@ -33,9 +33,12 @@
                 
               </div>
               <article>
-              <% if talk.article %>
-                <p><%= talk.article.get_meta.first(60).gsub(' ', '&nbsp;').html_safe if talk.article.get_meta.length > 0 %></p>
-              <% end %>
+              <%# if talk.article %>
+                <p>
+                <%= talk.subtitle if talk.subtitle.present? %>
+                <%# talk.article.get_meta.first(60).gsub(' ', '&nbsp;').html_safe if talk.article.get_meta.length > 0 %>
+                </p>
+              <%# end %>
               </article>
                 <%= link_to "看更多", talk_path(talk), class: "more" %>
             </div>

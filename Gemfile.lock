@@ -123,6 +123,8 @@ GEM
     mailgun_rails (0.6.1)
       rails (>= 3.2.13)
       rest-client (>= 1.6.7)
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     meta_request (0.3.0)
       callsite
       rack-contrib
@@ -291,6 +293,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mailgun_rails
+  meta-tags
   meta_request
   mini_magick
   mysql2
