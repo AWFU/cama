@@ -1,7 +1,7 @@
 <% product_cate.galleries.select{ |v| v['type'] == "CategoryCoverGallery" }.each do |attach| %>
 <td>&nbsp;</td>
 <td>
-  <image src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %> />  
+  <img src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %> />  
 </td>
 <td align="right" valign="top">
   <div class="tool">

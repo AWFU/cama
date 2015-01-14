@@ -21,7 +21,7 @@
             <div class="bxslider text-center" id="photo">            
                 <% @product.galleries.where(type: 'ProductPhotoGallery').each do |attach| %>
                     <figure>
-                      <image src=<%= "#{attach.attachment.url}" %> class="img-responsive"/>
+                      <img src=<%= "#{attach.attachment.url}" %> class="img-responsive"/>
                    </figure>
                 <% end %>            
             </div>
@@ -31,7 +31,7 @@
               <% @product.galleries.where(type: 'ProductPhotoGallery').each_with_index do |attach, index| %>
               <li>
                 <a data-slide-index="<%= "#{index}" %>" href="">
-                  <image src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
+                  <img src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
                 </a>
               </li>
               <% end %>
@@ -65,7 +65,7 @@
         <div id="chart" class="row">
           <div class="col-sm-5 text-center">
             <% @product.galleries.select{ |v| v['type'] == "TasteAttributeGallery" }.each do |attach| %>
-                <image src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
+                <img src=<%= "#{attach.attachment.url}" %> class="img-responsive" />
             <% end %>
           </div>
           <div class="col-sm-7">

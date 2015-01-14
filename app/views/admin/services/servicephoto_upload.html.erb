@@ -31,7 +31,7 @@
         <% @service.galleries.select{ |v| v['type'] == "ServiceIconGallery" }.each do |attach| %>
             <tr <%= "id=createAttachcontainer_#{attach.id.to_s}" %> class="createAttachcontainer dragable" >
               <td width="6%"></td>
-              <td width="12%"><image src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %> width="85%" height="auto"/></td>
+              <td width="12%"><img src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %> width="85%" height="auto"/></td>
               <td width="64%"><%= (attach.file_size.to_i)/1000 %>KB @ [<%= attach.updated_at.in_time_zone("Taipei") %> 上傳] </td>
               <td width="18%">
                 <div class="tool">

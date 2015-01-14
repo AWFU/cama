@@ -16,7 +16,7 @@
       <div class="row">
       <div id="photo" class="col-md-6">
         <% if @store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.first %>
-            <image width="100%" src=<%= "#{@store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.first.attachment.url}"%> class="img-responsive"  /> 
+            <img width="100%" src=<%= "#{@store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.first.attachment.url}"%> class="img-responsive"  /> 
         <% else %>
            <img src="/sample/sample9.jpg" class="img-responsive"> 
         <% end %>
@@ -56,7 +56,7 @@
       <div id="gallery" class="text-center">
         <% @store.galleries.select{ |v| v['type'] == "StorePhotoGallery"  }.each do | photo | %>
           <% if photo.attachment.url %>
-            <image width="100%" src=<%= "#{photo.attachment.url}"%> class="img-responsive"  /> 
+            <img width="100%" src=<%= "#{photo.attachment.url}"%> class="img-responsive"  /> 
           <% end %>
         <% end %>
       </div>
