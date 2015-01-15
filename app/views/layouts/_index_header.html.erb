@@ -90,11 +90,11 @@
 
             <% if slide.description.blank? %>
               <a class='nohand' target='_blank'>
-                <image src=<%= "#{slide.galleries.first.attachment.url}" %> />
+                <img src=<%= "#{slide.galleries.first.attachment.url}" %> />
               </a>
             <% else %>
               <%= link_to slide.description, target: '_blank' do %>
-                <image src=<%= "#{slide.galleries.first.attachment.url}" %> />
+                <img src=<%= "#{slide.galleries.first.attachment.url}" %> />
               <% end %>
             <% end %>
             

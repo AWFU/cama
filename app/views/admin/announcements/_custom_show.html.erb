@@ -10,7 +10,7 @@
 
         <% @announcement.galleries.select{ |v| v['type'] == "AnnouncementCoverGallery" }.each do |attach| %>
             <tr <%= "id=createAttachcontainer_#{attach.id.to_s}" %> class="createAttachcontainer dragable" >
-              <td width="12%"><image width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
+              <td width="12%"><img width="30%" height="auto" src=<%= "#{attach.attachment.url}" %> alt=<%= "#{attach.file_name}" %>/></td>
              </tr>
         <% end %>
 

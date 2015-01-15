@@ -48,7 +48,7 @@ div ,td, p .noTransition {
       <% end %>
       
         <%= link_to '', admin_gallery_path(attach.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete', title: '刪除' %>
-        <image src=<%= "#{attach.attachment.url}" %> />
+        <img src=<%= "#{attach.attachment.url}" %> />
       </div>
     <% end %>
 

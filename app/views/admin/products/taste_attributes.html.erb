@@ -24,7 +24,7 @@
         <td width="93%">
           <div class="thumb">
             <% @product.galleries.select{ |v| v['type'] == "TasteAttributeGallery" }.each do |attach| %>
-              <image src=<%= "#{attach.attachment.url}" %> />
+              <img src=<%= "#{attach.attachment.url}" %> />
               <%= link_to '', admin_gallery_path(attach.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete', title: '刪除' %>
             <% end %>
           </div>
