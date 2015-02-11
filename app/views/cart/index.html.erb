@@ -35,7 +35,7 @@
       <div id="loc" class="clearfix control_panel">   
         <% if @order_items.length > 0 %>
         <div class="pull-right">
-            <p>開始結帳，請先選本島、離島或海外取件</p>          
+            <p>請選取寄送地為本島或離島，以進入結帳程序。</p>         
             <%= button_to("本島", set_ship_to_cart_index_path('taiwan'), :class => "next btn pull-right", :role => 'button', data: {disable_with: "..."} ) %>
             <%= button_to("離島", set_ship_to_cart_index_path('island'), :class => "next btn pull-right", :role => 'button', data: {disable_with: "..."} ) %>
         </div>      
@@ -44,6 +44,7 @@
 * 本島寄送運費 80 元，滿 1500 元免運費<br>
 <!--* 貨到付款：消費金額 未滿1500：運費+代收費 110元，滿1500：(免運費)代收費30元 <br><br>-->
 * 離島郵局寄送運費 100 元，滿 1500 元免運費<br>
+* 目前恕不提供海外線上訂購服務
           <br>
           <%= link_to("繼續購物", categories_path, :id => "back", class: "btn pull-right", role: "button" ) %>
         </div>
