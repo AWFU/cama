@@ -43,7 +43,8 @@ background-size:contain;text-indent:-9999px}
 #list-box .pull-right{width:50%;height:295px}
 #list-box h5{width:85px;height:85px;background:#FABE00;color:#fff;border-radius:50%;
 font-size:1.7em;text-align:center;padding:30px 0 0 0;margin:0 auto 15px auto}
-#list-box p{text-align:center;color:#5e2906}
+#list-box p{text-align:left;color:#5e2906;}
+#list-box .pull-right p{padding-left: 230px;}
 
 #bike{background-image:url(../images/bike.png);background-position:left top;background-repeat:no-repeat;width:116px;height:111px;
 position:absolute;top:-2.5%;left:30%}
@@ -52,10 +53,14 @@ position:absolute;top:-2.5%;left:30%}
 	#list-box .pull-left,
 	#list-box .pull-right{width:100%;margin:10% 0 0 0!important;height:auto!important}
 	#list-box .clearfix{background:none}
+	#list-box .pull-right p{padding:0;}
+	#list-box p{width:80%;margin: 0 auto;}
+	#bike{display: none}
 }
 @media(max-width: 767px) {
 	#list-box {padding:15% 0 0 0}
 	#list-box h3{height:114px}
+	#list-box p{width:100%;}
 }
 
 #cup{background:url(../images/abt-15.jpg) center top no-repeat;height:996px;padding:0;}
@@ -78,6 +83,9 @@ left:-15%;top:10%;}
 #report span{font-size:.8em;position:relative;top:10px;}
 #report h6{font-size:1em;line-height:1.3em;}
 #report section > div {margin:0 0 5% 0;}
+
+#bottom {background: url(../images/abt-35.png) center 60px no-repeat; padding: 250px 0 40px 0;}
+#bottom h3{text-align: center;}
 
 @media(max-width: 767px) {
 	#report h5{margin:0 0 15% 0;}
