@@ -15,7 +15,7 @@
       <li><a href="#content-2">核心價值</a></li>
       <li><a href="#list-box">cama大事記</a></li>
       <li><a href="#cup">眾星雲集</a></li>
-      <li><a href="#report">媒體專訪報導</a></li>   
+      <!--li><a href="#report">媒體專訪報導</a></li-->   
   </ul>
   <div id="content-1" class="content">
     <section class="container row">
@@ -89,24 +89,39 @@
       <h3>cama 大事記</h3>
       <div class="clearfix">
       <div id="bike" class="hidden-sm hidden-xs"></div>
-      <div class="pull-left list" id="list-1">
+        <!--div class="pull-right list" id="list-0">
+          <h5>2015</h5>
+          <p>● 《廣告Adm 》282期專訪<br>
+          </p>
+        </div-->
+        <div class="pull-left list" id="list-1">
           <h5>2014</h5>
-          <p>● 自有商品”果樹女神-Pomona”耳掛包獲得<br>
-            「2014臺北咖啡掛耳包競賽」第三名<br>
+          <p>●《The China Post 英文中國郵報》12月專訪<br>
             ● 2014《天下》[金牌服務業調查]-[連鎖咖啡業]獲選入前五強<br>
-            ● 《動腦雜誌》報導[EOLembrain - 連鎖咖啡大調查]，<br>
-            cama滿意度獲得評選第一名。</p>
+            ● 《動腦雜誌》報導[EOLembrain - 連鎖咖啡大調查]，cama滿意度獲得評選第一名。<br>
+            ● 自有商品”果樹女神-Pomona”耳掛包獲得「2014臺北咖啡掛耳包競賽」第三名<br>
+            ●《小小咖啡店開業故事》書籍介紹<br>
+            ●《工商時報》11月專訪
+          </p>
         </div>
         <div class="pull-right list" id="list-2">
           <h5>2013</h5>
           <p>● 總店數成長為62家 62 stores<br>
             ● 榮獲工商時報2013台灣服務業大評鑑連鎖店亞軍<br>
-            ● 和平店店長榮獲台中市拉花冠軍</p>
+            ● 和平店店長榮獲台中市拉花冠軍<br>
+            ● 《動腦雜誌》451期專訪<br>
+            ● 《cheers雜誌》152期專訪<br>
+            ● 《因為有你，所以參差》書籍介紹
+          </p>
         </div>
         <div class="pull-left list" id="list-3">
           <h5>2012</h5>
           <p>● 總店數成長為48家<br>
-            ● 敦南店店長榮獲台北市拉花冠軍</p>
+            ● 敦南店店長榮獲台北市拉花冠軍<br>
+            ● 《商業周刊》1309期專訪<br>
+            ● 《咖啡、茶與冰淇淋雜誌台灣區國際中文雙月刊》29期專訪<br>
+            ● 《天下雜誌》489期專訪
+          </p>
         </div>
         <div class="pull-right list" id="list-4">
           <h5>2011</h5>
@@ -114,8 +129,7 @@
         </div>
         <div class="pull-left list" id="list-5">
           <h5>2010</h5>
-          <p>● 開放加盟，總店數邁入<br>
-            兩位數共11家</p>
+          <p>● 開放加盟，總店數邁入兩位數共11家</p>
         </div>
         <div class="pull-right list" id="list-6">
           <h5>2009</h5>
@@ -144,7 +158,7 @@
     </section>
   </div>
   <!--cup-->
-  <div id="report" class="content">
+  <!--div id="report" class="content">
   <h5>媒體專訪與報導</h5>
     <section class="container row">    
       <div class="col-md-2 col-sm-4 col-xs-6">
@@ -243,7 +257,10 @@
         </a>
       </div>
     </section>
-  </div><!--report-->
+  </div--><!--report-->
+  <!--div id="bottom" class="hidden-sm hidden-xs">
+    <h3>堅持只給你 SCAA 國際金杯標準的享受</h3>
+  </div-->
 </article>
 <script src="js/jquery.parallax-1.1.3.js"></script> 
 <script src="js/TweenMax.min.js"></script> 
@@ -316,8 +333,7 @@ jQuery(document).ready(function(){
       'position':'relative',
       left:'20px',
     }}
-  )).addTween(
-    '#list-1',
+  )).addTween('#list-1',
     (new TimelineLite())
       .append([
         TweenMax.fromTo($('#bike'), 1, 
