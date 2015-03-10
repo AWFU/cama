@@ -61,9 +61,9 @@ div ,td, p .noTransition {
           <td>
             <div class="tool">
               <% order.aasm.events.each do |event| %>
-                <% if event.to_s != 'atm_transfered' %>
+                <%# if event.to_s != 'atm_transfered' %>
                   <%= link_to get_event_display_name(event.to_s), "/admin/orders/#{order.id}/info_hub/#{event}" , class: "iframe uvs" %>
-                <% end %>
+                <%# end %>
               <% end %>
             </div>
           </td>
